@@ -139,6 +139,85 @@ public class mixer : MonoBehaviour
             audioSource.volume -= 0.001f;
         }
     }
+
+    public void setMixer(int[] mixer)
+    {
+        print("AO");
+        if (mixer[0] == 1) {
+            FadeIn(m_1);
+            CH1_ON = true;
+        } else
+        {
+            FadeOut(m_1);
+            CH1_ON = false;
+        }
+        
+        if (mixer[1] == 1) {
+            FadeIn(m_2);
+            CH2_ON = true;
+        } else
+        {
+            FadeOut(m_2);
+            CH2_ON = false;
+        }
+        
+        if (mixer[2] == 1) {
+            FadeIn(m_3);
+            CH3_ON = true;
+        } else
+        {
+            FadeOut(m_3);
+            CH3_ON = false;
+        }
+        
+        if (mixer[3] == 1) {
+            FadeIn(m_4);
+            CH4_ON = true;
+        } else
+        {
+            FadeOut(m_4);
+            CH4_ON = false;
+        }
+        
+        if (mixer[4] == 1) {
+            FadeIn(m_5);
+            CH5_ON = true;
+        } else
+        {
+            FadeOut(m_5);
+            CH5_ON = false;
+        }
+        
+        if (mixer[5] == 1) {
+            FadeIn(m_6);
+            CH6_ON = true;
+        } else
+        {
+            FadeOut(m_6);
+            CH6_ON = false;
+        }
+        
+        if (mixer[6] == 1) {
+            FadeIn(m_7);
+            CH7_ON = true;
+        } else
+        {
+            FadeOut(m_7);
+            CH7_ON = false;
+        }
+        
+        if (mixer[7] == 1) {
+            FadeIn(m_8);
+            CH8_ON = true;
+        } else
+        {
+            FadeOut(m_8);
+            CH8_ON = false;
+        }
+
+        UpdateUI();
+        
+    }
     
     void FadeIn (AudioSource audioSource) {
         float startVolume = audioSource.volume;
