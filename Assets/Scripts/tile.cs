@@ -32,6 +32,11 @@ public class tile : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        GetComponent<Animator>().SetBool("isActive", !isActive);
+    }
+
     void OnTriggerExit(Collider collision)
     {
         grid.GetComponent<grid>().hoverTiles--;
