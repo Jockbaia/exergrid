@@ -21,78 +21,115 @@ public class grid : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        setActive(4);
-        activeTile = 4;
+        setActive(1);
+        activeTile = 1;
     }
 
     public void setActive(int val)
     {
         if (val == 1)
         {
-            g1.GetComponent<Renderer> ().material.color = Color.green;
             g1.GetComponent<tile>().setActive();
         }
         else if (val == 2)
         {
-            g2.GetComponent<Renderer> ().material.color = Color.green;
             g2.GetComponent<tile>().setActive();
         }
         else if (val == 3)
         {
-            g3.GetComponent<Renderer> ().material.color = Color.green;
             g3.GetComponent<tile>().setActive();
         }
         else if (val == 4)
         {
-            g4.GetComponent<Renderer> ().material.color = Color.green;
             g4.GetComponent<tile>().setActive();
         }
         else if (val == 5)
         {
-            g5.GetComponent<Renderer> ().material.color = Color.green;
             g5.GetComponent<tile>().setActive();
         }
         else if (val == 6)
         {
-            g6.GetComponent<Renderer> ().material.color = Color.green;
             g6.GetComponent<tile>().setActive();
         }
         else if (val == 7)
         {
-            g7.GetComponent<Renderer> ().material.color = Color.green;
             g7.GetComponent<tile>().setActive();
         }
         else if (val == 8)
         {
-            g8.GetComponent<Renderer> ().material.color = Color.green;
             g8.GetComponent<tile>().setActive();
         }
         else if (val == 9)
         {
-            g9.GetComponent<Renderer> ().material.color = Color.green;
             g9.GetComponent<tile>().setActive();
         }
 
     }
-
-    public void pickNewGreen()
+    
+    public void setShaky(int val)
     {
-        ps.GetComponent<points>().add_points();
+        if (val == 1)
+        {
+            g1.GetComponent<tile>().setShaky();
+        }
+        else if (val == 2)
+        {
+            g2.GetComponent<tile>().setShaky();
+        }
+        else if (val == 3)
+        {
+            g3.GetComponent<tile>().setShaky();
+        }
+        else if (val == 4)
+        {
+            g4.GetComponent<tile>().setShaky();
+        }
+        else if (val == 5)
+        {
+            g5.GetComponent<tile>().setShaky();
+        }
+        else if (val == 6)
+        {
+            g6.GetComponent<tile>().setShaky();
+        }
+        else if (val == 7)
+        {
+            g7.GetComponent<tile>().setShaky();
+        }
+        else if (val == 8)
+        {
+            g8.GetComponent<tile>().setShaky();
+        }
+        else if (val == 9)
+        {
+            g9.GetComponent<tile>().setShaky();
+        }
+
+    }
+
+    public void pickNewGreen(bool positive)
+    {
+        if(positive) ps.GetComponent<points>().add_points();
+        else ps.GetComponent<points>().mistake();
+        
         int newGreenNumber;
 
         do
         {
-            newGreenNumber = Random.Range(1, 9);
+            newGreenNumber = Random.Range(1, 10);
         } while (newGreenNumber == activeTile);
 
+        
+        int isGreen = Random.Range(0, 4);
         activeTile = newGreenNumber;
-        setActive(newGreenNumber);
+        if(isGreen == 1) setShaky(newGreenNumber);
+        else setActive(newGreenNumber);
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
 }

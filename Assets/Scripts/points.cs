@@ -25,6 +25,7 @@ public class points : MonoBehaviour
     public AudioSource point_error;
     private int[] last_mix;
     private string last_text;
+    public int points_lvlup;
     
     void Start()
     {
@@ -89,7 +90,7 @@ public class points : MonoBehaviour
         audio_pos_mgmt();
     }
     
-    void mistake()
+    public void mistake()
     {
         negative_streak++;
         point_error.Play();
@@ -129,7 +130,7 @@ public class points : MonoBehaviour
             mx.setMixer(a);
         }
 
-        else if (pts == 10)
+        else if (pts == points_lvlup)
         { 
             new_level.Play();
             int[] a = {1, 0, 1, 0, 0, 0, 0, 0}; 
@@ -139,7 +140,7 @@ public class points : MonoBehaviour
             mx.setMixer(a);
         }
         
-        else if (pts == 20)
+        else if (pts == points_lvlup*2)
         { 
             new_level.Play();
             int[] a = {1, 0, 1, 0, 1, 0, 0, 0}; 
@@ -149,7 +150,7 @@ public class points : MonoBehaviour
             mx.setMixer(a);
         }
 
-        else if (pts == 30)
+        else if (pts == points_lvlup*3)
         { 
             new_level.Play();
             int[] a = {1, 1, 1, 0, 1, 0, 0, 0}; 
@@ -159,7 +160,7 @@ public class points : MonoBehaviour
             mx.setMixer(a);
         }
         
-        else if (pts == 40)
+        else if (pts == points_lvlup*4)
         { 
             new_level.Play();
             int[] a = {1, 1, 1, 1, 1, 0, 0, 0}; 
@@ -169,7 +170,7 @@ public class points : MonoBehaviour
             mx.setMixer(a);
         }
         
-        else if (pts == 50)
+        else if (pts == points_lvlup*5)
         { 
             new_level.Play();
             int[] a = {1, 1, 1, 1, 1, 0, 1, 0}; 

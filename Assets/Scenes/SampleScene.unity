@@ -211,9 +211,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 116254278}
+  - component: {fileID: 116254279}
   m_Layer: 0
   m_Name: mixer
-  m_TagString: Untagged
+  m_TagString: MX
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -229,7 +230,6 @@ Transform:
   m_LocalPosition: {x: -1.97099, y: 2.079085, z: 2.8689518}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1150574702}
   - {fileID: 694767500}
   - {fileID: 1887373635}
   - {fileID: 477512750}
@@ -241,6 +241,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &116254279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116254277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ac9fd2f356632d48aac3883767f08bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadein_duration: 1
+  fadeout_duration: 1
+  m_1: {fileID: 694767501}
+  m_2: {fileID: 1887373639}
+  m_3: {fileID: 477512754}
+  m_4: {fileID: 340748691}
+  m_5: {fileID: 1787600534}
+  m_6: {fileID: 1094049938}
+  m_7: {fileID: 1945974010}
+  m_8: {fileID: 1569766585}
+  mixerGUI: {fileID: 1390184490}
 --- !u!1 &190080965
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,6 +413,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pawn: {fileID: 1360029153}
   isActive: 0
+  isShaky: 0
   isHover: 0
   grid: {fileID: 1075908512}
 --- !u!95 &273227912
@@ -443,7 +467,7 @@ Transform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 116254278}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &340748688
 BoxCollider:
@@ -522,7 +546,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -714,7 +738,7 @@ Transform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 116254278}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &477512751
 BoxCollider:
@@ -793,7 +817,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -909,6 +933,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pawn: {fileID: 1360029153}
   isActive: 0
+  isShaky: 0
   isHover: 0
   grid: {fileID: 1075908512}
 --- !u!23 &481553957
@@ -1119,6 +1144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pawn: {fileID: 1360029153}
   isActive: 0
+  isShaky: 0
   isHover: 0
   grid: {fileID: 1075908512}
 --- !u!95 &532560189
@@ -1252,6 +1278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pawn: {fileID: 1360029153}
   isActive: 0
+  isShaky: 0
   isHover: 0
   grid: {fileID: 1075908512}
 --- !u!95 &547982581
@@ -1385,6 +1412,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pawn: {fileID: 1360029153}
   isActive: 0
+  isShaky: 0
   isHover: 0
   grid: {fileID: 1075908512}
 --- !u!95 &556620533
@@ -1565,7 +1593,7 @@ Transform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 116254278}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &694767501
 AudioSource:
@@ -1582,7 +1610,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -1837,6 +1865,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pawn: {fileID: 1360029153}
   isActive: 0
+  isShaky: 0
   isHover: 0
   grid: {fileID: 1075908512}
 --- !u!95 &735294118
@@ -2107,7 +2136,7 @@ Transform:
   - {fileID: 556620531}
   - {fileID: 481553959}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1075908514
 MonoBehaviour:
@@ -2165,7 +2194,7 @@ Transform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 116254278}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1094049938
 AudioSource:
@@ -2182,7 +2211,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -2643,6 +2672,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pawn: {fileID: 1360029153}
   isActive: 0
+  isShaky: 0
   isHover: 0
   grid: {fileID: 1075908512}
 --- !u!95 &1126625097
@@ -2763,7 +2793,7 @@ RectTransform:
   - {fileID: 357140453}
   - {fileID: 1240864342}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2789,60 +2819,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!1 &1150574701
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1150574702}
-  - component: {fileID: 1150574703}
-  m_Layer: 0
-  m_Name: controller
-  m_TagString: MX
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1150574702
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1150574701}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.2927594, y: -0.26070404, z: -1.7135758}
-  m_LocalScale: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 116254278}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1150574703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1150574701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ac9fd2f356632d48aac3883767f08bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadein_duration: 1
-  fadeout_duration: 1
-  m_1: {fileID: 694767501}
-  m_2: {fileID: 1887373639}
-  m_3: {fileID: 477512754}
-  m_4: {fileID: 340748691}
-  m_5: {fileID: 1787600534}
-  m_6: {fileID: 1094049938}
-  m_7: {fileID: 1945974010}
-  m_8: {fileID: 1569766585}
-  mixerGUI: {fileID: 1390184490}
 --- !u!1 &1240656675
 GameObject:
   m_ObjectHideFlags: 0
@@ -2887,6 +2863,7 @@ MonoBehaviour:
   point_06_sfx: {fileID: 1802772401}
   new_level: {fileID: 1872993277}
   point_error: {fileID: 742264696}
+  points_lvlup: 15
 --- !u!4 &1240656677
 Transform:
   m_ObjectHideFlags: 0
@@ -3292,6 +3269,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pawn: {fileID: 1360029153}
   isActive: 0
+  isShaky: 0
   isHover: 0
   grid: {fileID: 1075908512}
 --- !u!95 &1410095457
@@ -3424,7 +3402,7 @@ Transform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 116254278}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1569766585
 AudioSource:
@@ -3441,7 +3419,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -3823,6 +3801,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pawn: {fileID: 1360029153}
   isActive: 0
+  isShaky: 0
   isHover: 0
   grid: {fileID: 1075908512}
 --- !u!95 &1699682436
@@ -3876,7 +3855,7 @@ Transform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 116254278}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1787600534
 AudioSource:
@@ -3893,7 +3872,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -4449,7 +4428,7 @@ Transform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 116254278}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1887373636
 BoxCollider:
@@ -4528,7 +4507,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -4720,7 +4699,7 @@ Transform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 116254278}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1945974010
 AudioSource:
@@ -4737,7 +4716,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
