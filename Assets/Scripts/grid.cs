@@ -15,195 +15,107 @@ public class grid : MonoBehaviour
     public GameObject g7;
     public GameObject g8;
     public GameObject g9;
-    public int activeTile;
-    public int spikyTile;
     public int hoverTiles = 0;
+    public bool yellowTiles;
+    public bool redTiles = false;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        setActive(1);
-        activeTile = 1;
-        g3.GetComponent<tile>().setSpiky();
-        spikyTile = 3;
-
-    }
-
+   
     public void setActive(int val)
     {
-        if (val == 1)
-        {
-            g1.GetComponent<tile>().setActive();
-        }
-        else if (val == 2)
-        {
-            g2.GetComponent<tile>().setActive();
-        }
-        else if (val == 3)
-        {
-            g3.GetComponent<tile>().setActive();
-        }
-        else if (val == 4)
-        {
-            g4.GetComponent<tile>().setActive();
-        }
-        else if (val == 5)
-        {
-            g5.GetComponent<tile>().setActive();
-        }
-        else if (val == 6)
-        {
-            g6.GetComponent<tile>().setActive();
-        }
-        else if (val == 7)
-        {
-            g7.GetComponent<tile>().setActive();
-        }
-        else if (val == 8)
-        {
-            g8.GetComponent<tile>().setActive();
-        }
-        else if (val == 9)
-        {
-            g9.GetComponent<tile>().setActive();
-        }
 
+        GameObject[] g = {g1, g2, g3, g4, g5, g6, g7, g8, g9};
+        g[val-1].GetComponent<tile>().setActive();
+        
     }
     
     public void setShaky(int val)
     {
-        if (val == 1)
-        {
-            g1.GetComponent<tile>().setShaky();
-        }
-        else if (val == 2)
-        {
-            g2.GetComponent<tile>().setShaky();
-        }
-        else if (val == 3)
-        {
-            g3.GetComponent<tile>().setShaky();
-        }
-        else if (val == 4)
-        {
-            g4.GetComponent<tile>().setShaky();
-        }
-        else if (val == 5)
-        {
-            g5.GetComponent<tile>().setShaky();
-        }
-        else if (val == 6)
-        {
-            g6.GetComponent<tile>().setShaky();
-        }
-        else if (val == 7)
-        {
-            g7.GetComponent<tile>().setShaky();
-        }
-        else if (val == 8)
-        {
-            g8.GetComponent<tile>().setShaky();
-        }
-        else if (val == 9)
-        {
-            g9.GetComponent<tile>().setShaky();
-        }
+        GameObject[] g = {g1, g2, g3, g4, g5, g6, g7, g8, g9};
+        g[val-1].GetComponent<tile>().setShaky();
 
     }
     
     public void setSpiky(int val)
     {
-        if (val == 1)
-        {
-            g1.GetComponent<tile>().setSpiky();
-        }
-        else if (val == 2)
-        {
-            g2.GetComponent<tile>().setSpiky();
-        }
-        else if (val == 3)
-        {
-            g3.GetComponent<tile>().setSpiky();
-        }
-        else if (val == 4)
-        {
-            g4.GetComponent<tile>().setSpiky();
-        }
-        else if (val == 5)
-        {
-            g5.GetComponent<tile>().setSpiky();
-        }
-        else if (val == 6)
-        {
-            g6.GetComponent<tile>().setSpiky();
-        }
-        else if (val == 7)
-        {
-            g7.GetComponent<tile>().setSpiky();
-        }
-        else if (val == 8)
-        {
-            g8.GetComponent<tile>().setSpiky();
-        }
-        else if (val == 9)
-        {
-            g9.GetComponent<tile>().setSpiky();
-        }
+        GameObject[] g = {g1, g2, g3, g4, g5, g6, g7, g8, g9};
+        g[val-1].GetComponent<tile>().setSpiky();
 
     }
 
     public void pickNewGreen(bool positive)
     {
+        GameObject[] g = {g1, g2, g3, g4, g5, g6, g7, g8, g9};
+        int newGreenNumber;
+        
         if(positive) ps.GetComponent<points>().add_points();
         else ps.GetComponent<points>().mistake();
-
-        int newGreenNumber;
-
-        do
-        {
-            newGreenNumber = Random.Range(1, 10);
-        } while (newGreenNumber == activeTile);
-
         
+        do newGreenNumber = Random.Range(0, 9);
+        while (g[newGreenNumber].GetComponent<tile>().isActive ||
+               g[newGreenNumber].GetComponent<tile>().isShaky ||
+               g[newGreenNumber].GetComponent<tile>().isSpiky);
+
+
         int isGreen = Random.Range(0, 4);
-        activeTile = newGreenNumber;
-        if(isGreen == 1) setShaky(newGreenNumber);
-        else setActive(newGreenNumber);
+        if(isGreen == 2 && yellowTiles) {setShaky(newGreenNumber+1);}
+        else setActive(newGreenNumber+1);
 
     }
     
     public void pickNewSpike(bool positive)
     {
+        GameObject[] g = {g1, g2, g3, g4, g5, g6, g7, g8, g9};
         if(positive) ps.GetComponent<points>().mistake();
         
         int newRedNumber;
 
-        do
+        do newRedNumber = Random.Range(0, 9);
+        while (g[newRedNumber].GetComponent<tile>().isActive ||
+               g[newRedNumber].GetComponent<tile>().isShaky ||
+               g[newRedNumber].GetComponent<tile>().isSpiky);
+        
+        setSpiky(newRedNumber+1);
+    }
+
+    public void changeSpikes()
+    {
+        GameObject[] g = {g1, g2, g3, g4, g5, g6, g7, g8, g9};
+
+        for (int i = 0; i < 9; i++)
         {
-            newRedNumber = Random.Range(1, 10);
-        } while (newRedNumber == activeTile);
-        
-        spikyTile = newRedNumber;
-        setSpiky(newRedNumber);
+            if(g[i].GetComponent<tile>().isSpiky)
+            {
+                pickNewSpike(false);
+                g[i].GetComponent<tile>().emptyTile();
+            }
+        }
+
     }
 
-    public void moveSpike()
+    public void change_level(int level)
     {
-        if (g1.GetComponent<tile>().isSpiky) g1.GetComponent<tile>().setEmpty();
-        if (g2.GetComponent<tile>().isSpiky) g2.GetComponent<tile>().setEmpty();
-        if (g3.GetComponent<tile>().isSpiky) g3.GetComponent<tile>().setEmpty();
-        if (g4.GetComponent<tile>().isSpiky) g4.GetComponent<tile>().setEmpty();
-        if (g5.GetComponent<tile>().isSpiky) g5.GetComponent<tile>().setEmpty();
-        if (g6.GetComponent<tile>().isSpiky) g6.GetComponent<tile>().setEmpty();
-        if (g7.GetComponent<tile>().isSpiky) g7.GetComponent<tile>().setEmpty();
-        if (g8.GetComponent<tile>().isSpiky) g8.GetComponent<tile>().setEmpty();
-        if (g9.GetComponent<tile>().isSpiky) g9.GetComponent<tile>().setEmpty();
-        
+        if (level == 0)
+        {
+            yellowTiles = false;
+            setActive(4);
+        }
+        if (level == 1)
+        {
+            pickNewSpike(false);
+        }
+        if (level == 2)
+        {
+            yellowTiles = true;
+            pickNewSpike(false);
+        }
+        if (level == 3)
+        {
+            pickNewSpike(false);
+        }
+        if (level == 4)
+        {
+            pickNewSpike(false);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-       
-    }
 }

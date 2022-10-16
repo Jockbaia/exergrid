@@ -2332,9 +2332,9 @@ MonoBehaviour:
   g7: {fileID: 273227906}
   g8: {fileID: 556620527}
   g9: {fileID: 481553955}
-  activeTile: 0
-  spikyTile: 0
   hoverTiles: 0
+  yellowTiles: 0
+  redTiles: 0
 --- !u!1 &1094049936
 GameObject:
   m_ObjectHideFlags: 0
@@ -3038,6 +3038,7 @@ MonoBehaviour:
   point_06_sfx: {fileID: 1802772401}
   new_level: {fileID: 1872993277}
   point_error: {fileID: 742264696}
+  grid: {fileID: 1075908512}
   points_lvlup: 6
 --- !u!4 &1240656677
 Transform:

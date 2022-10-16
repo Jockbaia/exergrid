@@ -23,6 +23,7 @@ public class points : MonoBehaviour
     public AudioSource point_06_sfx;
     public AudioSource new_level;
     public AudioSource point_error;
+    public GameObject grid;
     private int[] last_mix;
     private string last_text;
     public int points_lvlup;
@@ -124,6 +125,7 @@ public class points : MonoBehaviour
         if (pts == 0)
         {
             int[] a = {1, 0, 0, 0, 0, 0, 0, 0};
+            grid.GetComponent<grid>().change_level(0);
             last_text = "stage 1/5";
             last_mix = a;
             mix_info.text = String.Format(last_text);
@@ -134,6 +136,7 @@ public class points : MonoBehaviour
         { 
             new_level.Play();
             int[] a = {1, 0, 1, 0, 0, 0, 0, 0}; 
+            grid.GetComponent<grid>().change_level(1);
             last_text = "stage 2/5";
             last_mix = a;
             mix_info.text = String.Format(last_text);
@@ -144,6 +147,7 @@ public class points : MonoBehaviour
         { 
             new_level.Play();
             int[] a = {1, 0, 1, 0, 1, 0, 0, 0}; 
+            grid.GetComponent<grid>().change_level(2);
             last_text = "stage 3/5";
             last_mix = a;
             mix_info.text = String.Format(last_text);
@@ -154,6 +158,7 @@ public class points : MonoBehaviour
         { 
             new_level.Play();
             int[] a = {1, 1, 1, 0, 1, 0, 0, 0}; 
+            grid.GetComponent<grid>().change_level(3);
             last_text = "stage 4/5";
             last_mix = a;
             mix_info.text = String.Format(last_text);
@@ -164,6 +169,7 @@ public class points : MonoBehaviour
         { 
             new_level.Play();
             int[] a = {1, 1, 1, 1, 1, 0, 0, 0}; 
+            grid.GetComponent<grid>().change_level(3);
             last_text = "last stage";
             last_mix = a;
             mix_info.text = String.Format(last_text);
