@@ -10,6 +10,7 @@ public class tile : MonoBehaviour
     public bool isShaky = false;
     public bool isHover = false;
     public bool isSpiky = false;
+    public bool isOver = false;
     public GameObject grid;
     public AudioSource shakySFX;
     private bool isDangerous = false;
@@ -32,7 +33,7 @@ public class tile : MonoBehaviour
     {
 
         // TILE IS GREEN
-        if ((isActive || (isShaky && !isDangerous)) && isHover && grid.GetComponent<grid>().hoverTiles == 1)
+        if ((isActive || (isShaky && !isDangerous)) && isHover && !isOver && grid.GetComponent<grid>().hoverTiles == 1)
         {
             
             grid.GetComponent<grid>().pickNewGreen(true);
@@ -42,7 +43,7 @@ public class tile : MonoBehaviour
         }
 
         // TILE IS YELLOW
-        else if ((isShaky && isDangerous) && isHover && grid.GetComponent<grid>().hoverTiles == 1)
+        else if ((isShaky && isDangerous) && isHover && !isOver && grid.GetComponent<grid>().hoverTiles == 1)
         {
             grid.GetComponent<grid>().pickNewGreen(false);
             grid.GetComponent<grid>().changeSpikes();
@@ -52,7 +53,7 @@ public class tile : MonoBehaviour
         }
 
         // TILE IS RED
-        else if (isSpiky && isHover && grid.GetComponent<grid>().hoverTiles == 1)
+        else if (isSpiky && isHover && !isOver && grid.GetComponent<grid>().hoverTiles == 1)
         {
             grid.GetComponent<grid>().pickNewSpike(true);
             emptyTile();
@@ -66,6 +67,7 @@ public class tile : MonoBehaviour
         GetComponent<Animator>().SetBool("isShaky", isShaky);
         GetComponent<Animator>().SetBool("isDangerous", isDangerous);
         GetComponent<Animator>().SetBool("isSpiky", isSpiky);
+        GetComponent<Animator>().SetBool("isOver", isOver);
     }
 
     void OnTriggerExit(Collider collision)
@@ -79,7 +81,7 @@ public class tile : MonoBehaviour
         isActive = false;
         isShaky = false;
         isSpiky = false;
-        gameObject.GetComponent<Renderer>().material.color = Color.white;
+        gameObject.GetComponent<Renderer>().material.color = default(Color);
     }
 
     public void setActive()
@@ -111,7 +113,7 @@ public class tile : MonoBehaviour
         isActive = false;
         isSpiky = false;
         isShaky = false;
-        GetComponent<Renderer>().material.color = Color.white;
+        GetComponent<Renderer>().material.color = default(Color);
     }
 
     void switchShaky()
@@ -130,6 +132,19 @@ public class tile : MonoBehaviour
             
         }
 
+    }
+
+    public void end_level()
+    {
+        GetComponent<Animation>().Play("final");
+        CancelInvoke();
+        isActive = false;
+        isSpiky = false;
+        isShaky = false;
+        isDangerous = false;
+        isOver = true;
+        GetComponent<Renderer>().material.color = Color.green;
+        shakySFX.Stop();
     }
     
 }

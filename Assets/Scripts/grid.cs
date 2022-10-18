@@ -118,4 +118,13 @@ public class grid : MonoBehaviour
         }
     }
 
+    public void end_level()
+    {
+        GameObject[] g = {g1, g2, g3, g4, g5, g6, g7, g8, g9};
+        for (int i = 0; i < 9; i++) g[i].GetComponent<tile>().end_level();
+
+
+    }
+    
+
 }

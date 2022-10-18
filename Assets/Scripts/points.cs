@@ -9,30 +9,31 @@ public class points : MonoBehaviour
 {
     mixer mx;
     public int pts;
+    public int max_pts = 30;
+    public int points_lvlup = 6;
     public int negative_streak;
     public int positive_streak;
     public Text cur_pts;
     public Text pos_streak;
     public Text neg_streak;
     public Text mix_info;
-    public AudioSource point_01_sfx;
-    public AudioSource point_02_sfx;
-    public AudioSource point_03_sfx;
-    public AudioSource point_04_sfx;
-    public AudioSource point_05_sfx;
-    public AudioSource point_06_sfx;
+    public AudioSource p01;
+    public AudioSource p02;
+    public AudioSource p03;
+    public AudioSource p04;
+    public AudioSource p05;
+    public AudioSource p06;
     public AudioSource new_level;
+    public AudioSource end_level;
     public AudioSource point_error;
     public GameObject grid;
     private int[] last_mix;
     private string last_text;
-    public int points_lvlup;
+    
     public GameObject cube1;
     public GameObject cube2;
     public GameObject cube3;
     public GameObject cube4;
-    
-    
     
     void Start()
     {
@@ -44,23 +45,6 @@ public class points : MonoBehaviour
         audio_pos_mgmt();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown("q"))
-        {
-            add_points();
-            audio_pos_mgmt();
-        }
-
-        if (Input.GetKeyDown("w"))
-        {
-            mistake();
-            audio_neg_mgmt();
-        }
-
-    }
-    
     public void add_points ()
     {
         // exiting CHILL MODE
@@ -80,23 +64,10 @@ public class points : MonoBehaviour
         cube4.GetComponent<cube_shrink>().elongate(pts);
         
         var rand = new Random();
-        int val = rand.Next(0, 5);
+        int val = rand.Next(0, 6);
 
-        switch (val)
-        {
-            case 0: point_01_sfx.Play();
-                break;
-            case 1: point_02_sfx.Play();
-                break;
-            case 2: point_03_sfx.Play();
-                break;
-            case 3: point_04_sfx.Play();
-                break;
-            case 4: point_05_sfx.Play();
-                break;
-            case 5: point_06_sfx.Play();
-                break;
-        }
+        AudioSource[] sfx = {p01, p02, p03, p04, p05, p06};
+        sfx[val].Play();
         
         negative_streak = 0;
         update_points();
@@ -110,6 +81,10 @@ public class points : MonoBehaviour
         positive_streak = 0;
         update_points();
         audio_neg_mgmt();
+        cube1.GetComponent<cube_shrink>().red();
+        cube2.GetComponent<cube_shrink>().red();
+        cube3.GetComponent<cube_shrink>().red();
+        cube4.GetComponent<cube_shrink>().red();
     }
 
     void update_points()
@@ -146,6 +121,10 @@ public class points : MonoBehaviour
 
         else if (pts == points_lvlup)
         { 
+            cube1.GetComponent<cube_shrink>().glow();
+            cube2.GetComponent<cube_shrink>().glow();
+            cube3.GetComponent<cube_shrink>().glow();
+            cube4.GetComponent<cube_shrink>().glow();
             new_level.Play();
             int[] a = {1, 0, 1, 0, 0, 0, 0, 0}; 
             grid.GetComponent<grid>().change_level(1);
@@ -157,6 +136,10 @@ public class points : MonoBehaviour
         
         else if (pts == points_lvlup*2)
         { 
+            cube1.GetComponent<cube_shrink>().glow();
+            cube2.GetComponent<cube_shrink>().glow();
+            cube3.GetComponent<cube_shrink>().glow();
+            cube4.GetComponent<cube_shrink>().glow();
             new_level.Play();
             int[] a = {1, 0, 1, 0, 1, 0, 0, 0}; 
             grid.GetComponent<grid>().change_level(2);
@@ -168,6 +151,10 @@ public class points : MonoBehaviour
 
         else if (pts == points_lvlup*3)
         { 
+            cube1.GetComponent<cube_shrink>().glow();
+            cube2.GetComponent<cube_shrink>().glow();
+            cube3.GetComponent<cube_shrink>().glow();
+            cube4.GetComponent<cube_shrink>().glow();
             new_level.Play();
             int[] a = {1, 1, 1, 0, 1, 0, 0, 0}; 
             grid.GetComponent<grid>().change_level(3);
@@ -179,6 +166,10 @@ public class points : MonoBehaviour
         
         else if (pts == points_lvlup*4)
         { 
+            cube1.GetComponent<cube_shrink>().glow();
+            cube2.GetComponent<cube_shrink>().glow();
+            cube3.GetComponent<cube_shrink>().glow();
+            cube4.GetComponent<cube_shrink>().glow();
             new_level.Play();
             int[] a = {1, 1, 1, 1, 1, 0, 0, 0}; 
             grid.GetComponent<grid>().change_level(3);
@@ -188,9 +179,14 @@ public class points : MonoBehaviour
             mx.setMixer(a);
         }
         
-        else if (pts == points_lvlup*5)
+        else if (pts == max_pts)
         { 
-            new_level.Play();
+            end_level.Play();
+            cube1.GetComponent<cube_shrink>().final();
+            cube2.GetComponent<cube_shrink>().final();
+            cube3.GetComponent<cube_shrink>().final();
+            cube4.GetComponent<cube_shrink>().final();
+            grid.GetComponent<grid>().end_level();
             int[] a = {1, 1, 1, 1, 1, 0, 1, 0}; 
             last_text = "completed!";
             last_mix = a;
@@ -215,9 +211,7 @@ public class points : MonoBehaviour
                 int[] a = {0, 0, 1, 0, 0, 1, 1, 0};
                 mx.setMixer(a);
             }
-            
         }
-        
     }
     
 }
