@@ -27,6 +27,12 @@ public class points : MonoBehaviour
     private int[] last_mix;
     private string last_text;
     public int points_lvlup;
+    public GameObject cube1;
+    public GameObject cube2;
+    public GameObject cube3;
+    public GameObject cube4;
+    
+    
     
     void Start()
     {
@@ -66,6 +72,12 @@ public class points : MonoBehaviour
         
         pts++;
         positive_streak++;
+        
+        // updating 3D bar
+        cube1.GetComponent<cube_shrink>().elongate(pts);
+        cube2.GetComponent<cube_shrink>().elongate(pts);
+        cube3.GetComponent<cube_shrink>().elongate(pts);
+        cube4.GetComponent<cube_shrink>().elongate(pts);
         
         var rand = new Random();
         int val = rand.Next(0, 5);

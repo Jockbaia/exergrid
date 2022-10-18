@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - MX
+  - frame_x
+  - frame_y
   layers:
   - Default
   - TransparentFX
