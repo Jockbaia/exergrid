@@ -7,8 +7,9 @@ public class Points : MonoBehaviour
 {
     Mixer _mx;
     public int ptsCurrent;
-    public int ptsMax = 30;
-    public int ptsPerLevel = 6;
+    public int ptsMax;
+    public int steps = 10;
+    public int levels = 4;
     public int negativeStreak, positiveStreak;
     public Text ptsCurrentText, positiveStreakText, negativeStreakText;
     public Text channelsText;
@@ -23,6 +24,7 @@ public class Points : MonoBehaviour
 
     void Start()
     {
+        ptsMax = steps * levels;
         ptsCurrent = 0;
         negativeStreak = 0;
         positiveStreak = 0;
@@ -37,6 +39,8 @@ public class Points : MonoBehaviour
 
     public void add_points ()
     {
+        ptsMax = steps * levels; // safety update
+        
         // !chillmode
         if (positiveStreak == 5)
         {
@@ -93,30 +97,34 @@ public class Points : MonoBehaviour
 
     void level_handler()
     {
-        if (ptsCurrent == 0)
+        if (ptsCurrent == 0) // LVL 1
         {
             int[] a = {1, 0, 0, 0, 0, 0, 0, 0}; 
-            level_manager(0,false, a, "stage 1/5");
-        } else if (ptsCurrent == ptsPerLevel)
+            level_manager(0,false, a, "stage 1");
+        } else if (ptsCurrent == steps) // LVL 2
         {
             int[] a = {1, 0, 1, 0, 0, 0, 0, 0}; 
-            level_manager(1,false, a, "stage 2/5");
+            level_manager(1,false, a, "stage 2");
             
-        } else if (ptsCurrent == ptsPerLevel*2)
+        } else if (ptsCurrent == steps*2) // LVL 3
         {
             int[] a = {1, 0, 1, 0, 1, 0, 0, 0}; 
-            level_manager(2,false, a, "stage 3/5");
+            level_manager(2,false, a, "stage 3");
             
-        } else if (ptsCurrent == ptsPerLevel*3)
+        } else if (ptsCurrent == steps*3) // LVL 4
         {
             int[] a = {1, 1, 1, 0, 1, 0, 0, 0}; 
-            level_manager(3,false, a, "stage 4/5");
+            level_manager(3,false, a, "stage 4");
             
-        } else if (ptsCurrent == ptsPerLevel*4)
+        } else if (ptsCurrent == steps*4) // LVL 5
         {
             int[] a = {1, 1, 1, 1, 1, 0, 0, 0}; 
-            level_manager(4,false, a, "stage 5/5");
-        } else if (ptsCurrent == ptsMax)
+            level_manager(4,false, a, "stage 5");
+        } else if (ptsCurrent == steps*5) // LVL 5
+        {
+            int[] a = {1, 1, 1, 1, 1, 1, 0, 0}; 
+            level_manager(5,false, a, "stage 6");
+        } else if (ptsCurrent == ptsMax)  // LVL 6
         {
             int[] a = {1, 1, 1, 1, 1, 0, 1, 0};
             level_manager(5,true, a, "completed!");
@@ -133,6 +141,7 @@ public class Points : MonoBehaviour
         else
         {
             endLevelSfx.Play();
+            grid.GetComponent<Grid>().ResetBoard();
             grid.GetComponent<Grid>().end_level();
             for(int i=0; i<4; i++) f[i].GetComponent<CubeShrink>().glow_final();
         }

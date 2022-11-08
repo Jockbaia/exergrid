@@ -63,6 +63,14 @@ public class Grid : MonoBehaviour
             }
         }
     }
+
+    public void ResetBoard()
+    {
+        for (int i = 0; i < 9; i++)
+        {
+            g[i].GetComponent<Tile>().EmptyTile();
+        }
+    }
     
     public void Rules(int level)
     {

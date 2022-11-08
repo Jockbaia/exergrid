@@ -60,7 +60,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: isShake
+    m_ConditionEvent: isShaky
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1622344687083816480}
@@ -116,7 +116,7 @@ AnimatorStateTransition:
     m_ConditionEvent: isDangerous
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: isShake
+    m_ConditionEvent: isShaky
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8627926652863928435}
@@ -254,7 +254,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: isShake
+  - m_Name: isShaky
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -267,6 +267,12 @@ AnimatorController:
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: isSpiky
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: isOver
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -324,7 +330,7 @@ AnimatorStateTransition:
     m_ConditionEvent: isActive
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: isShake
+    m_ConditionEvent: isShaky
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1622344687083816480}
@@ -352,7 +358,7 @@ AnimatorStateTransition:
     m_ConditionEvent: isDangerous
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: isShake
+    m_ConditionEvent: isShaky
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1110055955901627800}
@@ -377,7 +383,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: isShake
+    m_ConditionEvent: isShaky
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8627926652863928435}

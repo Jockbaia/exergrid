@@ -14,13 +14,13 @@ public class CubeShrink : MonoBehaviour
         gameObject.SetActive(false);
         transform.localScale = pos;
         _anim = gameObject.GetComponent<Animation>();
-        _maxPoints = GameObject.FindWithTag("PTS").GetComponent<Points>().ptsMax;
-        
     }
     
     public void update_frame(int pts)
     {
-        if (pts <= _maxPoints)
+        _maxPoints = GameObject.FindWithTag("PTS").GetComponent<Points>().ptsMax;
+        if (pts == 0) { gameObject.SetActive(false); }  
+        else if (pts <= _maxPoints)
         {
             gameObject.SetActive(true);
             Vector3 pos = transform.localScale;
