@@ -12,7 +12,7 @@ public class ButtonsMgmt : MonoBehaviour
     public bool isSequence;
     public Color selected;
     public Color deselected;
-    public int defaultPress;
+    public int defaultPress = -1;
     private Button[] b = {null, null, null, null, null, null, null, null};
 
     void Start()

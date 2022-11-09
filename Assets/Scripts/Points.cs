@@ -103,31 +103,28 @@ public class Points : MonoBehaviour
             level_manager(0,false, a, "stage 1");
         } else if (ptsCurrent == steps) // LVL 2
         {
-            int[] a = {1, 0, 1, 0, 0, 0, 0, 0}; 
-            level_manager(1,false, a, "stage 2");
-            
+            int[] a = {1, 0, 1, 0, 0, 0, 0, 0};
+            level_manager(1,levels == 1, a, "stage 2");
         } else if (ptsCurrent == steps*2) // LVL 3
         {
             int[] a = {1, 0, 1, 0, 1, 0, 0, 0}; 
-            level_manager(2,false, a, "stage 3");
-            
+            level_manager(2,levels == 2, a, "stage 3");
         } else if (ptsCurrent == steps*3) // LVL 4
         {
             int[] a = {1, 1, 1, 0, 1, 0, 0, 0}; 
-            level_manager(3,false, a, "stage 4");
-            
+            level_manager(3,levels == 3, a, "stage 4");
         } else if (ptsCurrent == steps*4) // LVL 5
         {
             int[] a = {1, 1, 1, 1, 1, 0, 0, 0}; 
-            level_manager(4,false, a, "stage 5");
+            level_manager(4,levels == 4, a, "stage 5");
         } else if (ptsCurrent == steps*5) // LVL 5
         {
             int[] a = {1, 1, 1, 1, 1, 1, 0, 0}; 
-            level_manager(5,false, a, "stage 6");
+            level_manager(5,levels == 5, a, "stage 6");
         } else if (ptsCurrent == ptsMax)  // LVL 6
         {
             int[] a = {1, 1, 1, 1, 1, 0, 1, 0};
-            level_manager(5,true, a, "completed!");
+            if (levels == 6) level_manager(5,levels == 6, a, "stage '7'");
         }
     }
     
@@ -145,11 +142,13 @@ public class Points : MonoBehaviour
             grid.GetComponent<Grid>().end_level();
             for(int i=0; i<4; i++) f[i].GetComponent<CubeShrink>().glow_final();
         }
+        
         _lastText = text;
         _lastMix = channels;
         grid.GetComponent<Grid>().Rules(lvl); 
         channelsText.text = String.Format(text);
         _mx.SetMixer(channels);
+        
     }
 
     void chillMode_handler()
