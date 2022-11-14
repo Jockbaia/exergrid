@@ -3,22 +3,13 @@ using UnityEngine;
 public class Grid : MonoBehaviour
 {
     public GameObject ps;
-    public GameObject g1, g2, g3, g4, g5, g6, g7, g8, g9;
-    private GameObject[] g = {null, null, null, null, null, null, null, null, null};
+    public GameObject[] g = {null, null, null, null, null, null, null, null, null};
     public int hoverTiles;
     private bool _yellowTiles;
 
     void Start()
     {
-        g[0] = g1;
-        g[1] = g2;
-        g[2] = g3;
-        g[3] = g4;
-        g[4] = g5;
-        g[5] = g6;
-        g[6] = g7;
-        g[7] = g8;
-        g[8] = g9;
+
     }
 
     public void SetActive(int val) { g[val - 1].GetComponent<Tile>().SetActive(); }

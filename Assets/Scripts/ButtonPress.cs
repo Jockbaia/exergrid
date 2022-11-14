@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ButtonsMgmt : MonoBehaviour
+public class ButtonPress : MonoBehaviour
 {
-    // Start is called before the first frame update
     public Button b1, b2, b3, b4, b5, b6, b7, b8;
     public int numOfButtons;
     public bool isMultiple;

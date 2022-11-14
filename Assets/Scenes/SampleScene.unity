@@ -585,7 +585,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 20
+  m_Text: 15
 --- !u!222 &78054766
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -822,11 +822,11 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 20
+          m_IntArgument: 15
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
       - m_Target: {fileID: 651677358}
         m_TargetAssemblyTypeName: ButtonsMgmt, Assembly-CSharp
         m_MethodName: Press
@@ -838,7 +838,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &190320265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -971,7 +971,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
       - m_Target: {fileID: 651677358}
         m_TargetAssemblyTypeName: ButtonsMgmt, Assembly-CSharp
         m_MethodName: Press
@@ -983,7 +983,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &196586288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1189,11 +1189,11 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 25
+          m_IntArgument: 20
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
       - m_Target: {fileID: 651677358}
         m_TargetAssemblyTypeName: ButtonsMgmt, Assembly-CSharp
         m_MethodName: Press
@@ -1205,7 +1205,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &271991892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1600,6 +1600,7 @@ GameObject:
   m_Component:
   - component: {fileID: 356657256}
   - component: {fileID: 356657257}
+  - component: {fileID: 356657258}
   m_Layer: 5
   m_Name: menus
   m_TagString: Untagged
@@ -1644,11 +1645,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 1075908512}
-  steps: {fileID: 651677356}
-  frame1: {fileID: 1792295865}
-  frame2: {fileID: 1473687525}
-  frame3: {fileID: 1212216980}
-  frame4: {fileID: 1177317796}
+  f:
+  - {fileID: 1792295865}
+  - {fileID: 1473687525}
+  - {fileID: 1212216980}
+  - {fileID: 1177317796}
+--- !u!114 &356657258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356657255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f806b9b14b9f17544ac721f38177dd46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &357140452
 GameObject:
   m_ObjectHideFlags: 0
@@ -3776,7 +3789,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 25
+  m_Text: 20
 --- !u!222 &632287621
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3855,7 +3868,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 35
+  m_Text: 30
 --- !u!222 &634235421
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5477,15 +5490,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ps: {fileID: 1240656675}
-  g1: {fileID: 735294112}
-  g2: {fileID: 532560183}
-  g3: {fileID: 1126625091}
-  g4: {fileID: 1699682430}
-  g5: {fileID: 547982575}
-  g6: {fileID: 1410095451}
-  g7: {fileID: 273227906}
-  g8: {fileID: 556620527}
-  g9: {fileID: 481553955}
+  g:
+  - {fileID: 735294112}
+  - {fileID: 532560183}
+  - {fileID: 1126625091}
+  - {fileID: 1699682430}
+  - {fileID: 547982575}
+  - {fileID: 1410095451}
+  - {fileID: 273227906}
+  - {fileID: 556620527}
+  - {fileID: 481553955}
   hoverTiles: 0
 --- !u!1 &1094049936
 GameObject:
@@ -5927,11 +5941,11 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 30
+          m_IntArgument: 25
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
       - m_Target: {fileID: 651677358}
         m_TargetAssemblyTypeName: ButtonsMgmt, Assembly-CSharp
         m_MethodName: Press
@@ -5943,7 +5957,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &1109133174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6203,7 +6217,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
       - m_Target: {fileID: 356657257}
         m_TargetAssemblyTypeName: Settings, Assembly-CSharp
         m_MethodName: SetSteps
@@ -6215,7 +6229,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &1112944709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9732,11 +9746,11 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 35
+          m_IntArgument: 30
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
       - m_Target: {fileID: 651677358}
         m_TargetAssemblyTypeName: ButtonsMgmt, Assembly-CSharp
         m_MethodName: Press
@@ -9748,7 +9762,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &1606190811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11895,7 +11909,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 30
+  m_Text: 25
 --- !u!222 &1921008524
 CanvasRenderer:
   m_ObjectHideFlags: 0

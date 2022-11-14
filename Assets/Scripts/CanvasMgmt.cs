@@ -9,7 +9,7 @@ public class CanvasMgmt : MonoBehaviour
     private int pressed = 0;
     void Start()
     {
-        // menus.SetActive(false);
+        menus.SetActive(false);
     }
     void Update()
     {
