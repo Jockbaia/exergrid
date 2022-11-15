@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Loader : MonoBehaviour
@@ -32,5 +33,26 @@ public class Loader : MonoBehaviour
         GameObject.Find("levels").GetComponent<ButtonPress>().defaultPress = Int32.Parse(numOfLevels) - 1;
         GameObject.FindGameObjectWithTag("PTS").GetComponent<Points>().levels = Int32.Parse(numOfLevels);
         
+        
+        for (int i = 0; i < 6; i++)
+        {
+            settings = txt.ReadLine();
+            int currentLevel = i + 1;
+            
+            // SPIKES
+            int numSpikes = Int32.Parse(settings.Substring(5, 1));
+            if (numSpikes != 0)
+            {
+                // EventSystem.current.SetSelectedGameObject(GameObject.Find("spike_" + currentLevel + "_" + numSpikes));
+                GameObject.Find("spike_" + currentLevel + "_" + numSpikes).GetComponent<Button>().Select();
+                GameObject.Find("grid").GetComponent<Grid>().numSpikes[currentLevel - 1] = numSpikes;
+                GameObject.Find("spikes_" + currentLevel).GetComponent<ButtonPress>().defaultPress = numSpikes-1;
+                GameObject.Find("spike_" + currentLevel + "_" + numSpikes).GetComponent<ButtonProperty>().pressure();
+            }
+            
+            
+
+            
+        }
     }
 }

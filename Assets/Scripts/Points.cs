@@ -145,7 +145,7 @@ public class Points : MonoBehaviour
         
         _lastText = text;
         _lastMix = channels;
-        grid.GetComponent<Grid>().Rules(lvl); 
+        grid.GetComponent<Grid>().LevelSwitch(lvl); 
         channelsText.text = String.Format(text);
         _mx.SetMixer(channels);
         

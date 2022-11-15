@@ -6,8 +6,11 @@ public class Grid : MonoBehaviour
     public GameObject[] g = {null, null, null, null, null, null, null, null, null};
     public int hoverTiles;
     private bool _yellowTiles;
+    public int[] numSpikes =  {0, 0, 0, 0, 0, 0, 0};
+    public int[] yellowPercentage = {0, 0, 0, 0, 0, 0, 0};
+    
 
-    void Start()
+void Start()
     {
 
     }
@@ -63,11 +66,30 @@ public class Grid : MonoBehaviour
         }
     }
     
-    public void Rules(int level)
+    public void SoftResetBoard()
     {
-        if (level == 0) {_yellowTiles = false; SetActive(4);}
-        else if (level==2) _yellowTiles = true;
-        if (level != 0) PickNewSpike(false);
+        for (int i = 0; i < 9; i++)
+        {
+            if (!g[i].GetComponent<Tile>().isActive) g[i].GetComponent<Tile>().EmptyTile();
+        }
+    }
+    
+    public void LevelSwitch(int level)
+    {
+        SoftResetBoard();
+        
+        if (level == 0)
+        {
+            _yellowTiles = false; SetActive(4);
+        }
+
+        for (int i = 0; i < numSpikes[level]; i++)
+        {
+            PickNewSpike(false);
+        }
+        
+        // else if (level==2) _yellowTiles = true;
+        // if (level != 0) PickNewSpike(false);
     }
 
     public void end_level() { for (int i = 0; i < 9; i++) g[i].GetComponent<Tile>().end_level(); }

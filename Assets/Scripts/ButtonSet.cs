@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class ButtonSet : MonoBehaviour
 {
     private GameObject _pts;
-    private int _curPts, _curLvl, _curSps;
+    private int _curPts;
     public GameObject grid;
     public GameObject[] f = {null, null, null, null};
 
@@ -18,14 +18,47 @@ public class ButtonSet : MonoBehaviour
     {
          GetComponent<Loader>().ReadSavedStates();
          _pts = GameObject.FindGameObjectWithTag("PTS");
-         _curSps = _pts.GetComponent<Points>().steps;
-         _curLvl = _pts.GetComponent<Points>().levels;
-         _curPts = _pts.GetComponent<Points>().ptsCurrent;
     }
     
     public void SetSteps(int step) {
-        _curSps = step;
+        _pts.GetComponent<Points>().steps = step;
         RestartGame();
+    }
+    
+    public void SetSpikes(String lvlQty) {
+        int lvl = Int32.Parse(lvlQty.Substring(0,1));
+        int qty = Int32.Parse(lvlQty.Substring(1,1));
+        if (GameObject.Find("spike_" + lvl.ToString() + "_" + qty.ToString()).GetComponent<ButtonProperty>()
+                .buttonPressed == false)
+        {
+            grid.GetComponent<Grid>().numSpikes[lvl - 1] = qty;
+        }
+        else
+        {
+            grid.GetComponent<Grid>().numSpikes[lvl - 1] = 0;
+        }
+        
+        RestartGame();
+        
+
+    }
+    
+    public void SetYellows(String lvlQty) {
+        int lvl = Int32.Parse(lvlQty.Substring(0,1));
+        int qty = Int32.Parse(lvlQty.Substring(1,1));
+        if (GameObject.Find("yellow_" + lvl.ToString() + "_" + qty.ToString()).GetComponent<ButtonProperty>()
+                .buttonPressed == false)
+        {
+            // grid.GetComponent<Grid>().numSpikes[lvl - 1] = qty;
+        }
+        else
+        {
+            // grid.GetComponent<Grid>().numSpikes[lvl - 1] = 0;
+        }
+        
+        RestartGame();
+        
+
     }
 
     public void SetLevels(int levels)
@@ -36,9 +69,10 @@ public class ButtonSet : MonoBehaviour
 
     private void RestartGame()
     {
-        _curPts = 0;
+        _pts.GetComponent<Points>().ptsCurrent = 0;
         grid.GetComponent<Grid>().ResetBoard();
         grid.GetComponent<Grid>().SetActive(4);
+        grid.GetComponent<Grid>().LevelSwitch(0);
         for(int i=0; i<4; i++) f[i].GetComponent<CubeShrink>().update_frame(0);
     }
     

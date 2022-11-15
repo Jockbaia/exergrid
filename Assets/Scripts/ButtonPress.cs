@@ -42,7 +42,15 @@ public class ButtonPress : MonoBehaviour
         ColorBlock colorBlock = b[id].colors;
         colorBlock.normalColor = selected;
         b[id].colors = colorBlock;
-        
+    
+    }
+
+    public void Clean()
+    {
+        for (int i = 0; i < numOfButtons; i++)
+        {
+            Release(i);
+        }
     }
 
     public void Sequence(int id)
