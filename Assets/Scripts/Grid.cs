@@ -5,14 +5,13 @@ public class Grid : MonoBehaviour
     public GameObject ps;
     public GameObject[] g = {null, null, null, null, null, null, null, null, null};
     public int hoverTiles;
-    private bool _yellowTiles;
+    public int currentLevel;
     public int[] numSpikes =  {0, 0, 0, 0, 0, 0, 0};
     public int[] yellowPercentage = {0, 0, 0, 0, 0, 0, 0};
     
 
 void Start()
     {
-
     }
 
     public void SetActive(int val) { g[val - 1].GetComponent<Tile>().SetActive(); }
@@ -30,8 +29,8 @@ void Start()
         while (isFull(g[newGreenNumber]));
 
 
-        int isGreen = Random.Range(0, 4);
-        if (isGreen == 2 && _yellowTiles) SetShaky(newGreenNumber + 1);
+        int isYellow = Random.Range(1, 5);
+        if (isYellow <= yellowPercentage[currentLevel] && yellowPercentage[currentLevel]!= 0) SetShaky(newGreenNumber + 1);
         else SetActive(newGreenNumber + 1);
     }
 
@@ -76,18 +75,16 @@ void Start()
     
     public void LevelSwitch(int level)
     {
+        currentLevel = level;
         SoftResetBoard();
-        
+
         if (level == 0)
         {
-            _yellowTiles = false; SetActive(4);
+             SetActive(4);
         }
 
-        for (int i = 0; i < numSpikes[level]; i++)
-        {
-            PickNewSpike(false);
-        }
-        
+        for (int i = 0; i < numSpikes[level]; i++) PickNewSpike(false);
+
         // else if (level==2) _yellowTiles = true;
         // if (level != 0) PickNewSpike(false);
     }

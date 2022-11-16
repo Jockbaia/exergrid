@@ -49,11 +49,11 @@ public class ButtonSet : MonoBehaviour
         if (GameObject.Find("yellow_" + lvl.ToString() + "_" + qty.ToString()).GetComponent<ButtonProperty>()
                 .buttonPressed == false)
         {
-            // grid.GetComponent<Grid>().numSpikes[lvl - 1] = qty;
+            grid.GetComponent<Grid>().yellowPercentage[lvl - 1] = qty;
         }
         else
         {
-            // grid.GetComponent<Grid>().numSpikes[lvl - 1] = 0;
+            grid.GetComponent<Grid>().yellowPercentage[lvl - 1] = 0;
         }
         
         RestartGame();

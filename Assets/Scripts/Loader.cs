@@ -38,17 +38,28 @@ public class Loader : MonoBehaviour
         {
             settings = txt.ReadLine();
             int currentLevel = i + 1;
-            
+
             // SPIKES
             int numSpikes = Int32.Parse(settings.Substring(5, 1));
             if (numSpikes != 0)
             {
-                // EventSystem.current.SetSelectedGameObject(GameObject.Find("spike_" + currentLevel + "_" + numSpikes));
-                GameObject.Find("spike_" + currentLevel + "_" + numSpikes).GetComponent<Button>().Select();
+                // GameObject.Find("spike_" + currentLevel + "_" + numSpikes).GetComponent<Button>().Select();
                 GameObject.Find("grid").GetComponent<Grid>().numSpikes[currentLevel - 1] = numSpikes;
                 GameObject.Find("spikes_" + currentLevel).GetComponent<ButtonPress>().defaultPress = numSpikes-1;
                 GameObject.Find("spike_" + currentLevel + "_" + numSpikes).GetComponent<ButtonProperty>().pressure();
             }
+            
+            // YELLOWS
+            int numYellows = Int32.Parse(settings.Substring(8, 1));
+            if (numYellows != 0)
+            {
+                // GameObject.Find("yellow_" + currentLevel + "_" + numYellows).GetComponent<Button>().Select();
+                GameObject.Find("grid").GetComponent<Grid>().yellowPercentage[currentLevel - 1] = numYellows;
+                GameObject.Find("yellows_" + currentLevel).GetComponent<ButtonPress>().defaultPress = numYellows-1;
+                GameObject.Find("yellow_" + currentLevel + "_" + numYellows).GetComponent<ButtonProperty>().pressure();
+            }
+            
+            
             
             
 
