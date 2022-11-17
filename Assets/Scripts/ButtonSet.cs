@@ -57,7 +57,23 @@ public class ButtonSet : MonoBehaviour
         }
         
         RestartGame();
+    }
+
+    public void SetChannels(String lvlCh)
+    {
+            int lvl = Int32.Parse(lvlCh.Substring(0,1));
+            int ch = Int32.Parse(lvlCh.Substring(1,1));
+            if (GameObject.Find("channel_" + lvl.ToString() + "_" + ch.ToString()).GetComponent<ButtonProperty>()
+                    .buttonPressed == true)
+            {
+                grid.GetComponent<Grid>().channels[lvl - 1,ch - 1] = 1;
+            }
+            else
+            {
+                grid.GetComponent<Grid>().channels[lvl - 1, ch - 1] = 0;
+            }
         
+            RestartGame();
 
     }
 
@@ -73,7 +89,9 @@ public class ButtonSet : MonoBehaviour
         grid.GetComponent<Grid>().ResetBoard();
         grid.GetComponent<Grid>().SetActive(4);
         grid.GetComponent<Grid>().LevelSwitch(0);
+        _pts.GetComponent<Points>().level_handler();
         for(int i=0; i<4; i++) f[i].GetComponent<CubeShrink>().update_frame(0);
+        GameObject.Find("mixer").GetComponent<Mixer>().UpdateUI();
     }
     
 }

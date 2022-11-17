@@ -26,7 +26,7 @@ public class ButtonPress : MonoBehaviour
         b[6] = b7;
         b[7] = b8;
         
-        if(defaultPress!=-1 && !isSequence) Press(defaultPress);
+        if(defaultPress!=-1 && (!isSequence)) Press(defaultPress);
         else if(defaultPress!=-1 && isSequence) Sequence(defaultPress);
     }
     public void Press(int id)

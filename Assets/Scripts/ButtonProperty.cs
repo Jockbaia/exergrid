@@ -10,13 +10,12 @@ public class ButtonProperty : MonoBehaviour, IDeselectHandler
     public bool buttonPressed = false;
     public GameObject group;
 
-    public void pressure()
+    public void SequencialPressure()
     {
         GameObject myEventSystem = GameObject.Find("EventSystem");
         
         if (buttonPressed == false)
         {
-            Debug.Log("AO!");
             buttonPressed = true;
         }
         else
@@ -25,10 +24,28 @@ public class ButtonProperty : MonoBehaviour, IDeselectHandler
             group.GetComponent<ButtonPress>().Clean();
         }
     }
+    
+    public void MixerPressure()
+    {
+        GameObject myEventSystem = GameObject.Find("EventSystem");
+        
+        if (buttonPressed == false)
+        {
+            this.buttonPressed = true;
+        }
+        else
+        {
+            myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
+            ColorBlock colorBlock = this.GetComponent<Button>().colors;
+            colorBlock.normalColor = Color.white;
+            this.GetComponent<Button>().colors = colorBlock;
+            this.buttonPressed = false;
+        }
+    }
 
     public void OnDeselect(BaseEventData eventData)
     {
-        buttonPressed = false;
+        if(GetComponentInParent<ButtonPress>().isMultiple == false || GetComponentInParent<ButtonPress>().isSequence == true) buttonPressed = false;
     }
     
 }

@@ -8,7 +8,7 @@ public class Mixer : MonoBehaviour
     public float fadeInDuration, fadeOutDuration;
     public AudioSource m1, m2, m3, m4, m5, m6, m7, m8;
     public Text mixerGUI;
-
+    public GameObject grid;
     private bool[] _c = {false, false, false, false, false, false, false, false};
     private AudioSource[] _m = {null, null, null, null, null, null, null, null};
 
@@ -19,11 +19,10 @@ public class Mixer : MonoBehaviour
         m1.volume = m2.volume = m3.volume = m4.volume = m5.volume = m6.volume = m7.volume = m8.volume = 0;
     }
     
-    void UpdateUI ()
+    public void UpdateUI ()
     {
         
         String myTxt = "";
-
         for (int i = 7; i >= 0; i--)
         {
             if(_c[i]) myTxt = myTxt.Insert(0, "[*]");

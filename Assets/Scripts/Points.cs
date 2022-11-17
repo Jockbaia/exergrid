@@ -95,32 +95,26 @@ public class Points : MonoBehaviour
         }
     }
 
-    void level_handler()
+    public void level_handler()
     {
         if (ptsCurrent == 0) // LVL 1
         {
-            int[] a = {1, 0, 0, 0, 0, 0, 0, 0}; 
-            level_manager(0,false, a, "stage 1");
+            level_manager(0,false, grid.GetComponent<Grid>().GetChannel(0), "stage 1");
         } else if (ptsCurrent == steps) // LVL 2
         {
-            int[] a = {1, 0, 1, 0, 0, 0, 0, 0};
-            level_manager(1,levels == 1, a, "stage 2");
+            level_manager(1,levels == 1, grid.GetComponent<Grid>().GetChannel(1), "stage 2");
         } else if (ptsCurrent == steps*2) // LVL 3
         {
-            int[] a = {1, 0, 1, 0, 1, 0, 0, 0}; 
-            level_manager(2,levels == 2, a, "stage 3");
+            level_manager(2,levels == 2, grid.GetComponent<Grid>().GetChannel(2), "stage 3");
         } else if (ptsCurrent == steps*3) // LVL 4
         {
-            int[] a = {1, 1, 1, 0, 1, 0, 0, 0}; 
-            level_manager(3,levels == 3, a, "stage 4");
+            level_manager(3,levels == 3, grid.GetComponent<Grid>().GetChannel(3), "stage 4");
         } else if (ptsCurrent == steps*4) // LVL 5
         {
-            int[] a = {1, 1, 1, 1, 1, 0, 0, 0}; 
-            level_manager(4,levels == 4, a, "stage 5");
+            level_manager(4,levels == 4, grid.GetComponent<Grid>().GetChannel(4), "stage 5");
         } else if (ptsCurrent == steps*5) // LVL 5
         {
-            int[] a = {1, 1, 1, 1, 1, 1, 0, 0}; 
-            level_manager(5,levels == 5, a, "stage 6");
+            level_manager(5,levels == 5, grid.GetComponent<Grid>().GetChannel(5), "stage 6");
         } else if (ptsCurrent == ptsMax)  // LVL 6
         {
             int[] a = {1, 1, 1, 1, 1, 0, 1, 0};
