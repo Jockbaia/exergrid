@@ -26,7 +26,15 @@ public class Loader : MonoBehaviour
         GameObject.Find("steps_" + stepsValue).GetComponent<Button>().Select();
         GameObject.Find("steps").GetComponent<ButtonPress>().defaultPress = Int32.Parse(stepsValue) - 1;
         GameObject.FindGameObjectWithTag("PTS").GetComponent<Points>().steps = Int32.Parse(stepsValue)*5;
-
+        
+        // TRACK
+        int defaultTrack = Int32.Parse(settings.Substring(10, 1));
+        if(defaultTrack == 1) GameObject.Find("Light").GetComponent<Button>().Select();
+        else if(defaultTrack == 2) GameObject.Find("Heavy").GetComponent<Button>().Select();
+        else GameObject.Find("Mute").GetComponent<Button>().Select();
+        GameObject.Find("music").GetComponent<ButtonPress>().ExternalPress(defaultTrack);
+        GameObject.Find("mixer").GetComponent<Mixer>().currentTrack = defaultTrack;
+        
         // LEVELS 
         string numOfLevels =  settings.Substring(18, 1);
         GameObject.Find("levels_" + numOfLevels).GetComponent<Button>().Select();
@@ -72,6 +80,8 @@ public class Loader : MonoBehaviour
                     GameObject.Find("channel_" + currentLevel + "_" + b).GetComponent<ButtonProperty>().MixerPressure();
                 }
             }
+            
+            
             
             
             

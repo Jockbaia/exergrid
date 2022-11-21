@@ -82,6 +82,12 @@ public class ButtonSet : MonoBehaviour
         _pts.GetComponent<Points>().levels = levels;
         RestartGame();
     }
+    
+    public void SetTrack(int track)
+    {
+        GameObject.Find("mixer").GetComponent<Mixer>().currentTrack = track;
+        RestartGame();
+    }
 
     private void RestartGame()
     {
