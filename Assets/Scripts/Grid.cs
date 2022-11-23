@@ -74,12 +74,12 @@ void Start()
         }
     }
     
-    public void LevelSwitch(int level)
+    public void LevelSwitch(int level, bool isStart)
     {
         currentLevel = level;
         SoftResetBoard();
 
-        if (level == 0)
+        if (isStart)
         {
              SetActive(4);
         }
@@ -89,6 +89,7 @@ void Start()
     }
 
     public void end_level() { for (int i = 0; i < 9; i++) g[i].GetComponent<Tile>().end_level(); }
+    public void end_session() { for (int i = 0; i < 9; i++) g[i].GetComponent<Tile>().end_session(); }
 
     bool isFull(GameObject tile)
     {

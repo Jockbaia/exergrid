@@ -13,6 +13,7 @@ public class CanvasMgmt : MonoBehaviour
     }
     void Update()
     {
+        
         if (Input.GetKey("q") && !isActive && pressed == 0)
         {
             menus.SetActive(true);
@@ -27,8 +28,6 @@ public class CanvasMgmt : MonoBehaviour
         {
             pressed = 0;
         }
-        
-        
         
     }
 }

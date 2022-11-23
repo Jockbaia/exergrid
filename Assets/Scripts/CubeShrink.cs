@@ -30,9 +30,84 @@ public class CubeShrink : MonoBehaviour
             if (pts == _maxPoints) GetComponent<MeshRenderer>().material = victoryGlass;
         }
     }
-
+    
     public void glow_newlevel() { _anim.Play("frame_newlevel"); }
     public void glow_error() { _anim.Play("frame_error"); }
     public void glow_final() { _anim.Play("frame_final"); }
+
+    public void glow_loading(bool isX, int time) 
+    {
+        if (!isX)
+        {
+            if (time == 15)
+            {
+                _anim.Play("frame_loadingY_15"); 
+                Invoke("postBreak", 15);
+            } 
+            else if (time == 30)
+            {
+                _anim.Play("frame_loadingY_30");
+                Invoke("postBreak", 30);
+            }
+            else if (time == 45)
+            {
+                _anim.Play("frame_loadingY_45");
+                Invoke("postBreak", 45);
+            }
+            else if (time == 60)
+            {
+                _anim.Play("frame_loadingY_60");
+                Invoke("postBreak", 60);
+            }
+        }
+        else
+        {
+            if (time == 15)
+            {
+                _anim.Play("frame_loadingX_15"); 
+                Invoke("postBreak", 15);
+                Invoke("timerSound", 12);
+            } 
+            else if (time == 30)
+            {
+                _anim.Play("frame_loadingX_30");
+                Invoke("postBreak", 30);
+                Invoke("timerSound", 27);
+            }
+            else if (time == 45)
+            {
+                _anim.Play("frame_loadingX_45");
+                Invoke("postBreak", 45);
+                Invoke("timerSound", 42);
+            }
+            else if (time == 60)
+            {
+                _anim.Play("frame_loadingX_60");
+                Invoke("postBreak", 60);
+                Invoke("timerSound", 57);
+            }
+        }
+
+    }
+
+    void postBreak()
+    {
+        Debug.Log("BUUH!");
+        GameObject.Find("grid").GetComponent<Grid>().LevelSwitch(0, true);
+        GameObject.Find("grid").GetComponent<Grid>().LevelSwitch(0, true);
+        GameObject.FindWithTag("PTS").GetComponent<Points>().level_handler();
+        gameObject.SetActive(false);
+    }
+    
+    void timerSound()
+    {
+        GameObject.Find("timer").GetComponent<AudioSource>().Play();
+    }
+
+    public void RestartInvokes()
+    {
+        CancelInvoke("postBreak");
+        CancelInvoke("timerSound");
+    }
 
 }

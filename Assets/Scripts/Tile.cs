@@ -33,7 +33,15 @@ public class Tile : MonoBehaviour
         // TILE IS GREEN
         if ((isActive || (isShaky && !_isDangerous)) && isHover && !isOver && grid.GetComponent<Grid>().hoverTiles == 1)
         {
-            grid.GetComponent<Grid>().PickNewGreen(true);
+            if(!GameObject.FindWithTag("PTS").GetComponent<Points>().SessionFinished())
+            {
+                grid.GetComponent<Grid>().PickNewGreen(true);
+            }
+            else
+            {
+                Debug.Log("H£H£");
+                GameObject.FindWithTag("PTS").GetComponent<Points>().add_points();
+            }
             grid.GetComponent<Grid>().ChangeSpikes();
             EmptyTile();
             CancelInvoke();
@@ -123,13 +131,26 @@ public class Tile : MonoBehaviour
 
     public void end_level()
     {
+        
         GetComponent<Animation>().Play("frame_final");
+        shakySfx.Stop();
         isActive = false;
         isSpiky = false;
         isShaky = false;
         _isDangerous = false;
         isOver = true;
         GetComponent<Renderer>().material.color = Color.green;
+        
+    }
+    
+    public void end_session()
+    {
         shakySfx.Stop();
+        isActive = false;
+        isSpiky = false;
+        isShaky = false;
+        _isDangerous = false;
+        GetComponent<Renderer>().material.color = default(Color);
+        
     }
 }

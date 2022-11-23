@@ -8,8 +8,11 @@ public class Points : MonoBehaviour
     Mixer _mx;
     public int ptsCurrent;
     public int ptsMax;
+    public int snsCurrent;
     public int steps = 10;
     public int levels = 4;
+    public int sessions = 5;
+    public int breakTime = 15;
     public int negativeStreak, positiveStreak;
     public Text ptsCurrentText, positiveStreakText, negativeStreakText;
     public Text channelsText;
@@ -35,6 +38,7 @@ public class Points : MonoBehaviour
         f[1] = frame2;
         f[2] = frame3;
         f[3] = frame4;
+        grid.GetComponent<Grid>().SetActive(4);
     }
 
     public void add_points ()
@@ -118,32 +122,58 @@ public class Points : MonoBehaviour
         } else if (ptsCurrent == ptsMax)  // LVL 6
         {
             int[] a = {1, 1, 1, 1, 1, 0, 1, 0};
-            if (levels == 6) level_manager(5,levels == 6, a, "stage '7'");
+            level_manager(5,levels == 6, a, "stage '7'");
         }
     }
-    
+
     void level_manager(int lvl, bool isLast, int[] channels, String text)
     {
-        if (!isLast)
-        {
-            if(lvl!=0) newLevelSfx.Play();
-            if(lvl!=0) for(int i=0; i<4; i++) f[i].GetComponent<CubeShrink>().glow_newlevel();
-        }
-        else
-        {
-            endLevelSfx.Play();
-            grid.GetComponent<Grid>().ResetBoard();
-            grid.GetComponent<Grid>().end_level();
-            for(int i=0; i<4; i++) f[i].GetComponent<CubeShrink>().glow_final();
-        }
         
-        _lastText = text;
-        _lastMix = channels;
-        grid.GetComponent<Grid>().LevelSwitch(lvl); 
-        channelsText.text = String.Format(text);
-        _mx.SetMixer(channels);
+        
+            if (!isLast)
+            {
+                if (lvl != 0) newLevelSfx.Play();
+                if (lvl != 0) for (int i = 0; i < 4; i++) f[i].GetComponent<CubeShrink>().glow_newlevel();
+            }
+            else
+            {
+                snsCurrent++;
+                
+                if (sessions == snsCurrent)
+                {
+                    grid.GetComponent<Grid>().end_level();
+                    Debug.Log("YAYYY!");
+                    endLevelSfx.Play();
+                    for (int i = 0; i < 4; i++) f[i].GetComponent<CubeShrink>().glow_final();
+                }
+                else
+                {
+                    endLevelSfx.Play(); 
+                    f[0].GetComponent<CubeShrink>().glow_loading(true, breakTime); 
+                    f[1].GetComponent<CubeShrink>().glow_loading(true, breakTime); 
+                    f[2].GetComponent<CubeShrink>().glow_loading(false, breakTime); 
+                    f[3].GetComponent<CubeShrink>().glow_loading(false, breakTime);
+                    grid.GetComponent<Grid>().ResetBoard();
+                    ptsCurrent = 0;
+                    update_points();
+                    
+                }
+            }
+            
+            if (!isLast)
+            {
+                _lastText = text;
+                _lastMix = channels;
+                grid.GetComponent<Grid>().LevelSwitch(lvl, false);
+                channelsText.text = String.Format(text);
+                _mx.SetMixer(channels);
+            }
+        
+
         
     }
+
+
 
     void chillMode_handler()
     {
@@ -161,6 +191,11 @@ public class Points : MonoBehaviour
                 _mx.SetMixer(a);
             }
         }
+    }
+
+    public bool SessionFinished()
+    {
+        return ptsCurrent == ptsMax-1;
     }
     
 }

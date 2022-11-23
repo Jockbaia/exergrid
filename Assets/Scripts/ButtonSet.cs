@@ -88,16 +88,34 @@ public class ButtonSet : MonoBehaviour
         GameObject.Find("mixer").GetComponent<Mixer>().currentTrack = track;
         RestartGame();
     }
+    
+    public void SetSessions(int sessions)
+    {
+        _pts.GetComponent<Points>().sessions = sessions;
+        RestartGame();
+    }
+    
+    public void SetBreaks(int time)
+    {
+        _pts.GetComponent<Points>().breakTime = time;
+        RestartGame();
+    }
 
-    private void RestartGame()
+    public void RestartGame()
     {
         _pts.GetComponent<Points>().ptsCurrent = 0;
+        _pts.GetComponent<Points>().snsCurrent = 0;
+        _pts.GetComponent<Points>().negativeStreak = 0;
+        _pts.GetComponent<Points>().positiveStreak = 0;
         grid.GetComponent<Grid>().ResetBoard();
         grid.GetComponent<Grid>().SetActive(4);
-        grid.GetComponent<Grid>().LevelSwitch(0);
+        grid.GetComponent<Grid>().LevelSwitch(0, true);
         _pts.GetComponent<Points>().level_handler();
         for(int i=0; i<4; i++) f[i].GetComponent<CubeShrink>().update_frame(0);
         GameObject.Find("mixer").GetComponent<Mixer>().UpdateUI();
+        GameObject.Find("timer").GetComponent<AudioSource>().Pause();
+        for(int i=0; i<4; i++) f[i].GetComponent<CubeShrink>().RestartInvokes();
     }
     
+
 }
