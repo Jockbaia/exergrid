@@ -42,22 +42,22 @@ public class CubeShrink : MonoBehaviour
             if (time == 15)
             {
                 _anim.Play("frame_loadingY_15"); 
-                Invoke("postBreak", 15);
+                Invoke(nameof(PostBreak), 15);
             } 
             else if (time == 30)
             {
                 _anim.Play("frame_loadingY_30");
-                Invoke("postBreak", 30);
+                Invoke(nameof(PostBreak), 30);
             }
             else if (time == 45)
             {
                 _anim.Play("frame_loadingY_45");
-                Invoke("postBreak", 45);
+                Invoke(nameof(PostBreak), 45);
             }
             else if (time == 60)
             {
                 _anim.Play("frame_loadingY_60");
-                Invoke("postBreak", 60);
+                Invoke(nameof(PostBreak), 60);
             }
         }
         else
@@ -65,32 +65,32 @@ public class CubeShrink : MonoBehaviour
             if (time == 15)
             {
                 _anim.Play("frame_loadingX_15"); 
-                Invoke("postBreak", 15);
-                Invoke("timerSound", 12);
+                Invoke(nameof(PostBreak), 15);
+                Invoke(nameof(TimerSound), 12);
             } 
             else if (time == 30)
             {
                 _anim.Play("frame_loadingX_30");
-                Invoke("postBreak", 30);
-                Invoke("timerSound", 27);
+                Invoke(nameof(PostBreak), 30);
+                Invoke(nameof(TimerSound), 27);
             }
             else if (time == 45)
             {
                 _anim.Play("frame_loadingX_45");
-                Invoke("postBreak", 45);
-                Invoke("timerSound", 42);
+                Invoke(nameof(PostBreak), 45);
+                Invoke(nameof(TimerSound), 42);
             }
             else if (time == 60)
             {
                 _anim.Play("frame_loadingX_60");
-                Invoke("postBreak", 60);
-                Invoke("timerSound", 57);
+                Invoke(nameof(PostBreak), 60);
+                Invoke(nameof(TimerSound), 57);
             }
         }
 
     }
 
-    void postBreak()
+    void PostBreak()
     {
         Debug.Log("BUUH!");
         GameObject.Find("grid").GetComponent<Grid>().LevelSwitch(0, true);
@@ -99,15 +99,15 @@ public class CubeShrink : MonoBehaviour
         gameObject.SetActive(false);
     }
     
-    void timerSound()
+    void TimerSound()
     {
         GameObject.Find("timer").GetComponent<AudioSource>().Play();
     }
 
     public void RestartInvokes()
     {
-        CancelInvoke("postBreak");
-        CancelInvoke("timerSound");
+        CancelInvoke(nameof(PostBreak));
+        CancelInvoke(nameof(TimerSound));
     }
 
 }

@@ -29,7 +29,6 @@ public class Tile : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-
         // TILE IS GREEN
         if ((isActive || (isShaky && !_isDangerous)) && isHover && !isOver && grid.GetComponent<Grid>().hoverTiles == 1)
         {
@@ -63,7 +62,6 @@ public class Tile : MonoBehaviour
             grid.GetComponent<Grid>().PickNewSpike(true);
             EmptyTile();
         }
-
     }
 
     private void Update()
@@ -131,7 +129,6 @@ public class Tile : MonoBehaviour
 
     public void end_level()
     {
-        
         GetComponent<Animation>().Play("frame_final");
         shakySfx.Stop();
         isActive = false;
@@ -140,17 +137,5 @@ public class Tile : MonoBehaviour
         _isDangerous = false;
         isOver = true;
         GetComponent<Renderer>().material.color = Color.green;
-        
-    }
-    
-    public void end_session()
-    {
-        shakySfx.Stop();
-        isActive = false;
-        isSpiky = false;
-        isShaky = false;
-        _isDangerous = false;
-        GetComponent<Renderer>().material.color = default(Color);
-        
     }
 }

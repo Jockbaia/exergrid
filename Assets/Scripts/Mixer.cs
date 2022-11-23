@@ -9,17 +9,17 @@ public class Mixer : MonoBehaviour
     public Text mixerGUI;
     public GameObject grid;
     private bool[] _c = {false, false, false, false, false, false, false, false};
-    public AudioSource[] _m1 = {null, null, null, null, null, null, null, null};
-    public AudioSource[] _m2 = {null, null, null, null, null, null, null, null};
-    public AudioSource[] _sil = {null, null, null, null, null, null, null, null};
+    public AudioSource[] m1 = {null, null, null, null, null, null, null, null};
+    public AudioSource[] m2 = {null, null, null, null, null, null, null, null};
+    public AudioSource[] sil = {null, null, null, null, null, null, null, null};
     public int currentTrack;
 
     void Start()
     {
         _c[0] = _c[1] = _c[2] = _c[3] = _c[4] = _c[5] = _c[6] = _c[7] = false;
-        _m1[0].volume = _m1[1].volume = _m1[2].volume = _m1[3].volume = _m1[4].volume = _m1[5].volume = _m1[6].volume = _m1[7].volume = 0;
-        _m2[0].volume = _m2[1].volume = _m2[2].volume = _m2[3].volume = _m2[4].volume = _m2[5].volume = _m2[6].volume = _m2[7].volume = 0;
-        _sil[0].volume = _sil[1].volume = _sil[2].volume = _sil[3].volume = _sil[4].volume = _sil[5].volume = _sil[6].volume = _sil[7].volume = 0;
+        m1[0].volume = m1[1].volume = m1[2].volume = m1[3].volume = m1[4].volume = m1[5].volume = m1[6].volume = m1[7].volume = 0;
+        m2[0].volume = m2[1].volume = m2[2].volume = m2[3].volume = m2[4].volume = m2[5].volume = m2[6].volume = m2[7].volume = 0;
+        sil[0].volume = sil[1].volume = sil[2].volume = sil[3].volume = sil[4].volume = sil[5].volume = sil[6].volume = sil[7].volume = 0;
     }
     
     public void UpdateUI ()
@@ -67,29 +67,31 @@ public class Mixer : MonoBehaviour
         for (int i = 0; i < 8; i++)
         {
             if (mixer[i] == 1) {
-                if (currentTrack == 1)
-                {
-                    StartCoroutine(FadeAudioSource.FadeIn(_m1[i], fadeInDuration));
-                    StartCoroutine(FadeAudioSource.FadeOut(_m2[i], fadeOutDuration));
-                    StartCoroutine(FadeAudioSource.FadeOut(_sil[i], fadeOutDuration));
-                } else if (currentTrack == 2)
-                {
-                    StartCoroutine(FadeAudioSource.FadeIn(_m2[i], fadeInDuration));
-                    StartCoroutine(FadeAudioSource.FadeOut(_m1[i], fadeOutDuration));
-                    StartCoroutine(FadeAudioSource.FadeOut(_sil[i], fadeOutDuration));
-                } else if (currentTrack == 0)
-                {
-                    StartCoroutine(FadeAudioSource.FadeIn(_sil[i], fadeInDuration));
-                    StartCoroutine(FadeAudioSource.FadeOut(_m1[i], fadeOutDuration));
-                    StartCoroutine(FadeAudioSource.FadeOut(_m2[i], fadeOutDuration));
-                }
                 
+                switch(currentTrack) 
+                {
+                    case 1:
+                        StartCoroutine(FadeAudioSource.FadeIn(m1[i], fadeInDuration));
+                        StartCoroutine(FadeAudioSource.FadeOut(m2[i], fadeOutDuration));
+                        StartCoroutine(FadeAudioSource.FadeOut(sil[i], fadeOutDuration));
+                        break;
+                    case 2:
+                        StartCoroutine(FadeAudioSource.FadeIn(m2[i], fadeInDuration));
+                        StartCoroutine(FadeAudioSource.FadeOut(m1[i], fadeOutDuration));
+                        StartCoroutine(FadeAudioSource.FadeOut(sil[i], fadeOutDuration));
+                        break;
+                    case 0:
+                        StartCoroutine(FadeAudioSource.FadeIn(sil[i], fadeInDuration));
+                        StartCoroutine(FadeAudioSource.FadeOut(m1[i], fadeOutDuration));
+                        StartCoroutine(FadeAudioSource.FadeOut(m2[i], fadeOutDuration));
+                        break;
+                }
                 _c[i] = true;
             } else
             {
-                StartCoroutine(FadeAudioSource.FadeOut(_m1[i], fadeOutDuration));
-                StartCoroutine(FadeAudioSource.FadeOut(_m2[i], fadeOutDuration));
-                StartCoroutine(FadeAudioSource.FadeOut(_sil[i], fadeOutDuration));
+                StartCoroutine(FadeAudioSource.FadeOut(m1[i], fadeOutDuration));
+                StartCoroutine(FadeAudioSource.FadeOut(m2[i], fadeOutDuration));
+                StartCoroutine(FadeAudioSource.FadeOut(sil[i], fadeOutDuration));
                 _c[i] = false;
             }
         }

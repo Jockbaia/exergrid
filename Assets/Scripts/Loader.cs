@@ -8,13 +8,6 @@ using UnityEngine.UI;
 
 public class Loader : MonoBehaviour
 {
-    private Component _settings; 
-    void Start()
-    {
-        _settings = GetComponent<ButtonSet>();
-    }
-    
-
     public void ReadSavedStates()
     {
         string path = "Assets/save.txt";
@@ -53,7 +46,6 @@ public class Loader : MonoBehaviour
         GameObject.Find("levels").GetComponent<ButtonPress>().defaultPress = Int32.Parse(numOfLevels) - 1;
         GameObject.FindGameObjectWithTag("PTS").GetComponent<Points>().levels = Int32.Parse(numOfLevels);
         
-        
         for (int i = 0; i < 6; i++)
         {
             settings = txt.ReadLine();
@@ -85,22 +77,12 @@ public class Loader : MonoBehaviour
                 currentChannel = Int32.Parse(settings.Substring(11 + a, 1));
                 if (currentChannel == 1)
                 {
+                    int b = a + 1;
                     GameObject.Find("grid").GetComponent<Grid>().channels[currentLevel-1,a] = 1;
                     GameObject.Find("channels_" + currentLevel).GetComponent<ButtonPress>().ExternalPress(a);
-                    int b = a + 1;
                     GameObject.Find("channel_" + currentLevel + "_" + b).GetComponent<ButtonProperty>().MixerPressure();
                 }
             }
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
         }
     }
 }

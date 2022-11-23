@@ -5,8 +5,8 @@ using UnityEngine;
 public class CanvasMgmt : MonoBehaviour
 {
     public GameObject menus;
-    private bool isActive = false;
-    private int pressed = 0;
+    private bool _isActive = false;
+    private int _pressed = 0;
     void Start()
     {
         menus.SetActive(false);
@@ -14,19 +14,19 @@ public class CanvasMgmt : MonoBehaviour
     void Update()
     {
         
-        if (Input.GetKey("q") && !isActive && pressed == 0)
+        if (Input.GetKey("q") && !_isActive && _pressed == 0)
         {
             menus.SetActive(true);
-            isActive = true;
-            pressed++;
-        } else if (Input.GetKey("q") && isActive && pressed == 0)
+            _isActive = true;
+            _pressed++;
+        } else if (Input.GetKey("q") && _isActive && _pressed == 0)
         {
             menus.SetActive(false);
-            isActive = false;
-            pressed++;
+            _isActive = false;
+            _pressed++;
         } else if (Input.GetKeyUp("q"))
         {
-            pressed = 0;
+            _pressed = 0;
         }
         
     }
