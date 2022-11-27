@@ -32,6 +32,7 @@ public class Tile : MonoBehaviour
         // TILE IS GREEN
         if ((isActive || (isShaky && !_isDangerous)) && isHover && !isOver && grid.GetComponent<Grid>().hoverTiles == 1)
         {
+            GameObject.Find("report").GetComponent<Report>().trackGreen();
             if(!GameObject.FindWithTag("PTS").GetComponent<Points>().SessionFinished())
             {
                 grid.GetComponent<Grid>().PickNewGreen(true);
