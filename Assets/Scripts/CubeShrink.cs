@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class CubeShrink : MonoBehaviour
@@ -92,10 +93,11 @@ public class CubeShrink : MonoBehaviour
 
     void PostBreak()
     {
-        Debug.Log("BUUH!");
         GameObject.Find("grid").GetComponent<Grid>().LevelSwitch(0, true);
         GameObject.Find("grid").GetComponent<Grid>().LevelSwitch(0, true);
         GameObject.FindWithTag("PTS").GetComponent<Points>().level_handler();
+        GameObject.Find("report").GetComponent<Report>().startSession = DateTime.Now;
+        GameObject.Find("report").GetComponent<Report>().startLevel = DateTime.Now;
         gameObject.SetActive(false);
     }
     

@@ -16,6 +16,7 @@ public class Points : MonoBehaviour
     
     public int ptsCurrent;
     public int snsCurrent;
+    private int lvlCurrent = -1;
     public int ptsMax;
     
     public int negativeStreak, positiveStreak;
@@ -108,6 +109,8 @@ public class Points : MonoBehaviour
 
     void level_manager(int lvl, bool isLast, int[] channels, String text)
     {
+        GameObject.Find("report").GetComponent<Report>().newLevel = true;   
+        lvlCurrent = lvl;
         if (!isLast)
             {
                 if (lvl != 0) newLevelSfx.Play();
@@ -116,6 +119,7 @@ public class Points : MonoBehaviour
             else
             {
                 snsCurrent++;
+                GameObject.Find("report").GetComponent<Report>().newSession = true;                
                 
                 if (sessions == snsCurrent)
                 {
@@ -167,5 +171,11 @@ public class Points : MonoBehaviour
     {
         return ptsCurrent == ptsMax-1;
     }
-    
+
+    public string ReportData()
+    {
+        int sns = snsCurrent + 1;
+        int lvl = lvlCurrent + 1;
+        return sns.ToString() + "," + sessions.ToString() + "," + lvl.ToString() + "," + levels.ToString();
+    }
 }

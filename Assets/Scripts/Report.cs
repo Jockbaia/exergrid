@@ -7,50 +7,75 @@ using UnityEngine;
 
 public class Report : MonoBehaviour
 {
-    
-    public DateTime startTime;
-    public DateTime deltaTime;
-    public DateTime endTime;
+
     public StreamWriter sw;
-    
-    private string path = "Assets/report.txt";
-    private bool _isFirst = true;
-    
+    public GameObject pts;
+    private string path = "Assets/Reports/report.csv";
+
+    public DateTime deltaTime, startGame, startSession, startLevel, now;
+    public bool newGame = true;
+    public bool newSession = true;
+    public bool newLevel = true;
+    public TimeSpan deltaTile, deltaGame, deltaLevel, deltaSession;
     void Start()
     {
-        // Check if file already exists. If yes, delete it.     
-        if (File.Exists(path)) File.Delete(path);    
-
-        using (sw = File.CreateText(path))    
-        {
-            sw.WriteLine("REPORT {0}", DateTime.Now.ToString("yy-MM-dd hh:mm"));
-        }  
+        System.IO.Directory.CreateDirectory(Application.persistentDataPath + "/Reports/");
+        path = Application.persistentDataPath + "/Reports/" + DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".csv";
+        if (File.Exists(path)) File.Delete(path);
+        Debug.Log(Application.persistentDataPath);
         
+        using (sw = File.CreateText(path))
+        {
+            sw.WriteLine("Tile, Tile ID, Point, Session (current), Session (total), Level (current), Level (total), Delta Tile (s), Delta Level (s), Delta Session (s), Delta Total (s)");
+        }
+
     }
 
-    public void trackGreen()
+    public void trackTile(int numTile, string message, bool isError)
     {
+        now = DateTime.Now;
         
         using (sw = File.AppendText(path))
         {
-            DateTime timestamp = DateTime.Now;
-            TimeSpan interval;
-            
-            if (!_isFirst)
-            {
-                interval = timestamp - deltaTime;
-            }
-            if (_isFirst)
-            {
-                startTime = timestamp;
-                sw.WriteLine("Start");
-                _isFirst = false;
-            }
-            
-            sw.WriteLine("Green, {0}, {1}", timestamp.ToString("hh:mm:ss.fff"), interval);
+            char error;
+            if (newGame)startGame = now; newGame = false;
+            if (newSession) startSession = now; newSession = false;
+            if (newLevel) startLevel = now; newLevel = false;
 
-                deltaTime = timestamp;
+            deltaTile = now - deltaTime;
+            deltaGame = now - startGame;
+            deltaLevel = now - startLevel;
+            deltaSession = now - startSession;
 
-        } 
+            if (isError) error = 'X';
+            else error = '-';
+
+            // CALCOLI FINITI
+            
+            sw.WriteLine("{0},{1},{2},{3},{4:D2}.{5:D2}:{6:D3},{7:D2}.{8:D2}:{9:D3},{10:D2}.{11:D2}:{12:D3},{13:D2}.{14:D2}:{15:D3}", 
+                message, 
+                error,
+                numTile, 
+                pts.GetComponent<Points>().ReportData(),
+                deltaTile.Minutes, 
+                deltaTile.Seconds, 
+                deltaTile.Milliseconds,
+                deltaLevel.Minutes,
+                deltaLevel.Seconds, 
+                deltaLevel.Milliseconds,
+                deltaSession.Minutes,
+                deltaSession.Seconds, 
+                deltaSession.Milliseconds,
+                deltaGame.Minutes,
+                deltaGame.Seconds, 
+                deltaGame.Milliseconds);
+            
+            deltaTime = now;
+
+        }
+
+
+
+
     }
 }

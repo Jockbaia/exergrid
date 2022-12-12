@@ -8,7 +8,8 @@ public class Tile : MonoBehaviour
     public bool isShaky; 
     public bool isHover;
     public bool isSpiky;
-    public bool isOver; 
+    public bool isOver;
+    public int numTile;
     private bool _isDangerous;
     public GameObject grid;
     public AudioSource shakySfx;
@@ -32,14 +33,15 @@ public class Tile : MonoBehaviour
         // TILE IS GREEN
         if ((isActive || (isShaky && !_isDangerous)) && isHover && !isOver && grid.GetComponent<Grid>().hoverTiles == 1)
         {
-            GameObject.Find("report").GetComponent<Report>().trackGreen();
+            if(isShaky) GameObject.Find("report").GetComponent<Report>().trackTile(numTile, "Yellow", true);
+            else GameObject.Find("report").GetComponent<Report>().trackTile(numTile, "Green", false);
+            
             if(!GameObject.FindWithTag("PTS").GetComponent<Points>().SessionFinished())
             {
                 grid.GetComponent<Grid>().PickNewGreen(true);
             }
             else
             {
-                Debug.Log("H£H£");
                 GameObject.FindWithTag("PTS").GetComponent<Points>().add_points();
             }
             grid.GetComponent<Grid>().ChangeSpikes();
@@ -50,6 +52,7 @@ public class Tile : MonoBehaviour
         // TILE IS YELLOW
         else if ((isShaky && _isDangerous) && isHover && !isOver && grid.GetComponent<Grid>().hoverTiles == 1)
         {
+            GameObject.Find("report").GetComponent<Report>().trackTile(numTile, "Yellow", true);
             grid.GetComponent<Grid>().PickNewGreen(false);
             grid.GetComponent<Grid>().ChangeSpikes();
             EmptyTile();
@@ -60,6 +63,7 @@ public class Tile : MonoBehaviour
         // TILE IS RED
         else if (isSpiky && isHover && !isOver && grid.GetComponent<Grid>().hoverTiles == 1)
         {
+            GameObject.Find("report").GetComponent<Report>().trackTile(numTile, "Red", true);
             grid.GetComponent<Grid>().PickNewSpike(true);
             EmptyTile();
         }

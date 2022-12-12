@@ -10,7 +10,7 @@ public class Loader : MonoBehaviour
 {
     public void ReadSavedStates()
     {
-        string path = "Assets/save.txt";
+        string path = Application.persistentDataPath + "/save.txt";
         StreamReader txt = new StreamReader(path); 
         string settings = txt.ReadLine();
 
@@ -30,7 +30,7 @@ public class Loader : MonoBehaviour
         string breaksValue = settings.Substring(14, 1);
         GameObject.Find("break_" + breaksValue).GetComponent<Button>().Select();
         GameObject.Find("breaks").GetComponent<ButtonPress>().ExternalPress(Int32.Parse(breaksValue) - 1);
-        GameObject.FindGameObjectWithTag("PTS").GetComponent<Points>().sessions = Int32.Parse(breaksValue)*15;
+        GameObject.FindGameObjectWithTag("PTS").GetComponent<Points>().breakTime = Int32.Parse(breaksValue)*15;
         
         // TRACKS
         int defaultTrack = Int32.Parse(settings.Substring(10, 1));
