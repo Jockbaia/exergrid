@@ -26,7 +26,7 @@ public class Report : MonoBehaviour
         
         using (sw = File.CreateText(path))
         {
-            sw.WriteLine("Tile, Tile ID, Point, Session (current), Session (total), Level (current), Level (total), Delta Tile (s), Delta Level (s), Delta Session (s), Delta Total (s)");
+            sw.WriteLine("Tile, isError, Tile ID, Session (current), Session (total), Level (current), Level (total), Delta Tile (s), Delta Level (s), Delta Session (s), Delta Total (s)");
         }
 
     }
