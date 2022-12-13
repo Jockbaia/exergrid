@@ -3653,7 +3653,7 @@ MonoBehaviour:
   isHover: 0
   isSpiky: 0
   isOver: 0
-  numTile: 0
+  numTile: 7
   grid: {fileID: 1075908512}
   shakySfx: {fileID: 557915692}
 --- !u!95 &273227912
@@ -6030,7 +6030,7 @@ MonoBehaviour:
   isHover: 0
   isSpiky: 0
   isOver: 0
-  numTile: 0
+  numTile: 9
   grid: {fileID: 1075908512}
   shakySfx: {fileID: 557915692}
 --- !u!23 &481553957
@@ -7843,7 +7843,7 @@ MonoBehaviour:
   isHover: 0
   isSpiky: 0
   isOver: 0
-  numTile: 0
+  numTile: 2
   grid: {fileID: 1075908512}
   shakySfx: {fileID: 557915692}
 --- !u!95 &532560189
@@ -7998,7 +7998,7 @@ MonoBehaviour:
   isHover: 0
   isSpiky: 0
   isOver: 0
-  numTile: 0
+  numTile: 5
   grid: {fileID: 1075908512}
   shakySfx: {fileID: 557915692}
 --- !u!95 &547982581
@@ -8362,7 +8362,7 @@ MonoBehaviour:
   isHover: 0
   isSpiky: 0
   isOver: 0
-  numTile: 0
+  numTile: 8
   grid: {fileID: 1075908512}
   shakySfx: {fileID: 557915692}
 --- !u!95 &556620533
@@ -11187,7 +11187,7 @@ MonoBehaviour:
   isHover: 0
   isSpiky: 0
   isOver: 0
-  numTile: 0
+  numTile: 1
   grid: {fileID: 1075908512}
   shakySfx: {fileID: 557915692}
 --- !u!95 &735294118
@@ -18652,7 +18652,7 @@ MonoBehaviour:
   isHover: 0
   isSpiky: 0
   isOver: 0
-  numTile: 0
+  numTile: 3
   grid: {fileID: 1075908512}
   shakySfx: {fileID: 557915692}
 --- !u!95 &1126625097
@@ -24656,7 +24656,7 @@ MonoBehaviour:
   isHover: 0
   isSpiky: 0
   isOver: 0
-  numTile: 0
+  numTile: 6
   grid: {fileID: 1075908512}
   shakySfx: {fileID: 557915692}
 --- !u!95 &1410095457
@@ -29574,7 +29574,7 @@ MonoBehaviour:
   isHover: 0
   isSpiky: 0
   isOver: 0
-  numTile: 0
+  numTile: 4
   grid: {fileID: 1075908512}
   shakySfx: {fileID: 557915692}
 --- !u!95 &1699682436

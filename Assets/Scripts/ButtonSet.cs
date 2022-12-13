@@ -76,7 +76,7 @@ public class ButtonSet : MonoBehaviour
         RestartGame();
     }
 
-    private void RestartGame()
+    public void RestartGame()
     {
         _pts.GetComponent<Points>().ptsCurrent = _pts.GetComponent<Points>().snsCurrent = 0;
         _pts.GetComponent<Points>().negativeStreak = _pts.GetComponent<Points>().positiveStreak = 0;
@@ -91,6 +91,7 @@ public class ButtonSet : MonoBehaviour
             f[i].GetComponent<CubeShrink>().update_frame(0);
             f[i].GetComponent<CubeShrink>().RestartInvokes();
         }
+        GameObject.Find("report").GetComponent<Report>().newGame = true;
     }
     
 

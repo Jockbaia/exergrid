@@ -123,8 +123,9 @@ public class Points : MonoBehaviour
                 
                 if (sessions == snsCurrent)
                 {
-                    endLevelSfx.Play();
                     grid.GetComponent<Grid>().end_level();
+                    endLevelSfx.Play();
+                    grid.GetComponent<Grid>().ResetBoard();
                     for (int i = 0; i < 4; i++) f[i].GetComponent<CubeShrink>().glow_final();
                 }
                 else

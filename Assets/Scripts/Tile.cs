@@ -134,13 +134,13 @@ public class Tile : MonoBehaviour
 
     public void end_level()
     {
-        GetComponent<Animation>().Play("frame_final");
+        // GetComponent<Animation>().Play("frame_final");
         shakySfx.Stop();
-        isActive = false;
         isSpiky = false;
+        isActive = false;
         isShaky = false;
         _isDangerous = false;
-        isOver = true;
-        GetComponent<Renderer>().material.color = Color.green;
+        // isOver = true;
+        // GetComponent<Renderer>().material.color = Color.green;
     }
 }

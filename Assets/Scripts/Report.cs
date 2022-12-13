@@ -17,28 +17,29 @@ public class Report : MonoBehaviour
     public bool newSession = true;
     public bool newLevel = true;
     public TimeSpan deltaTile, deltaGame, deltaLevel, deltaSession;
-    void Start()
-    {
-        System.IO.Directory.CreateDirectory(Application.persistentDataPath + "/Reports/");
-        path = Application.persistentDataPath + "/Reports/" + DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".csv";
-        if (File.Exists(path)) File.Delete(path);
-        Debug.Log(Application.persistentDataPath);
-        
-        using (sw = File.CreateText(path))
-        {
-            sw.WriteLine("Tile, isError, Tile ID, Session (current), Session (total), Level (current), Level (total), Delta Tile (s), Delta Level (s), Delta Session (s), Delta Total (s)");
-        }
-
-    }
 
     public void trackTile(int numTile, string message, bool isError)
     {
         now = DateTime.Now;
+
+        if (newGame)
+        {
+            startGame = now;
+            newGame = false;
+            System.IO.Directory.CreateDirectory(Application.persistentDataPath + "/Reports/");
+            path = Application.persistentDataPath + "/Reports/" + DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".csv";
+            if (File.Exists(path)) File.Delete(path);
+            Debug.Log(Application.persistentDataPath);
+        
+            using (sw = File.CreateText(path))
+            {
+                sw.WriteLine("Tile, State, Tile ID, Session (current), Session (total), Level (current), Level (total), Delta Tile (s), Delta Level (s), Delta Session (s), Delta Total (s)");
+            }
+        }
         
         using (sw = File.AppendText(path))
         {
-            char error;
-            if (newGame)startGame = now; newGame = false;
+            String error;
             if (newSession) startSession = now; newSession = false;
             if (newLevel) startLevel = now; newLevel = false;
 
@@ -47,8 +48,8 @@ public class Report : MonoBehaviour
             deltaLevel = now - startLevel;
             deltaSession = now - startSession;
 
-            if (isError) error = 'X';
-            else error = '-';
+            if (isError) error = "ERROR";
+            else error = "OK";
 
             // CALCOLI FINITI
             
