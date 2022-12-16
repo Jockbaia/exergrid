@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -85,4 +86,76 @@ public class Loader : MonoBehaviour
             }
         }
     }
+
+    public void UpdateSaveState(String xVal)
+    {
+        
+        int x = Int32.Parse(xVal.Substring(0,1));
+        int Val = Int32.Parse(xVal.Substring(1,1));
+        
+        string path = Application.persistentDataPath + "/save.txt";
+        string text = File.ReadAllText(path);
+        
+        switch (x)
+        {
+            case 1:
+                text = Regex.Replace(text, "SE.", "SE"+Val);
+                break;
+            case 2:
+                text = Regex.Replace(text, "ST.", "ST"+Val);
+                break;
+            case 3:
+                text = Regex.Replace(text, "MU.", "MU"+Val);
+                break;
+            case 4:
+                text = Regex.Replace(text, "BR.", "BR"+Val);
+                break;
+            case 5:
+                text = Regex.Replace(text, "NL.", "NL"+Val);
+                break;
+        }
+        
+        using (StreamWriter writer = new StreamWriter(path, false)){ 
+            writer.Write(text);
+        }
+        
+    }
+    
+    public void UpdateSpikes(String lvlVal)
+    {
+        
+        int lvl = Int32.Parse(lvlVal.Substring(0,1));
+        int Val = Int32.Parse(lvlVal.Substring(1,1));
+        
+        string path = Application.persistentDataPath + "/save.txt";
+        string text = File.ReadAllText(path);
+        
+        switch (lvl)
+        {
+            case 1:
+                text = Regex.Replace(text, "LV1.R.", "LV1.R"+Val);
+                break;
+            case 2:
+                text = Regex.Replace(text, "LV2.R.", "LV2.R"+Val);
+                break;
+            case 3:
+                text = Regex.Replace(text, "LV3.R.", "LV3.R"+Val);
+                break;
+            case 4:
+                text = Regex.Replace(text, "LV4.R.", "LV4.R"+Val);
+                break;
+            case 5:
+                text = Regex.Replace(text, "LV5.R.", "LV5.R"+Val);
+                break;
+            case 6:
+                text = Regex.Replace(text, "LV6.R.", "LV6.R"+Val);
+                break;
+        }
+        
+        using (StreamWriter writer = new StreamWriter(path, false)){ 
+            writer.Write(text);
+        }
+        
+    }
+
 }
