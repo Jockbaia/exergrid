@@ -27,6 +27,14 @@ public class CanvasMgmt : MonoBehaviour
         } else if (Input.GetKeyUp("q"))
         {
             _pressed = 0;
+        } else if (Input.GetKey("escape"))
+        {
+            #if UNITY_STANDALONE
+            Application.Quit();
+            #endif
+            #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+            #endif
         }
         
     }

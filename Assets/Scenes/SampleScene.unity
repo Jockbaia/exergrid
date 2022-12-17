@@ -369,6 +369,18 @@ MonoBehaviour:
           m_StringArgument: 12
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 12
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6893319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1717,6 +1729,18 @@ MonoBehaviour:
           m_StringArgument: 24
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 24
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &104850471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2132,6 +2156,18 @@ MonoBehaviour:
           m_StringArgument: 28
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 28
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &143228083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2533,6 +2569,18 @@ MonoBehaviour:
       - m_Target: {fileID: 356657257}
         m_TargetAssemblyTypeName: ButtonSet, Assembly-CSharp
         m_MethodName: SetChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 27
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3258,6 +3306,18 @@ MonoBehaviour:
       - m_Target: {fileID: 356657257}
         m_TargetAssemblyTypeName: ButtonSet, Assembly-CSharp
         m_MethodName: SetChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 15
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4649,6 +4709,18 @@ MonoBehaviour:
           m_StringArgument: 44
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 44
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &314966797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5060,6 +5132,18 @@ MonoBehaviour:
       - m_Target: {fileID: 356657257}
         m_TargetAssemblyTypeName: ButtonSet, Assembly-CSharp
         m_MethodName: SetChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 42
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5493,6 +5577,18 @@ MonoBehaviour:
       - m_Target: {fileID: 356657257}
         m_TargetAssemblyTypeName: ButtonSet, Assembly-CSharp
         m_MethodName: SetChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 34
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6514,6 +6610,18 @@ MonoBehaviour:
       - m_Target: {fileID: 356657257}
         m_TargetAssemblyTypeName: ButtonSet, Assembly-CSharp
         m_MethodName: SetChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 56
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7571,6 +7679,18 @@ MonoBehaviour:
       - m_Target: {fileID: 356657257}
         m_TargetAssemblyTypeName: ButtonSet, Assembly-CSharp
         m_MethodName: SetChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 57
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9308,6 +9428,18 @@ MonoBehaviour:
           m_StringArgument: 13
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 13
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &573510371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9530,6 +9662,18 @@ MonoBehaviour:
       - m_Target: {fileID: 356657257}
         m_TargetAssemblyTypeName: ButtonSet, Assembly-CSharp
         m_MethodName: SetChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 31
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10421,6 +10565,18 @@ MonoBehaviour:
       - m_Target: {fileID: 356657257}
         m_TargetAssemblyTypeName: ButtonSet, Assembly-CSharp
         m_MethodName: SetChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 54
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12181,6 +12337,18 @@ MonoBehaviour:
           m_StringArgument: 16
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 16
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &801952034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12697,6 +12865,18 @@ MonoBehaviour:
           m_StringArgument: 65
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 65
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &838209797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13014,6 +13194,18 @@ MonoBehaviour:
           m_StringArgument: 22
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 22
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &861982449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13176,6 +13368,18 @@ MonoBehaviour:
       - m_Target: {fileID: 356657257}
         m_TargetAssemblyTypeName: ButtonSet, Assembly-CSharp
         m_MethodName: SetChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 62
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14548,6 +14752,18 @@ MonoBehaviour:
       - m_Target: {fileID: 356657257}
         m_TargetAssemblyTypeName: ButtonSet, Assembly-CSharp
         m_MethodName: SetChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 17
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16526,6 +16742,18 @@ MonoBehaviour:
           m_StringArgument: 25
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 25
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1055389631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16697,6 +16925,18 @@ MonoBehaviour:
           m_StringArgument: 52
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 52
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1055484608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16859,6 +17099,18 @@ MonoBehaviour:
       - m_Target: {fileID: 356657257}
         m_TargetAssemblyTypeName: ButtonSet, Assembly-CSharp
         m_MethodName: SetChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 35
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17488,6 +17740,18 @@ MonoBehaviour:
       - m_Target: {fileID: 356657257}
         m_TargetAssemblyTypeName: ButtonSet, Assembly-CSharp
         m_MethodName: SetChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 53
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19963,6 +20227,18 @@ MonoBehaviour:
           m_StringArgument: 68
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 68
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1153737423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20439,6 +20715,18 @@ MonoBehaviour:
           m_StringArgument: 36
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 36
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1190645267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20680,6 +20968,18 @@ MonoBehaviour:
       - m_Target: {fileID: 356657257}
         m_TargetAssemblyTypeName: ButtonSet, Assembly-CSharp
         m_MethodName: SetChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 67
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -21198,6 +21498,18 @@ MonoBehaviour:
           m_StringArgument: 61
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 61
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1229052896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21439,6 +21751,18 @@ MonoBehaviour:
       - m_Target: {fileID: 356657257}
         m_TargetAssemblyTypeName: ButtonSet, Assembly-CSharp
         m_MethodName: SetChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 64
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -21813,6 +22137,18 @@ MonoBehaviour:
       - m_Target: {fileID: 356657257}
         m_TargetAssemblyTypeName: ButtonSet, Assembly-CSharp
         m_MethodName: SetChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 14
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -22295,6 +22631,18 @@ MonoBehaviour:
       - m_Target: {fileID: 356657257}
         m_TargetAssemblyTypeName: ButtonSet, Assembly-CSharp
         m_MethodName: SetChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 26
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -22974,6 +23322,18 @@ MonoBehaviour:
           m_StringArgument: 46
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 46
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1273455157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23136,6 +23496,18 @@ MonoBehaviour:
       - m_Target: {fileID: 356657257}
         m_TargetAssemblyTypeName: ButtonSet, Assembly-CSharp
         m_MethodName: SetChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 47
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -23340,6 +23712,18 @@ MonoBehaviour:
       - m_Target: {fileID: 356657257}
         m_TargetAssemblyTypeName: ButtonSet, Assembly-CSharp
         m_MethodName: SetChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 38
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -24550,6 +24934,18 @@ MonoBehaviour:
           m_StringArgument: 18
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 18
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1382193294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25641,6 +26037,18 @@ MonoBehaviour:
           m_StringArgument: 43
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 43
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1427191684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26645,6 +27053,18 @@ MonoBehaviour:
           m_StringArgument: 51
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 51
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1483246848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27117,6 +27537,18 @@ MonoBehaviour:
       - m_Target: {fileID: 356657257}
         m_TargetAssemblyTypeName: ButtonSet, Assembly-CSharp
         m_MethodName: SetChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 41
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -27651,6 +28083,18 @@ MonoBehaviour:
           m_StringArgument: 45
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 45
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1540743885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27970,6 +28414,18 @@ MonoBehaviour:
       - m_Target: {fileID: 356657257}
         m_TargetAssemblyTypeName: ButtonSet, Assembly-CSharp
         m_MethodName: SetChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 63
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -29351,6 +29807,18 @@ MonoBehaviour:
       - m_Target: {fileID: 356657257}
         m_TargetAssemblyTypeName: ButtonSet, Assembly-CSharp
         m_MethodName: SetChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 55
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -30746,6 +31214,18 @@ MonoBehaviour:
           m_StringArgument: 23
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 23
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1731456896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30917,6 +31397,18 @@ MonoBehaviour:
           m_StringArgument: 21
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 21
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1747675984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31079,6 +31571,18 @@ MonoBehaviour:
       - m_Target: {fileID: 356657257}
         m_TargetAssemblyTypeName: ButtonSet, Assembly-CSharp
         m_MethodName: SetChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 37
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -31648,6 +32152,18 @@ MonoBehaviour:
           m_StringArgument: 58
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 58
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1793204690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31981,6 +32497,18 @@ MonoBehaviour:
       - m_Target: {fileID: 356657257}
         m_TargetAssemblyTypeName: ButtonSet, Assembly-CSharp
         m_MethodName: SetChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 32
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -32865,6 +33393,18 @@ MonoBehaviour:
           m_StringArgument: 33
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 33
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1837214914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33027,6 +33567,18 @@ MonoBehaviour:
       - m_Target: {fileID: 356657257}
         m_TargetAssemblyTypeName: ButtonSet, Assembly-CSharp
         m_MethodName: SetChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 66
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -33551,6 +34103,18 @@ MonoBehaviour:
       - m_Target: {fileID: 356657257}
         m_TargetAssemblyTypeName: ButtonSet, Assembly-CSharp
         m_MethodName: SetChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 48
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -35540,6 +36104,18 @@ MonoBehaviour:
       - m_Target: {fileID: 356657257}
         m_TargetAssemblyTypeName: ButtonSet, Assembly-CSharp
         m_MethodName: SetChannels
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 11
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 356657258}
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
+        m_MethodName: UpdateChannels
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

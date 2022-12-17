@@ -159,5 +159,26 @@ public class Loader : MonoBehaviour
         using (StreamWriter writer = new StreamWriter(path, false)) writer.Write(text);
         
     }
+    
+    public void UpdateChannels(String lvlVal)
+    {
+        int lvl = Int32.Parse(lvlVal.Substring(0,1));
+        int Val = Int32.Parse(lvlVal.Substring(1,1));
+        
+        string path = Application.persistentDataPath + "/save.txt";
+        string text = File.ReadAllText(path);
+        String replacement = Regex.Match(text, "LV"+lvl+".R..Y..M........").Value;
+        Debug.Log("{{{" + replacement + "}}}");
+        string replacementStr;
+        
+        string object_name = "channel_" + lvl + "_" + Val;
+
+        if(!GameObject.Find(object_name).GetComponent<ButtonProperty>().buttonPressed) replacementStr = replacement.Remove(10+Val, 1).Insert(10+Val, "0");
+        else replacementStr = replacement.Remove(10+Val, 1).Insert(10+Val, "1");
+        text = Regex.Replace(text, "LV"+lvl+".R..Y..M........", replacementStr);
+        
+        using (StreamWriter writer = new StreamWriter(path, false)) writer.Write(text);
+        
+    }
 
 }
