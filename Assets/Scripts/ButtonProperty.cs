@@ -22,7 +22,7 @@ public class ButtonProperty : MonoBehaviour, IDeselectHandler
         {
             myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
             group.GetComponent<ButtonPress>().Clean();
-            
+
         }
     }
     

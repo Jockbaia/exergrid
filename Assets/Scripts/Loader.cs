@@ -123,38 +123,40 @@ public class Loader : MonoBehaviour
     
     public void UpdateSpikes(String lvlVal)
     {
-        
         int lvl = Int32.Parse(lvlVal.Substring(0,1));
         int Val = Int32.Parse(lvlVal.Substring(1,1));
         
         string path = Application.persistentDataPath + "/save.txt";
         string text = File.ReadAllText(path);
+        string pattern = "LV" + lvl + ".R.";
+        string replacement;
+        string object_name = "spike_" + lvl + "_" + Val;
         
-        switch (lvl)
-        {
-            case 1:
-                text = Regex.Replace(text, "LV1.R.", "LV1.R"+Val);
-                break;
-            case 2:
-                text = Regex.Replace(text, "LV2.R.", "LV2.R"+Val);
-                break;
-            case 3:
-                text = Regex.Replace(text, "LV3.R.", "LV3.R"+Val);
-                break;
-            case 4:
-                text = Regex.Replace(text, "LV4.R.", "LV4.R"+Val);
-                break;
-            case 5:
-                text = Regex.Replace(text, "LV5.R.", "LV5.R"+Val);
-                break;
-            case 6:
-                text = Regex.Replace(text, "LV6.R.", "LV6.R"+Val);
-                break;
-        }
+        if(!GameObject.Find(object_name).GetComponent<ButtonProperty>().buttonPressed) replacement = "LV" + lvl + ".R0";
+        else replacement = "LV" + lvl + ".R" + Val;
+        text = Regex.Replace(text, pattern, replacement);
         
-        using (StreamWriter writer = new StreamWriter(path, false)){ 
-            writer.Write(text);
-        }
+        using (StreamWriter writer = new StreamWriter(path, false)) writer.Write(text);
+    }
+    
+    public void UpdateYellows(String lvlVal)
+    {
+        int lvl = Int32.Parse(lvlVal.Substring(0,1));
+        int Val = Int32.Parse(lvlVal.Substring(1,1));
+        
+        string path = Application.persistentDataPath + "/save.txt";
+        string text = File.ReadAllText(path);
+        var replacement = Regex.Match(text, "LV" + lvl + ".R..Y");
+        Debug.Log("{{{" + replacement.Value + "}}}");
+        string replacementStr;
+        
+        string object_name = "yellow_" + lvl + "_" + Val;
+        
+        if(!GameObject.Find(object_name).GetComponent<ButtonProperty>().buttonPressed) replacementStr = replacement.Value + "0";
+        else replacementStr = replacement.Value + Val;
+        text = Regex.Replace(text, "LV" + lvl + ".R..Y.", replacementStr);
+        
+        using (StreamWriter writer = new StreamWriter(path, false)) writer.Write(text);
         
     }
 
