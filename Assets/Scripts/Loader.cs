@@ -9,6 +9,35 @@ using UnityEngine.UI;
 
 public class Loader : MonoBehaviour
 {
+    private int currentChannel = 0;
+
+    private void Start()
+    {
+        String path = Application.persistentDataPath + "/save.txt";
+        String report = Application.persistentDataPath + "/Reports";
+        if (!File.Exists(path))
+        {
+            using(var sw = new StreamWriter(path, true))
+            {
+                sw.WriteLine("SE2.ST2.MU1.BR1.NL5");                     
+                sw.WriteLine("LV1.R0.Y0.M10010001"); 
+                sw.WriteLine("LV2.R1.Y0.M10110001");
+                sw.WriteLine("LV3.R2.Y0.M10110101");                     
+                sw.WriteLine("LV4.R3.Y0.M10111101"); 
+                sw.WriteLine("LV5.R4.Y0.M11111111");
+                sw.WriteLine("LV6.R0.Y0.M11111111"); 
+                sw.WriteLine("BRK.##.##.M10000001"); 
+            }
+        }
+
+        if (!Directory.Exists(report))
+        {
+            Directory.CreateDirectory(report);
+        }
+
+        GetComponent<Loader>().ReadSavedStates();
+    }
+
     public void ReadSavedStates()
     {
         string path = Application.persistentDataPath + "/save.txt";
@@ -72,7 +101,7 @@ public class Loader : MonoBehaviour
             
             // CHANNELS
             
-            int currentChannel = 0;
+            currentChannel = 0;
             for (int a = 0; a < 8; a++)
             {
                 currentChannel = Int32.Parse(settings.Substring(11 + a, 1));
@@ -85,6 +114,23 @@ public class Loader : MonoBehaviour
                 }
             }
         }
+        
+        settings = txt.ReadLine();
+        
+        currentChannel = 0;
+        for (int a = 0; a < 8; a++)
+        {
+            currentChannel = Int32.Parse(settings.Substring(11 + a, 1));
+            if (currentChannel == 1)
+            {
+                int b = a + 1;
+                GameObject.Find("grid").GetComponent<Grid>().channels[6,a] = 1;
+                GameObject.Find("channels_B").GetComponent<ButtonPress>().ExternalPress(a);
+                GameObject.Find("channel_B_" + b).GetComponent<ButtonProperty>().MixerPressure();
+            }
+        }
+        
+        
     }
 
     public void UpdateSaveState(String xVal)
@@ -168,7 +214,6 @@ public class Loader : MonoBehaviour
         string path = Application.persistentDataPath + "/save.txt";
         string text = File.ReadAllText(path);
         String replacement = Regex.Match(text, "LV"+lvl+".R..Y..M........").Value;
-        Debug.Log("{{{" + replacement + "}}}");
         string replacementStr;
         
         string object_name = "channel_" + lvl + "_" + Val;
@@ -176,6 +221,23 @@ public class Loader : MonoBehaviour
         if(!GameObject.Find(object_name).GetComponent<ButtonProperty>().buttonPressed) replacementStr = replacement.Remove(10+Val, 1).Insert(10+Val, "0");
         else replacementStr = replacement.Remove(10+Val, 1).Insert(10+Val, "1");
         text = Regex.Replace(text, "LV"+lvl+".R..Y..M........", replacementStr);
+        
+        using (StreamWriter writer = new StreamWriter(path, false)) writer.Write(text);
+        
+    }
+    
+    public void UpdateBreakTime(String val)
+    {
+        string path = Application.persistentDataPath + "/save.txt";
+        string text = File.ReadAllText(path);
+        String replacement = Regex.Match(text, "BRK.##.##.M........").Value;
+        string replacementStr;
+        
+        string object_name = "channel_B_" + val;
+
+        if(!GameObject.Find(object_name).GetComponent<ButtonProperty>().buttonPressed) replacementStr = replacement.Remove(10+Int32.Parse(val), 1).Insert(10+Int32.Parse(val), "0");
+        else replacementStr = replacement.Remove(10+Int32.Parse(val), 1).Insert(10+Int32.Parse(val), "1");
+        text = Regex.Replace(text, "BRK.##.##.M........", replacementStr);
         
         using (StreamWriter writer = new StreamWriter(path, false)) writer.Write(text);
         

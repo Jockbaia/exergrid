@@ -9,8 +9,7 @@ public class ButtonSet : MonoBehaviour
     
     void Start()
     {
-         GetComponent<Loader>().ReadSavedStates();
-         _pts = GameObject.FindGameObjectWithTag("PTS");
+        _pts = GameObject.FindGameObjectWithTag("PTS");
     }
 
     public void SetSpikes(String lvlQty) {
@@ -45,6 +44,15 @@ public class ButtonSet : MonoBehaviour
             else grid.GetComponent<Grid>().channels[lvl - 1, ch - 1] = 0;
             
             RestartGame();
+    }
+    
+    public void SetBreakChannels(String lvl)
+    {
+        if (GameObject.Find("channel_B_" + lvl.ToString()).GetComponent<ButtonProperty>().buttonPressed) 
+            grid.GetComponent<Grid>().channels[6,Int32.Parse(lvl) - 1] = 1;
+        else grid.GetComponent<Grid>().channels[6, Int32.Parse(lvl) - 1] = 0;
+            
+        RestartGame();
     }
 
     public void SetSteps(int step) {

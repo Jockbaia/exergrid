@@ -8,7 +8,7 @@ public class Grid : MonoBehaviour
     public int currentLevel;
     public int[] numSpikes =  {0, 0, 0, 0, 0, 0, 0};
     public int[] yellowPercentage = {0, 0, 0, 0, 0, 0, 0};
-    public int[,] channels = {{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0}};
+    public int[,] channels = {{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0}};
     
     public void SetActive(int val) { g[val - 1].GetComponent<Tile>().SetActive(); }
     public void SetShaky(int val) { g[val - 1].GetComponent<Tile>().SetShaky(); }

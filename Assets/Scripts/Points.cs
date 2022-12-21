@@ -135,6 +135,7 @@ public class Points : MonoBehaviour
                     f[0].GetComponent<CubeShrink>().glow_loading(true, breakTime); f[1].GetComponent<CubeShrink>().glow_loading(true, breakTime); 
                     f[2].GetComponent<CubeShrink>().glow_loading(false, breakTime); f[3].GetComponent<CubeShrink>().glow_loading(false, breakTime);
                     grid.GetComponent<Grid>().ResetBoard();
+                    _mx.SetMixer(grid.GetComponent<Grid>().GetChannel(6));// _mx.SetMixer(channels); // TODO
                     update_points();
                 }
             }
