@@ -33,7 +33,7 @@ public class Tile : MonoBehaviour
         // TILE IS GREEN
         if ((isActive || (isShaky && !_isDangerous)) && isHover && !isOver && grid.GetComponent<Grid>().hoverTiles == 1)
         {
-            if(isShaky) GameObject.Find("report").GetComponent<Report>().trackTile(numTile, "Yellow", true);
+            if(isShaky) GameObject.Find("report").GetComponent<Report>().trackTile(numTile, "Yellow (safe)", false);
             else GameObject.Find("report").GetComponent<Report>().trackTile(numTile, "Green", false);
             
             if(!GameObject.FindWithTag("PTS").GetComponent<Points>().SessionFinished())
@@ -52,7 +52,7 @@ public class Tile : MonoBehaviour
         // TILE IS YELLOW
         else if ((isShaky && _isDangerous) && isHover && !isOver && grid.GetComponent<Grid>().hoverTiles == 1)
         {
-            GameObject.Find("report").GetComponent<Report>().trackTile(numTile, "Yellow", true);
+            GameObject.Find("report").GetComponent<Report>().trackTile(numTile, "Yellow (shaky)", true);
             grid.GetComponent<Grid>().PickNewGreen(false);
             grid.GetComponent<Grid>().ChangeSpikes();
             EmptyTile();
