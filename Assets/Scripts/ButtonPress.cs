@@ -61,4 +61,12 @@ public class ButtonPress : MonoBehaviour
         colorBlock.normalColor = selected;
         b[id].colors = colorBlock;
     }
+
+    public void dePress()
+    {
+        for (int i = 0; i < numOfButtons; i++)
+        {
+            b[i].GetComponent<ButtonProperty>().buttonPressed = false;
+        }
+    }
 }

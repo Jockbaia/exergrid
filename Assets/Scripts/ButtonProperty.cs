@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.MixedReality.Toolkit;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -14,16 +15,18 @@ public class ButtonProperty : MonoBehaviour, IDeselectHandler
     {
         GameObject myEventSystem = GameObject.Find("Main Camera");
         
-        Debug.Log("PRESS" + this.name);
+        
         
         if (buttonPressed == false)
         {
+            if(!gameObject.FindAncestorComponent<Loader>().GetComponent<Loader>().firstStartup) GetComponentInParent<ButtonPress>().dePress();
             buttonPressed = true;
         }
         else
         {
-            // myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
+            myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
             group.GetComponent<ButtonPress>().Clean();
+            buttonPressed = false;
         }
     }
     
@@ -31,25 +34,26 @@ public class ButtonProperty : MonoBehaviour, IDeselectHandler
     {
         GameObject myEventSystem = GameObject.Find("Main Camera");
 
-        Debug.Log("PRESS" + this.name);
+        
         if (buttonPressed == false)
         {
-            this.buttonPressed = true;
+            // if(!gameObject.FindAncestorComponent<Loader>().GetComponent<Loader>().firstStartup) GetComponentInParent<ButtonPress>().dePress();
+            buttonPressed = true;
         }
         else
         {
-            // myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
+            buttonPressed = false;
+            myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
             ColorBlock colorBlock = this.GetComponent<Button>().colors;
             colorBlock.normalColor = Color.white;
             this.GetComponent<Button>().colors = colorBlock;
-            this.buttonPressed = false;
         }
     }
     
     public void OnDeselect(BaseEventData eventData)
     {
-        Debug.Log("DESEL" + this.name);
-        if(GetComponentInParent<ButtonPress>().isMultiple == false || GetComponentInParent<ButtonPress>().isSequence == true) buttonPressed = false;
+        // Debug.Log("DESEL" + this.name);
+        // if(GetComponentInParent<ButtonPress>().isMultiple == false || GetComponentInParent<ButtonPress>().isSequence == true) buttonPressed = false;
     }
     
 }

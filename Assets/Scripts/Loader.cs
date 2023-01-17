@@ -10,6 +10,7 @@ using UnityEngine.UI;
 public class Loader : MonoBehaviour
 {
     private int currentChannel = 0;
+    public bool firstStartup = true;
 
     private void Start()
     {
@@ -19,7 +20,7 @@ public class Loader : MonoBehaviour
         {
             using(var sw = new StreamWriter(path, true))
             {
-                sw.WriteLine("SE2.ST2.MU1.BR1.NL5");                     
+                sw.WriteLine("SE2.ST2.MU1.BT1.NL5");                     
                 sw.WriteLine("LV1.R0.Y0.M10010001"); 
                 sw.WriteLine("LV2.R1.Y0.M10110001");
                 sw.WriteLine("LV3.R2.Y0.M10110101");                     
@@ -36,6 +37,7 @@ public class Loader : MonoBehaviour
         }
 
         GetComponent<Loader>().ReadSavedStates();
+        firstStartup = false;
     }
 
     public void ReadSavedStates()
@@ -154,7 +156,7 @@ public class Loader : MonoBehaviour
                 text = Regex.Replace(text, "MU.", "MU"+Val);
                 break;
             case 4:
-                text = Regex.Replace(text, "BR.", "BR"+Val);
+                text = Regex.Replace(text, "BT.", "BT"+Val);
                 break;
             case 5:
                 text = Regex.Replace(text, "NL.", "NL"+Val);
