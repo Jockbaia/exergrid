@@ -193,7 +193,6 @@ public class Loader : MonoBehaviour
         string path = Application.persistentDataPath + "/save.txt";
         string text = File.ReadAllText(path);
         var replacement = Regex.Match(text, "LV" + lvl + ".R..Y");
-        Debug.Log("{{{" + replacement.Value + "}}}");
         string replacementStr;
         
         string object_name = "yellow_" + lvl + "_" + Val;

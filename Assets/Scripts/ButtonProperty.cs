@@ -12,7 +12,9 @@ public class ButtonProperty : MonoBehaviour, IDeselectHandler
 
     public void SequencialPressure()
     {
-        GameObject myEventSystem = GameObject.Find("EventSystem");
+        GameObject myEventSystem = GameObject.Find("Main Camera");
+        
+        Debug.Log("PRESS" + this.name);
         
         if (buttonPressed == false)
         {
@@ -20,32 +22,33 @@ public class ButtonProperty : MonoBehaviour, IDeselectHandler
         }
         else
         {
-            myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
+            // myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
             group.GetComponent<ButtonPress>().Clean();
-
         }
     }
     
     public void MixerPressure()
     {
-        GameObject myEventSystem = GameObject.Find("EventSystem");
-        
+        GameObject myEventSystem = GameObject.Find("Main Camera");
+
+        Debug.Log("PRESS" + this.name);
         if (buttonPressed == false)
         {
             this.buttonPressed = true;
         }
         else
         {
-            myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
+            // myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
             ColorBlock colorBlock = this.GetComponent<Button>().colors;
             colorBlock.normalColor = Color.white;
             this.GetComponent<Button>().colors = colorBlock;
             this.buttonPressed = false;
         }
     }
-
+    
     public void OnDeselect(BaseEventData eventData)
     {
+        Debug.Log("DESEL" + this.name);
         if(GetComponentInParent<ButtonPress>().isMultiple == false || GetComponentInParent<ButtonPress>().isSequence == true) buttonPressed = false;
     }
     
