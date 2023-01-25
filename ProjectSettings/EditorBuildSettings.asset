@@ -9,5 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects:
+    Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: 3a1f7ef13a006c04d8673305e31a9a95, type: 2}
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 7755d1a5f514ff241851260b5564f034, type: 2}
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: f10b8b5288b73ef488824d64ae9f57b8, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 3bc9ec98660b29b499eefda2f0ff48be, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: b16313368f586d64a895c0213cb20e98, type: 2}

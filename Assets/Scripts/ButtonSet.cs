@@ -86,6 +86,8 @@ public class ButtonSet : MonoBehaviour
 
     public void RestartGame()
     {
+        GameObject.Find("timer_system").GetComponent<timer>().stopTimer();
+        GameObject.Find("timer_system").GetComponent<timer>().resetTimer();
         _pts.GetComponent<Points>().ptsCurrent = _pts.GetComponent<Points>().snsCurrent = 0;
         _pts.GetComponent<Points>().negativeStreak = _pts.GetComponent<Points>().positiveStreak = 0;
         grid.GetComponent<Grid>().ResetBoard();

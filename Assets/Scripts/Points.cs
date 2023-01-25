@@ -1,4 +1,5 @@
 using System;
+using Microsoft.MixedReality.Toolkit;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = System.Random;
@@ -98,6 +99,7 @@ public class Points : MonoBehaviour
 
     public void level_handler()
     {
+        if(ptsCurrent == 1) GameObject.Find("timer_system").GetComponent<timer>().startTimer();
         if (ptsCurrent == 0) level_manager(0,false, grid.GetComponent<Grid>().GetChannel(0), "stage 1");
         else if (ptsCurrent == steps) level_manager(1,levels == 1, grid.GetComponent<Grid>().GetChannel(1), "stage 2");
         else if (ptsCurrent == steps * 2) level_manager(2,levels == 2, grid.GetComponent<Grid>().GetChannel(2), "stage 3");
@@ -107,6 +109,7 @@ public class Points : MonoBehaviour
         else if (ptsCurrent == ptsMax)  { int[] a = {1, 1, 1, 1, 1, 0, 1, 0}; level_manager(6,levels == 6, a, "stage '7'"); }
     }
 
+    
     void level_manager(int lvl, bool isLast, int[] channels, String text)
     {
         GameObject.Find("report").GetComponent<Report>().newLevel = true;   
@@ -118,6 +121,9 @@ public class Points : MonoBehaviour
             }
             else
             {
+                // stopping timer
+                GameObject.Find("timer_system").GetComponent<timer>().stopTimer();
+
                 snsCurrent++;
                 GameObject.Find("report").GetComponent<Report>().newSession = true;                
                 
@@ -167,6 +173,14 @@ public class Points : MonoBehaviour
                 _mx.SetMixer(a);
             }
         }
+    }
+
+    public void zeroTime()
+    {
+        grid.GetComponent<Grid>().end_level();
+        endLevelSfx.Play();
+        grid.GetComponent<Grid>().ResetBoard();
+        for (int i = 0; i < 4; i++) f[i].GetComponent<CubeShrink>().glow_final();
     }
 
     public bool SessionFinished()
