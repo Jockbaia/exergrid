@@ -38,4 +38,18 @@ public class CanvasMgmt : MonoBehaviour
         }
         
     }
+
+    public void panelToogle()
+    {
+        GameObject.Find("game").GetComponent<AudioSource>().Play();
+        if (!_isActive)
+        {
+            menus.SetActive(true);
+            _isActive = true;
+        } else if (_isActive)
+        {
+            menus.SetActive(false);
+            _isActive = false;
+        }
+    }
 }

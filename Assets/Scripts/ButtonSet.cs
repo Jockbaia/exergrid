@@ -83,6 +83,12 @@ public class ButtonSet : MonoBehaviour
         _pts.GetComponent<Points>().breakTime = time;
         RestartGame();
     }
+    
+    public void SetTimer(int time)
+    {
+        GameObject.Find("timer_system").GetComponent<timer>().timeValue = time;
+        RestartGame();
+    }
 
     public void RestartGame()
     {

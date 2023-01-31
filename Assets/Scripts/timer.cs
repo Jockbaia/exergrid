@@ -1,13 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class timer : MonoBehaviour
 {
 
-    public float timeRemaining = 180;
+    public float timeRemaining;
+    public float timeValue;
     public bool timerIsRunning = false;
+    public int minutes;
+    public int seconds;
+    public string time = "00:00";
 
+    void Start()
+    {
+        sendTime();
+    }
     void Update()
     {
         if (timerIsRunning)
@@ -23,9 +32,17 @@ public class timer : MonoBehaviour
                 timeRemaining = 0;
                 timerIsRunning = false;
             }
+            sendTime();
         }
     }
 
+    private void sendTime()
+    {
+        minutes = (int) (timeRemaining / 60);
+        seconds = (int) (timeRemaining - minutes * 60);
+        GetComponent<Text>().text = minutes.ToString("D2") + ":" + seconds.ToString("D2"); 
+    }
+    
     public void stopTimer()
     {
         timerIsRunning = false;
@@ -38,7 +55,8 @@ public class timer : MonoBehaviour
 
     public void resetTimer()
     {
-        timeRemaining = 180;
+        timeRemaining = timeValue;
+        sendTime();
     }
     
 }

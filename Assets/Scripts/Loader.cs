@@ -20,14 +20,14 @@ public class Loader : MonoBehaviour
         {
             using(var sw = new StreamWriter(path, true))
             {
-                sw.WriteLine("SE2.ST2.MU1.BT1.NL5");                     
+                sw.WriteLine("SE2.ST2.TM1.BT1.NL5");                     
                 sw.WriteLine("LV1.R0.Y0.M10010001"); 
                 sw.WriteLine("LV2.R1.Y0.M10110001");
                 sw.WriteLine("LV3.R2.Y0.M10110101");                     
                 sw.WriteLine("LV4.R3.Y0.M10111101"); 
                 sw.WriteLine("LV5.R4.Y0.M11111111");
                 sw.WriteLine("LV6.R0.Y0.M11111111"); 
-                sw.WriteLine("BRK.##.##.M10000001"); 
+                sw.WriteLine("###.##.M1.B10000001"); 
             }
         }
 
@@ -65,12 +65,11 @@ public class Loader : MonoBehaviour
         GameObject.FindGameObjectWithTag("PTS").GetComponent<Points>().breakTime = Int32.Parse(breaksValue)*15;
         
         // TRACKS
-        int defaultTrack = Int32.Parse(settings.Substring(10, 1));
-        if(defaultTrack == 1) GameObject.Find("Light").GetComponent<Button>().Select();
-        else if(defaultTrack == 2) GameObject.Find("Heavy").GetComponent<Button>().Select();
-        else GameObject.Find("Mute").GetComponent<Button>().Select();
-        GameObject.Find("music").GetComponent<ButtonPress>().ExternalPress(defaultTrack);
-        GameObject.Find("mixer").GetComponent<Mixer>().currentTrack = defaultTrack;
+        
+        int timerValue = Int32.Parse(settings.Substring(10, 1));
+        GameObject.Find("gametime_" + timerValue).GetComponent<Button>().Select();
+        GameObject.Find("gametime").GetComponent<ButtonPress>().ExternalPress(timerValue - 1);
+        GameObject.Find("timer_system").GetComponent<timer>().timeValue = timerValue*90;
         
         // LEVELS 
         string numOfLevels =  settings.Substring(18, 1);
@@ -119,6 +118,14 @@ public class Loader : MonoBehaviour
         
         settings = txt.ReadLine();
         
+        // MUTE AUDIO
+        
+        int muteValue = Int32.Parse(settings.Substring(8, 1));
+        GameObject.Find("music").GetComponent<ButtonPress>().ExternalPress(muteValue);
+        GameObject.Find("mixer").GetComponent<Mixer>().currentTrack = muteValue;
+        
+        // BREAK CHANNELS
+        
         currentChannel = 0;
         for (int a = 0; a < 8; a++)
         {
@@ -152,9 +159,12 @@ public class Loader : MonoBehaviour
             case 2:
                 text = Regex.Replace(text, "ST.", "ST"+Val);
                 break;
-            case 3:
+            /* case 3:
                 text = Regex.Replace(text, "MU.", "MU"+Val);
-                break;
+                break; */
+            case 3:
+                text = Regex.Replace(text, "TM.", "TM"+Val);
+                break; 
             case 4:
                 text = Regex.Replace(text, "BT.", "BT"+Val);
                 break;
@@ -231,14 +241,33 @@ public class Loader : MonoBehaviour
     {
         string path = Application.persistentDataPath + "/save.txt";
         string text = File.ReadAllText(path);
-        String replacement = Regex.Match(text, "BRK.##.##.M........").Value;
+        String replacement = Regex.Match(text, "###.##.M..B........").Value;
         string replacementStr;
         
         string object_name = "channel_B_" + val;
 
         if(!GameObject.Find(object_name).GetComponent<ButtonProperty>().buttonPressed) replacementStr = replacement.Remove(10+Int32.Parse(val), 1).Insert(10+Int32.Parse(val), "0");
         else replacementStr = replacement.Remove(10+Int32.Parse(val), 1).Insert(10+Int32.Parse(val), "1");
-        text = Regex.Replace(text, "BRK.##.##.M........", replacementStr);
+        text = Regex.Replace(text, "###.##.M..B........", replacementStr);
+        
+        using (StreamWriter writer = new StreamWriter(path, false)) writer.Write(text);
+        
+    }
+    
+    public void UpdateMute(int val)
+    {
+        string path = Application.persistentDataPath + "/save.txt";
+        string text = File.ReadAllText(path);
+        String replacement = Regex.Match(text, "###.##.M..B........").Value;
+        string replacementStr;
+        
+        if(val == 1) GameObject.Find("Light").GetComponent<Button>().Select();
+        else GameObject.Find("Mute").GetComponent<Button>().Select();
+        GameObject.Find("music").GetComponent<ButtonPress>().ExternalPress(val);
+        GameObject.Find("mixer").GetComponent<Mixer>().currentTrack = val; 
+            
+        replacementStr = replacement.Remove(8, 1).Insert(8, val.ToString());
+        text = Regex.Replace(text, "###.##.M..B........", replacementStr);
         
         using (StreamWriter writer = new StreamWriter(path, false)) writer.Write(text);
         

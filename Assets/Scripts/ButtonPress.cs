@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.MixedReality.Toolkit;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +14,7 @@ public class ButtonPress : MonoBehaviour
     public int defaultPress = -1;
     public Button b1, b2, b3, b4, b5, b6, b7, b8;
     private Button[] b = {null, null, null, null, null, null, null, null};
+    
 
     void Start()
     {
@@ -30,6 +32,7 @@ public class ButtonPress : MonoBehaviour
         ColorBlock colorBlock = b[id].colors;
         colorBlock.normalColor = selected;
         b[id].colors = colorBlock;
+        GameObject.Find("game").GetComponent<AudioSource>().Play();
     
     }
 
