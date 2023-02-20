@@ -12,11 +12,11 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: IIT
-  productName: VR
+  companyName: POLITO_IIT
+  productName: Exergrid
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
-  m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
+  m_SplashScreenBackgroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1
   m_SplashScreenOverlayOpacity: 1
@@ -40,7 +40,7 @@ PlayerSettings:
     width: 1
     height: 1
   m_SplashScreenLogos: []
-  m_VirtualRealitySplashScreen: {fileID: 0}
+  m_VirtualRealitySplashScreen: {fileID: 2800000, guid: c2e33b9ab8f39984abbc7ce279f52e88, type: 3}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1024
   defaultScreenHeight: 768
@@ -134,8 +134,9 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.1
-  preloadedAssets: []
+  bundleVersion: 1.0
+  preloadedAssets:
+  - {fileID: 0}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -269,7 +270,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: f41f8f5632d5fcb4b948194bfe88a7f5, type: 3}
+      m_Icon: {fileID: 2800000, guid: b88dfa9f742a56b4dbbd65acebf18dba, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
@@ -599,7 +600,7 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
-    1: USE_INPUT_SYSTEM_POSE_CONTROL;USE_INPUT_SYSTEM_POSE_CONTROL
+    1: 
     7: USE_INPUT_SYSTEM_POSE_CONTROL;USE_INPUT_SYSTEM_POSE_CONTROL
     14: USE_INPUT_SYSTEM_POSE_CONTROL
   additionalCompilerArguments: {}
@@ -629,8 +630,17 @@ PlayerSettings:
   metroCertificateIssuer: IIT
   metroCertificateNotAfter: 8017ae8d654ada01
   metroApplicationDescription: Template_3D
-  wsaImages: {}
-  metroTileShortName: VR
+  wsaImages:
+    65636: Assets/Models/icon_50x50.png
+    65661: Assets/Models/icon-63x63.png
+    65686: Assets/Models/icon-75x75.png
+    65736: Assets/Models/icon-100x100.png
+    65936: Assets/Models/icon-200x200.png
+    2031816: Assets/Models/icon-88x88.png
+    2097352: Assets/Models/icon-142x142.png
+    2162888: Assets/Models/icon-300x300.png
+    2293960: Assets/Models/icon-620x300.png
+  metroTileShortName: Exergrid
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0
@@ -640,8 +650,8 @@ PlayerSettings:
   metroDefaultTileSize: 1
   metroTileForegroundText: 2
   metroTileBackgroundColor: {r: 0.13333334, g: 0.17254902, b: 0.21568628, a: 0}
-  metroSplashScreenBackgroundColor: {r: 0.12941177, g: 0.17254902, b: 0.21568628, a: 1}
-  metroSplashScreenUseBackgroundColor: 0
+  metroSplashScreenBackgroundColor: {r: 0, g: 0, b: 0, a: 0}
+  metroSplashScreenUseBackgroundColor: 1
   platformCapabilities:
     WindowsStoreApps:
       GazeInput: True

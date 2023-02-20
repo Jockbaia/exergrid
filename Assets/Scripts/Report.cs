@@ -25,9 +25,11 @@ public class Report : MonoBehaviour
         if (newGame)
         {
             startGame = now;
-            newGame = false;
+            // newGame = false;
             System.IO.Directory.CreateDirectory(Application.persistentDataPath + "/Reports/");
-            path = Application.persistentDataPath + "/Reports/" + DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".csv";
+            String time = GameObject.Find("timer_system").GetComponent<timer>().timeRemaining.ToString();
+            String breakSeconds = GameObject.FindGameObjectWithTag("PTS").GetComponent<Points>().breakTime.ToString();
+            path = Application.persistentDataPath + "/Reports/" + DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss_") + time + "t" + breakSeconds + "b" + ".csv";
             if (File.Exists(path)) File.Delete(path);
             Debug.Log(Application.persistentDataPath);
         
@@ -40,9 +42,10 @@ public class Report : MonoBehaviour
         using (sw = File.AppendText(path))
         {
             String error;
+            if (newGame) deltaTime = now; newGame = false;
             if (newSession) startSession = now; newSession = false;
             if (newLevel) startLevel = now; newLevel = false;
-
+            
             deltaTile = now - deltaTime;
             deltaGame = now - startGame;
             deltaLevel = now - startLevel;

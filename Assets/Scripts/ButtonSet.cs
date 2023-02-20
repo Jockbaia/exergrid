@@ -6,6 +6,7 @@ public class ButtonSet : MonoBehaviour
     private GameObject _pts;
     public GameObject grid;
     public GameObject[] f = {null, null, null, null};
+    public int exitFlag = 0;
     
     void Start()
     {
@@ -89,7 +90,33 @@ public class ButtonSet : MonoBehaviour
         GameObject.Find("timer_system").GetComponent<timer>().timeValue = time;
         RestartGame();
     }
+    
+    public void SetCube()
+    {
+        GameObject.Find("game").GetComponent<AudioSource>().Play();
+        GameObject.Find("pawn").GetComponent<Transform>().SetPositionAndRotation(new Vector3(0.38f, -0.25f, 0.52f), Quaternion.Euler(new Vector3(0.0f,180.0f,0.0f)));
+    }
 
+    public void RestartGame_fromBTN()
+    {
+        GameObject.Find("game").GetComponent<AudioSource>().Play();
+        RestartGame();
+    }
+
+    public void CloseGame()
+    {
+        GameObject.Find("game").GetComponent<AudioSource>().Play();
+        if(exitFlag == 1) {
+            #if UNITY_STANDALONE
+            Application.Quit();
+            #endif
+            #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+            #endif
+        }        
+        exitFlag = exitFlag + 1;
+    }
+    
     public void RestartGame()
     {
         GameObject.Find("timer_system").GetComponent<timer>().stopTimer();
@@ -108,6 +135,8 @@ public class ButtonSet : MonoBehaviour
             f[i].GetComponent<CubeShrink>().RestartInvokes();
         }
         GameObject.Find("report").GetComponent<Report>().newGame = true;
+        GameObject.Find("report").GetComponent<Report>().newSession = true;
+        GameObject.Find("report").GetComponent<Report>().newLevel = true;
     }
     
 

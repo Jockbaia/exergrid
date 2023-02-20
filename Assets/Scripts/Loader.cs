@@ -64,12 +64,13 @@ public class Loader : MonoBehaviour
         GameObject.Find("breaks").GetComponent<ButtonPress>().ExternalPress(Int32.Parse(breaksValue) - 1);
         GameObject.FindGameObjectWithTag("PTS").GetComponent<Points>().breakTime = Int32.Parse(breaksValue)*15;
         
-        // TRACKS
+        // TIMER
         
         int timerValue = Int32.Parse(settings.Substring(10, 1));
         GameObject.Find("gametime_" + timerValue).GetComponent<Button>().Select();
         GameObject.Find("gametime").GetComponent<ButtonPress>().ExternalPress(timerValue - 1);
         GameObject.Find("timer_system").GetComponent<timer>().timeValue = timerValue*90;
+        GameObject.Find("timer_system").GetComponent<timer>().resetTimer();
         
         // LEVELS 
         string numOfLevels =  settings.Substring(18, 1);
