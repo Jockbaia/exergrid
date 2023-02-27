@@ -127,7 +127,7 @@ public class Tile : MonoBehaviour
         } else if (isShaky && !_isDangerous)
         {
             shakySfx.Play();
-            GetComponent<Renderer>().material.color = Color.yellow;
+            GetComponent<Renderer>().material.color = Color.magenta;
             _isDangerous = true;
         }
     }

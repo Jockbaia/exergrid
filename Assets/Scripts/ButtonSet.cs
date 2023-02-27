@@ -93,13 +93,15 @@ public class ButtonSet : MonoBehaviour
     
     public void SetCube()
     {
+        
         GameObject.Find("game").GetComponent<AudioSource>().Play();
-        GameObject.Find("pawn").GetComponent<Transform>().SetPositionAndRotation(new Vector3(0.38f, -0.25f, 0.52f), Quaternion.Euler(new Vector3(0.0f,180.0f,0.0f)));
+        GameObject.Find("pawn").GetComponent<Transform>().SetPositionAndRotation(GameObject.Find("table").GetComponent<Transform>().position + new Vector3(0,0.05f,0), Quaternion.Euler(new Vector3(0.0f,180.0f,0.0f)));
     }
 
     public void RestartGame_fromBTN()
     {
         GameObject.Find("game").GetComponent<AudioSource>().Play();
+        SetCube();
         RestartGame();
     }
 

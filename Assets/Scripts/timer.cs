@@ -40,7 +40,7 @@ public class timer : MonoBehaviour
     {
         minutes = (int) (timeRemaining / 60);
         seconds = (int) (timeRemaining - minutes * 60);
-        GetComponent<Text>().text = minutes.ToString("D2") + ":" + seconds.ToString("D2"); 
+        if(GameObject.Find("GUI_clock") != null) GameObject.Find("GUI_clock").GetComponent<Text>().text = minutes.ToString("D2") + ":" + seconds.ToString("D2"); 
     }
     
     public void stopTimer()
