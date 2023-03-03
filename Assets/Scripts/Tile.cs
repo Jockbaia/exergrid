@@ -10,7 +10,7 @@ public class Tile : MonoBehaviour
     public bool isSpiky;
     public bool isOver;
     public int numTile;
-    private bool _isDangerous;
+    public bool isDangerous;
     public GameObject grid;
     public AudioSource shakySfx;
     private static readonly int IsActive = Animator.StringToHash("isActive");
@@ -25,16 +25,17 @@ public class Tile : MonoBehaviour
         {
             grid.GetComponent<Grid>().hoverTiles++;
             isHover = true;
+            
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
         // TILE IS GREEN
-        if ((isActive || (isShaky && !_isDangerous)) && isHover && !isOver && grid.GetComponent<Grid>().hoverTiles == 1)
+        if ((isActive || (isShaky && !isDangerous)) && isHover && !isOver && grid.GetComponent<Grid>().hoverTiles == 1)
         {
-            if(isShaky) GameObject.Find("report").GetComponent<Report>().trackTile(numTile, "Yellow (safe)", false);
-            else GameObject.Find("report").GetComponent<Report>().trackTile(numTile, "Green", false);
+            if(isShaky) GameObject.Find("report").GetComponent<Report>().TrackTile(numTile, "Yellow (safe)", false);
+            else GameObject.Find("report").GetComponent<Report>().TrackTile(numTile, "Green", false);
             
             if(!GameObject.FindWithTag("PTS").GetComponent<Points>().SessionFinished())
             {
@@ -50,9 +51,9 @@ public class Tile : MonoBehaviour
         }
 
         // TILE IS YELLOW
-        else if ((isShaky && _isDangerous) && isHover && !isOver && grid.GetComponent<Grid>().hoverTiles == 1)
+        else if (isShaky && isDangerous && isHover && !isOver && grid.GetComponent<Grid>().hoverTiles == 1)
         {
-            GameObject.Find("report").GetComponent<Report>().trackTile(numTile, "Yellow (shaky)", true);
+            GameObject.Find("report").GetComponent<Report>().TrackTile(numTile, "Yellow (shaky)", true);
             grid.GetComponent<Grid>().PickNewGreen(false);
             grid.GetComponent<Grid>().ChangeSpikes();
             EmptyTile();
@@ -63,7 +64,7 @@ public class Tile : MonoBehaviour
         // TILE IS RED
         else if (isSpiky && isHover && !isOver && grid.GetComponent<Grid>().hoverTiles == 1)
         {
-            GameObject.Find("report").GetComponent<Report>().trackTile(numTile, "Red", true);
+            GameObject.Find("report").GetComponent<Report>().TrackTile(numTile, "Red", true);
             grid.GetComponent<Grid>().PickNewSpike(true);
             EmptyTile();
         }
@@ -73,7 +74,7 @@ public class Tile : MonoBehaviour
     {
         GetComponent<Animator>().SetBool(IsActive, isActive);
         GetComponent<Animator>().SetBool(IsShaky, isShaky);
-        GetComponent<Animator>().SetBool(IsDangerous, _isDangerous);
+        GetComponent<Animator>().SetBool(IsDangerous, isDangerous);
         GetComponent<Animator>().SetBool(IsSpiky, isSpiky);
         GetComponent<Animator>().SetBool(IsOver, isOver);
     }
@@ -89,6 +90,7 @@ public class Tile : MonoBehaviour
         isActive = false;
         isShaky = false;
         isSpiky = false;
+        isDangerous = false;
         gameObject.GetComponent<Renderer>().material.color = default(Color);
     }
 
@@ -97,6 +99,7 @@ public class Tile : MonoBehaviour
         isShaky = false;
         isSpiky = false;
         isActive = true;
+        isDangerous = false;
         GetComponent<Renderer>().material.color = Color.green;
     }
     
@@ -113,34 +116,32 @@ public class Tile : MonoBehaviour
         isActive = false;
         isSpiky = true;
         isShaky = false;
+        isDangerous = false;
         GetComponent<Renderer>().material.color = Color.red;
     }
 
     void SwitchShaky()
     {
-        if (isShaky && _isDangerous)
+        if (isShaky && isDangerous)
         {
             shakySfx.Stop();
             GetComponent<Renderer>().material.color = Color.green;
-            _isDangerous = false;
+            isDangerous = false;
 
-        } else if (isShaky && !_isDangerous)
+        } else if (isShaky && !isDangerous)
         {
             shakySfx.Play();
             GetComponent<Renderer>().material.color = Color.magenta;
-            _isDangerous = true;
+            isDangerous = true;
         }
     }
 
     public void end_level()
     {
-        // GetComponent<Animation>().Play("frame_final");
         shakySfx.Stop();
         isSpiky = false;
         isActive = false;
         isShaky = false;
-        _isDangerous = false;
-        // isOver = true;
-        // GetComponent<Renderer>().material.color = Color.green;
+        isDangerous = false;
     }
 }

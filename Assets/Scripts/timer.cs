@@ -27,7 +27,7 @@ public class timer : MonoBehaviour
             }
             else
             {
-                GameObject.FindWithTag("PTS").GetComponent<Points>().zeroTime();
+                GameObject.FindWithTag("PTS").GetComponent<Points>().ZeroTime();
                 Debug.Log("Time has run out!");
                 timeRemaining = 0;
                 timerIsRunning = false;

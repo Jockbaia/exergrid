@@ -1,5 +1,4 @@
 using System;
-using Microsoft.MixedReality.Toolkit;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = System.Random;
@@ -7,7 +6,7 @@ using Random = System.Random;
 public class Points : MonoBehaviour
 {
     Mixer _mx;
-    public GameObject grid;
+    public GameObject grid, menus;
     public GameObject[] f = {null, null, null, null};
     
     public int steps = 10;
@@ -17,24 +16,17 @@ public class Points : MonoBehaviour
     
     public int ptsCurrent;
     public int snsCurrent;
-    private int lvlCurrent = -1;
+    private int _lvlCurrent = -1;
     public int ptsMax;
     
-    public int negativeStreak, positiveStreak;
-    public Text ptsCurrentText, positiveStreakText, negativeStreakText;
-    public Text channelsText;
     public AudioSource p01, p02, p03, p04, p05, p06;
     public AudioSource newLevelSfx, endLevelSfx, errorSfx;
-    
-    private int[] _lastMix;
-    private string _lastText;
 
     void Start()
     {
         ptsMax = steps * levels;
-        ptsCurrent = negativeStreak = positiveStreak = 0;
+        ptsCurrent = 0;
         _mx = GameObject.FindGameObjectWithTag("MX").GetComponent<Mixer>();
-        update_points();
         level_handler();
         grid.GetComponent<Grid>().SetActive(4);
     }
@@ -42,18 +34,10 @@ public class Points : MonoBehaviour
     public void add_points ()
     {
         ptsMax = steps * levels; // safety update
-        
-        // !chillmode
-        if (positiveStreak == 5)
-        {
-            channelsText.text = String.Format(_lastText);
-            _mx.SetMixer(_lastMix);
-        }
-        
         ptsCurrent++;
-        positiveStreak++;
         
         // updating 3D bar
+        for (int i = 0; i < 4; i++) f[i].GetComponent<CubeShrink>().glow_point();
         for(int i=0; i<4; i++) f[i].GetComponent<CubeShrink>().update_frame(ptsCurrent);
         
         var rand = new Random();
@@ -61,42 +45,15 @@ public class Points : MonoBehaviour
 
         AudioSource[] sfx = {p01, p02, p03, p04, p05, p06};
         sfx[val].Play();
-        
-        negativeStreak = 0;
-        update_points();
         level_handler();
     }
     
     public void Mistake()
     {
-        positiveStreak = 0;
-        negativeStreak++;
         errorSfx.Play();
-        update_points();
-        chillMode_handler();
         for(int i=0; i<4; i++) f[i].GetComponent<CubeShrink>().glow_error();
     }
-
-    void update_points()
-    {
-        ptsCurrentText.text = String.Format("{0} points",ptsCurrent);
-        if (positiveStreak > 0)
-        {
-            negativeStreakText.text = "";
-            positiveStreakText.text = String.Format("{0} combo!", positiveStreak);
-        }
-        else if (negativeStreak > 0)
-        {
-            negativeStreakText.text = String.Format("{0} combo! :(", negativeStreak);
-            positiveStreakText.text = "";
-        }
-        else
-        {
-            negativeStreakText.text = "";
-            positiveStreakText.text = "";
-        }
-    }
-
+    
     public void level_handler()
     {
         if(ptsCurrent == 1) GameObject.Find("timer_system").GetComponent<timer>().startTimer();
@@ -113,7 +70,8 @@ public class Points : MonoBehaviour
     void level_manager(int lvl, bool isLast, int[] channels, String text)
     {
         GameObject.Find("report").GetComponent<Report>().newLevel = true;   
-        lvlCurrent = lvl;
+        menus.GetComponent<ButtonSet>().GlowRestart(false);
+        _lvlCurrent = lvl;
         if (!isLast)
             {
                 if (lvl != 0) newLevelSfx.Play();
@@ -129,6 +87,7 @@ public class Points : MonoBehaviour
                 
                 if (sessions == snsCurrent)
                 {
+                    menus.GetComponent<ButtonSet>().GlowRestart(true);
                     grid.GetComponent<Grid>().end_level();
                     endLevelSfx.Play();
                     grid.GetComponent<Grid>().ResetBoard();
@@ -142,40 +101,18 @@ public class Points : MonoBehaviour
                     f[2].GetComponent<CubeShrink>().glow_loading(false, breakTime); f[3].GetComponent<CubeShrink>().glow_loading(false, breakTime);
                     grid.GetComponent<Grid>().ResetBoard();
                     _mx.SetMixer(grid.GetComponent<Grid>().GetChannel(6));// _mx.SetMixer(channels); // TODO
-                    update_points();
                 }
             }
             
             if (!isLast)
             {
-                _lastText = text;
-                _lastMix = channels;
                 grid.GetComponent<Grid>().LevelSwitch(lvl, false);
-                channelsText.text = String.Format(text);
                 _mx.SetMixer(channels);
             }
 
     }
     
-    void chillMode_handler()
-    {
-        if (negativeStreak == 5)
-        {
-            channelsText.text = "Chill mode";
-            if (ptsCurrent < 40)
-            {
-                int[] a = {0, 0, 1, 0, 0, 0, 1, 0};
-                _mx.SetMixer(a);  
-            }
-            else
-            {
-                int[] a = {0, 0, 1, 0, 0, 1, 1, 0};
-                _mx.SetMixer(a);
-            }
-        }
-    }
-
-    public void zeroTime()
+    public void ZeroTime()
     {
         grid.GetComponent<Grid>().end_level();
         endLevelSfx.Play();
@@ -191,7 +128,7 @@ public class Points : MonoBehaviour
     public string ReportData()
     {
         int sns = snsCurrent + 1;
-        int lvl = lvlCurrent + 1;
+        int lvl = _lvlCurrent + 1;
         return sns.ToString() + "," + sessions.ToString() + "," + lvl.ToString() + "," + levels.ToString();
     }
 }

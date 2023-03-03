@@ -8,6 +8,7 @@ public class CubeShrink : MonoBehaviour
     private int _maxPoints;
     public Material victoryGlass;
     private Animation _anim;
+   
     void Start()
     {
         Vector3 pos = transform.localScale;
@@ -33,7 +34,9 @@ public class CubeShrink : MonoBehaviour
     }
     
     public void glow_newlevel() { _anim.Play("frame_newlevel"); }
+    public void glow_point() { _anim.Play("frame_point"); }
     public void glow_error() { _anim.Play("frame_error"); }
+
     public void glow_final() { _anim.Play("frame_final"); }
 
     public void glow_loading(bool isX, int time) 
@@ -112,5 +115,6 @@ public class CubeShrink : MonoBehaviour
         CancelInvoke(nameof(PostBreak));
         CancelInvoke(nameof(TimerSound));
     }
+    
 
 }

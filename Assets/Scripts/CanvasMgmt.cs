@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CanvasMgmt : MonoBehaviour
@@ -39,7 +37,7 @@ public class CanvasMgmt : MonoBehaviour
         
     }
 
-    public void panelToogle()
+    public void PanelToogle()
     {
         GameObject.Find("game").GetComponent<AudioSource>().Play();
         if (!_isActive)

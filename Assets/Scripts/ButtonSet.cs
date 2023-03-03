@@ -1,16 +1,23 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ButtonSet : MonoBehaviour
 {
     private GameObject _pts;
     public GameObject grid;
     public GameObject[] f = {null, null, null, null};
-    public int exitFlag = 0;
+    public int exitFlag;
+    public GameObject cube;
+    public GameObject centralTile;
+    public GameObject cubeBtn;
+    public GameObject cubeBtnImage;
+    public GameObject restartBtn;
     
     void Start()
     {
         _pts = GameObject.FindGameObjectWithTag("PTS");
+        CheckCube();
     }
 
     public void SetSpikes(String lvlQty) {
@@ -49,7 +56,7 @@ public class ButtonSet : MonoBehaviour
     
     public void SetBreakChannels(String lvl)
     {
-        if (GameObject.Find("channel_B_" + lvl.ToString()).GetComponent<ButtonProperty>().buttonPressed) 
+        if (GameObject.Find("channel_B_" + lvl).GetComponent<ButtonProperty>().buttonPressed) 
             grid.GetComponent<Grid>().channels[6,Int32.Parse(lvl) - 1] = 1;
         else grid.GetComponent<Grid>().channels[6, Int32.Parse(lvl) - 1] = 0;
             
@@ -124,12 +131,10 @@ public class ButtonSet : MonoBehaviour
         GameObject.Find("timer_system").GetComponent<timer>().stopTimer();
         GameObject.Find("timer_system").GetComponent<timer>().resetTimer();
         _pts.GetComponent<Points>().ptsCurrent = _pts.GetComponent<Points>().snsCurrent = 0;
-        _pts.GetComponent<Points>().negativeStreak = _pts.GetComponent<Points>().positiveStreak = 0;
         grid.GetComponent<Grid>().ResetBoard();
         grid.GetComponent<Grid>().SetActive(4);
         grid.GetComponent<Grid>().LevelSwitch(0, true);
         _pts.GetComponent<Points>().level_handler();
-        GameObject.Find("mixer").GetComponent<Mixer>().UpdateUI();
         GameObject.Find("timer").GetComponent<AudioSource>().Pause();
         for (int i = 0; i < 4; i++)
         {
@@ -141,5 +146,35 @@ public class ButtonSet : MonoBehaviour
         GameObject.Find("report").GetComponent<Report>().newLevel = true;
     }
     
+    void CheckCube()
+    {
+        
+        float dist = Vector3.Distance(cube.transform.position, centralTile.transform.position);
+        if (dist > 0.8)
+        {
+            cubeBtnImage.GetComponent<Image>().color = new Color32(255,220,0,255);
+            cubeBtn.GetComponent<Image>().color = new Color32(0,0,0,255);
+        }
+        else
+        {
+            cubeBtnImage.GetComponent<Image>().color = new Color32(207,207,207,255);
+            cubeBtn.GetComponent<Image>().color = new Color32(0,0,0,255);
+        }
 
+        Invoke(nameof(CheckCube), 0.2f);
+    }
+    
+    public void GlowRestart(bool isOver)
+    {
+        if (isOver)
+        {
+            restartBtn.GetComponent<Image>().color = new Color32(255,220,0,255);
+        }
+        else
+        {
+            restartBtn.GetComponent<Image>().color = new Color32(207,207,207,255);
+        }
+        
+    }
+    
 }
