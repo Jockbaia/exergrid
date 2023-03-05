@@ -24,7 +24,7 @@ public class ButtonProperty : MonoBehaviour
             buttonPressed = false;
         }
     }
-    
+
     public void MixerPressure()
     {
         GameObject myEventSystem = GameObject.Find("Main Camera");

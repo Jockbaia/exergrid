@@ -11,8 +11,10 @@ public class Loader : MonoBehaviour
 
     private void Start()
     {
-        String path = Application.persistentDataPath + "/save.txt";
+
         String report = Application.persistentDataPath + "/Reports";
+        
+        String path = Application.persistentDataPath + "/P1.txt";
         if (!File.Exists(path))
         {
             using(var sw = new StreamWriter(path, true))
@@ -27,19 +29,83 @@ public class Loader : MonoBehaviour
                 sw.WriteLine("###.##.M1.B00000100"); 
             }
         }
-
+        
+        path = Application.persistentDataPath + "/P2.txt";
+        if (!File.Exists(path))
+        {
+            using(var sw = new StreamWriter(path, true))
+            {
+                sw.WriteLine("SE2.ST2.TM1.BT1.NL5");                     
+                sw.WriteLine("LV1.R0.Y0.M00001100"); 
+                sw.WriteLine("LV2.R1.Y0.M00101100");
+                sw.WriteLine("LV3.R2.Y1.M00111100");                     
+                sw.WriteLine("LV4.R3.Y1.M00111101"); 
+                sw.WriteLine("LV5.R4.Y1.M10111101");
+                sw.WriteLine("LV6.R4.Y2.M11111111"); 
+                sw.WriteLine("###.##.M1.B00000100"); 
+            }
+        }
+        
+        path = Application.persistentDataPath + "/P3.txt";
+        if (!File.Exists(path))
+        {
+            using(var sw = new StreamWriter(path, true))
+            {
+                sw.WriteLine("SE2.ST2.TM1.BT1.NL5");                     
+                sw.WriteLine("LV1.R0.Y0.M00001100"); 
+                sw.WriteLine("LV2.R1.Y0.M00101100");
+                sw.WriteLine("LV3.R2.Y1.M00111100");                     
+                sw.WriteLine("LV4.R3.Y1.M00111101"); 
+                sw.WriteLine("LV5.R4.Y1.M10111101");
+                sw.WriteLine("LV6.R4.Y2.M11111111"); 
+                sw.WriteLine("###.##.M1.B00000100"); 
+            }
+        }
+        
+        path = Application.persistentDataPath + "/P4.txt";
+        if (!File.Exists(path))
+        {
+            using(var sw = new StreamWriter(path, true))
+            {
+                sw.WriteLine("SE2.ST2.TM1.BT1.NL5");                     
+                sw.WriteLine("LV1.R0.Y0.M00001100"); 
+                sw.WriteLine("LV2.R1.Y0.M00101100");
+                sw.WriteLine("LV3.R2.Y1.M00111100");                     
+                sw.WriteLine("LV4.R3.Y1.M00111101"); 
+                sw.WriteLine("LV5.R4.Y1.M10111101");
+                sw.WriteLine("LV6.R4.Y2.M11111111"); 
+                sw.WriteLine("###.##.M1.B00000100"); 
+            }
+        }
+        
+        path = Application.persistentDataPath + "/P5.txt";
+        if (!File.Exists(path))
+        {
+            using(var sw = new StreamWriter(path, true))
+            {
+                sw.WriteLine("SE2.ST2.TM1.BT1.NL5");                     
+                sw.WriteLine("LV1.R0.Y0.M00001100"); 
+                sw.WriteLine("LV2.R1.Y0.M00101100");
+                sw.WriteLine("LV3.R2.Y1.M00111100");                     
+                sw.WriteLine("LV4.R3.Y1.M00111101"); 
+                sw.WriteLine("LV5.R4.Y1.M10111101");
+                sw.WriteLine("LV6.R4.Y2.M11111111"); 
+                sw.WriteLine("###.##.M1.B00000100"); 
+            }
+        }
+        
         if (!Directory.Exists(report))
         {
             Directory.CreateDirectory(report);
         }
-
-        GetComponent<Loader>().ReadSavedStates();
+        
+        GetComponent<Loader>().ReadSavedStates(GameObject.Find("point_system").GetComponent<Points>().preset);
         firstStartup = false;
     }
 
-    public void ReadSavedStates()
+    public void ReadSavedStates(int preset)
     {
-        string path = Application.persistentDataPath + "/save.txt";
+        string path = Application.persistentDataPath + "/P" + preset + ".txt";
         StreamReader txt = new StreamReader(path); 
         string settings = txt.ReadLine();
 
@@ -50,12 +116,11 @@ public class Loader : MonoBehaviour
             GameObject.Find("session_" + sessionsValue).GetComponent<Button>().Select();
             GameObject.Find("sessions").GetComponent<ButtonPress>().ExternalPress(Int32.Parse(sessionsValue) - 1);
             GameObject.FindGameObjectWithTag("PTS").GetComponent<Points>().sessions = Int32.Parse(sessionsValue);
-        
-
+            
             // STEPS
             string stepsValue = settings.Substring(6, 1);
             GameObject.Find("steps_" + stepsValue).GetComponent<Button>().Select();
-            GameObject.Find("steps").GetComponent<ButtonPress>().defaultPress = Int32.Parse(stepsValue) - 1;
+            GameObject.Find("steps").GetComponent<ButtonPress>().ExternalPress(Int32.Parse(stepsValue) - 1);
             GameObject.FindGameObjectWithTag("PTS").GetComponent<Points>().steps = Int32.Parse(stepsValue)*5;
         
             // BREAKS
@@ -65,7 +130,6 @@ public class Loader : MonoBehaviour
             GameObject.FindGameObjectWithTag("PTS").GetComponent<Points>().breakTime = Int32.Parse(breaksValue)*15;
         
             // TIMER
-        
             int timerValue = Int32.Parse(settings.Substring(10, 1));
             GameObject.Find("gametime_" + timerValue).GetComponent<Button>().Select();
             GameObject.Find("gametime").GetComponent<ButtonPress>().ExternalPress(timerValue - 1);
@@ -76,6 +140,7 @@ public class Loader : MonoBehaviour
             string numOfLevels =  settings.Substring(18, 1);
             GameObject.Find("levels_" + numOfLevels).GetComponent<Button>().Select();
             GameObject.Find("levels").GetComponent<ButtonPress>().defaultPress = Int32.Parse(numOfLevels) - 1;
+            GameObject.Find("levels").GetComponent<ButtonPress>().DefaultPressMode();
             GameObject.FindGameObjectWithTag("PTS").GetComponent<Points>().levels = Int32.Parse(numOfLevels);
         
             for (int i = 0; i < 6; i++)
@@ -91,10 +156,10 @@ public class Loader : MonoBehaviour
                     {
                         GameObject.Find("grid").GetComponent<Grid>().numSpikes[currentLevel - 1] = numSpikes;
                         GameObject.Find("spikes_" + currentLevel).GetComponent<ButtonPress>().defaultPress = numSpikes-1;
+                        GameObject.Find("spikes_" + currentLevel).GetComponent<ButtonPress>().DefaultPressMode();
                         GameObject.Find("spike_" + currentLevel + "_" + numSpikes).GetComponent<ButtonProperty>().SequencialPressure();
                     }
-            
-
+                    
                     // YELLOWS
                     int numYellows = Int32.Parse(settings.Substring(8, 1));
                     if (numYellows != 0)
@@ -105,7 +170,6 @@ public class Loader : MonoBehaviour
                     }
             
                     // CHANNELS
-            
                     _currentChannel = 0;
                     for (int a = 0; a < 8; a++)
                     {
@@ -117,6 +181,10 @@ public class Loader : MonoBehaviour
                             GameObject.Find("channels_" + currentLevel).GetComponent<ButtonPress>().ExternalPress(a);
                             GameObject.Find("channel_" + currentLevel + "_" + b).GetComponent<ButtonProperty>().MixerPressure();
                         }
+                        else
+                        {
+                            GameObject.Find("grid").GetComponent<Grid>().channels[currentLevel-1,a] = 0;
+                        }
                     }
                 }
             }
@@ -124,7 +192,6 @@ public class Loader : MonoBehaviour
             settings = txt.ReadLine();
         
             // MUTE AUDIO
-
             if (settings != null)
             {
                 int muteValue = Int32.Parse(settings.Substring(8, 1));
@@ -133,7 +200,6 @@ public class Loader : MonoBehaviour
         
 
                 // BREAK CHANNELS
-        
                 _currentChannel = 0;
                 for (int a = 0; a < 8; a++)
                 {
@@ -153,11 +219,10 @@ public class Loader : MonoBehaviour
 
     public void UpdateSaveState(String xVal)
     {
-        
         int x = Int32.Parse(xVal.Substring(0,1));
         int val = Int32.Parse(xVal.Substring(1,1));
         
-        string path = Application.persistentDataPath + "/save.txt";
+        string path = Application.persistentDataPath + "/P" + GameObject.Find("point_system").GetComponent<Points>().preset + ".txt";
         string text = File.ReadAllText(path);
         
         switch (x)
@@ -190,7 +255,7 @@ public class Loader : MonoBehaviour
         int lvl = Int32.Parse(lvlVal.Substring(0,1));
         int val = Int32.Parse(lvlVal.Substring(1,1));
         
-        string path = Application.persistentDataPath + "/save.txt";
+        string path = Application.persistentDataPath + "/P" + GameObject.Find("point_system").GetComponent<Points>().preset + ".txt";
         string text = File.ReadAllText(path);
         string pattern = "LV" + lvl + ".R.";
         string replacement;
@@ -208,7 +273,7 @@ public class Loader : MonoBehaviour
         int lvl = Int32.Parse(lvlVal.Substring(0,1));
         int val = Int32.Parse(lvlVal.Substring(1,1));
         
-        string path = Application.persistentDataPath + "/save.txt";
+        string path = Application.persistentDataPath + "/P" + GameObject.Find("point_system").GetComponent<Points>().preset + ".txt";
         string text = File.ReadAllText(path);
         var replacement = Regex.Match(text, "LV" + lvl + ".R..Y");
         string replacementStr;
@@ -228,7 +293,7 @@ public class Loader : MonoBehaviour
         int lvl = Int32.Parse(lvlVal.Substring(0,1));
         int val = Int32.Parse(lvlVal.Substring(1,1));
         
-        string path = Application.persistentDataPath + "/save.txt";
+        string path = Application.persistentDataPath + "/P" + GameObject.Find("point_system").GetComponent<Points>().preset + ".txt";
         string text = File.ReadAllText(path);
         String replacement = Regex.Match(text, "LV"+lvl+".R..Y..M........").Value;
         string replacementStr;
@@ -245,7 +310,7 @@ public class Loader : MonoBehaviour
     
     public void UpdateBreakTime(String val)
     {
-        string path = Application.persistentDataPath + "/save.txt";
+        string path = Application.persistentDataPath + "/P" + GameObject.Find("point_system").GetComponent<Points>().preset + ".txt";
         string text = File.ReadAllText(path);
         String replacement = Regex.Match(text, "###.##.M..B........").Value;
         string replacementStr;
@@ -262,7 +327,7 @@ public class Loader : MonoBehaviour
     
     public void UpdateMute(int val)
     {
-        string path = Application.persistentDataPath + "/save.txt";
+        string path = Application.persistentDataPath + "/P" + GameObject.Find("point_system").GetComponent<Points>().preset + ".txt";
         string text = File.ReadAllText(path);
         String replacement = Regex.Match(text, "###.##.M..B........").Value;
         string replacementStr;

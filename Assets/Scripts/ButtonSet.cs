@@ -133,7 +133,7 @@ public class ButtonSet : MonoBehaviour
         _pts.GetComponent<Points>().ptsCurrent = _pts.GetComponent<Points>().snsCurrent = 0;
         grid.GetComponent<Grid>().ResetBoard();
         grid.GetComponent<Grid>().SetActive(4);
-        grid.GetComponent<Grid>().LevelSwitch(0, true);
+        
         _pts.GetComponent<Points>().level_handler();
         GameObject.Find("timer").GetComponent<AudioSource>().Pause();
         for (int i = 0; i < 4; i++)
@@ -141,6 +141,7 @@ public class ButtonSet : MonoBehaviour
             f[i].GetComponent<CubeShrink>().update_frame(0);
             f[i].GetComponent<CubeShrink>().RestartInvokes();
         }
+        grid.GetComponent<Grid>().LevelSwitch(0, true);
         GameObject.Find("report").GetComponent<Report>().newGame = true;
         GameObject.Find("report").GetComponent<Report>().newSession = true;
         GameObject.Find("report").GetComponent<Report>().newLevel = true;

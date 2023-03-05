@@ -47,7 +47,7 @@ public class Report : MonoBehaviour
             _pathReport = Application.persistentDataPath + "/Reports/" + _nameFile + "/times.csv";
             _pathTracking = Application.persistentDataPath + "/Reports/" + _nameFile + "/positions.csv";
             _pathGrid = Application.persistentDataPath + "/Reports/" + _nameFile + "/grid.csv";
-            File.Copy(Application.persistentDataPath + "/save.txt", Application.persistentDataPath + "/Reports/" + _nameFile + "/save.txt", true);
+            File.Copy(Application.persistentDataPath + "/P" + GameObject.Find("point_system").GetComponent<Points>().preset + ".txt", Application.persistentDataPath + "/Reports/" + _nameFile + "/save.txt", true);
             if (File.Exists(_pathReport)) File.Delete(_pathReport);
             if (File.Exists(_pathTracking)) File.Delete(_pathTracking);
             if (File.Exists(_pathGrid)) File.Delete(_pathGrid);

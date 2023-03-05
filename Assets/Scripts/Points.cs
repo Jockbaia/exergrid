@@ -8,7 +8,8 @@ public class Points : MonoBehaviour
     Mixer _mx;
     public GameObject grid, menus;
     public GameObject[] f = {null, null, null, null};
-    
+
+    public int preset = 1;
     public int steps = 10;
     public int levels = 4;
     public int sessions = 5;
@@ -131,4 +132,37 @@ public class Points : MonoBehaviour
         int lvl = _lvlCurrent + 1;
         return sns.ToString() + "," + sessions.ToString() + "," + lvl.ToString() + "," + levels.ToString();
     }
+
+    public void ChangePreset(int value)
+    {
+        preset = value;
+        ResetAllPresses();
+        GameObject.Find("menus").GetComponent<Loader>().ReadSavedStates(preset);
+        GameObject.Find("menus").GetComponent<ButtonSet>().RestartGame();
+        
+    }
+
+    private void ResetAllPresses()
+    {
+        GameObject.Find("levels").GetComponent<ButtonPress>().Clean();
+        GameObject.Find("sessions").GetComponent<ButtonPress>().Clean();
+        GameObject.Find("music").GetComponent<ButtonPress>().Clean();
+        GameObject.Find("breaks").GetComponent<ButtonPress>().Clean();
+        GameObject.Find("steps").GetComponent<ButtonPress>().Clean(); 
+        GameObject.Find("gametime").GetComponent<ButtonPress>().Clean(); 
+        GameObject.Find("channels_B").GetComponent<ButtonPress>().UnPress();
+        GameObject.Find("channels_B").GetComponent<ButtonPress>().Clean();
+        for (int i = 1; i < 7; i++)
+        {
+           GameObject.Find("spikes_" + i).GetComponent<ButtonPress>().UnPress();
+           GameObject.Find("spikes_" + i).GetComponent<ButtonPress>().Clean();
+           GameObject.Find("yellows_" + i).GetComponent<ButtonPress>().UnPress();
+           GameObject.Find("yellows_" + i).GetComponent<ButtonPress>().Clean();
+           GameObject.Find("channels_" + i).GetComponent<ButtonPress>().UnPress();
+           GameObject.Find("channels_" + i).GetComponent<ButtonPress>().Clean();
+        }
+    }
+    
+    
+
 }
