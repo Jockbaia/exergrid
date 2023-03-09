@@ -341,7 +341,6 @@ public class Loader : MonoBehaviour
         text = Regex.Replace(text, "###.##.M..B........", replacementStr);
         
         using (StreamWriter writer = new StreamWriter(path, false)) writer.Write(text);
-        
     }
 
 }

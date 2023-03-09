@@ -14,6 +14,7 @@ public class Points : MonoBehaviour
     public int levels = 4;
     public int sessions = 5;
     public int breakTime = 15;
+    public int mistakes = 0;
     
     public int ptsCurrent;
     public int snsCurrent;
@@ -22,6 +23,9 @@ public class Points : MonoBehaviour
     
     public AudioSource p01, p02, p03, p04, p05, p06;
     public AudioSource newLevelSfx, endLevelSfx, errorSfx;
+
+    public int mySteps, myTimeleft, myPoints = 0;
+    public string myDirectory; 
 
     void Start()
     {
@@ -36,6 +40,7 @@ public class Points : MonoBehaviour
     {
         ptsMax = steps * levels; // safety update
         ptsCurrent++;
+        myPoints++;
         
         // updating 3D bar
         for (int i = 0; i < 4; i++) f[i].GetComponent<CubeShrink>().glow_point();
@@ -52,6 +57,7 @@ public class Points : MonoBehaviour
     public void Mistake()
     {
         errorSfx.Play();
+        mistakes++;
         for(int i=0; i<4; i++) f[i].GetComponent<CubeShrink>().glow_error();
     }
     
@@ -88,11 +94,13 @@ public class Points : MonoBehaviour
                 
                 if (sessions == snsCurrent)
                 {
+                    UpdateResults();
                     menus.GetComponent<ButtonSet>().GlowRestart(true);
                     grid.GetComponent<Grid>().end_level();
                     endLevelSfx.Play();
                     grid.GetComponent<Grid>().ResetBoard();
                     for (int i = 0; i < 4; i++) f[i].GetComponent<CubeShrink>().glow_final();
+                    
                 }
                 else
                 {
@@ -115,6 +123,8 @@ public class Points : MonoBehaviour
     
     public void ZeroTime()
     {
+        UpdateResults();
+        menus.GetComponent<ButtonSet>().GlowRestart(true);
         grid.GetComponent<Grid>().end_level();
         endLevelSfx.Play();
         grid.GetComponent<Grid>().ResetBoard();
@@ -161,6 +171,20 @@ public class Points : MonoBehaviour
            GameObject.Find("channels_" + i).GetComponent<ButtonPress>().UnPress();
            GameObject.Find("channels_" + i).GetComponent<ButtonPress>().Clean();
         }
+    }
+    
+    public void UpdateResults() {
+        GameObject.Find("settings").GetComponent<CanvasMgmt>().ResultsToogle(true);
+        mySteps = GameObject.Find("report").GetComponent<Report>().stepTracker;
+        myTimeleft = Convert.ToInt32(GameObject.Find("timer_system").GetComponent<timer>().timeRemaining);
+        myDirectory = GameObject.Find("report").GetComponent<Report>()._nameFile;
+        GameObject.Find("value_1_text").GetComponent<Text>().text = mySteps.ToString();
+        GameObject.Find("value_2_text").GetComponent<Text>().text = mistakes.ToString();
+        GameObject.Find("value_3_text").GetComponent<Text>().text = myTimeleft.ToString();
+        GameObject.Find("value_5_text").GetComponent<Text>().text = myPoints.ToString();
+        GameObject.Find("value_5_text_perc").GetComponent<Text>().text = "(" + Math.Round(((double)myPoints/mySteps*100),2) + "%)"; 
+        GameObject.Find("value_2_text_perc").GetComponent<Text>().text = "(" + Math.Round(((double)mistakes/mySteps*100),2) + "%)";
+        GameObject.Find("label_4_value").GetComponent<Text>().text = myDirectory;
     }
     
     

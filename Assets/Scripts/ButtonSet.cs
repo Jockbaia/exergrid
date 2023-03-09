@@ -135,6 +135,8 @@ public class ButtonSet : MonoBehaviour
         grid.GetComponent<Grid>().SetActive(4);
         
         _pts.GetComponent<Points>().level_handler();
+        _pts.GetComponent<Points>().mistakes = 0;
+        _pts.GetComponent<Points>().myPoints = 0;
         GameObject.Find("timer").GetComponent<AudioSource>().Pause();
         for (int i = 0; i < 4; i++)
         {
@@ -169,11 +171,14 @@ public class ButtonSet : MonoBehaviour
     {
         if (isOver)
         {
+            
             restartBtn.GetComponent<Image>().color = new Color32(255,220,0,255);
+            GameObject.Find("settings").GetComponent<CanvasMgmt>().ResultsToogle(true);
         }
         else
         {
             restartBtn.GetComponent<Image>().color = new Color32(207,207,207,255);
+            GameObject.Find("settings").GetComponent<CanvasMgmt>().ResultsToogle(false);
         }
         
     }

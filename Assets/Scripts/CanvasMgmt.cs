@@ -3,22 +3,26 @@ using UnityEngine;
 public class CanvasMgmt : MonoBehaviour
 {
     public GameObject menus;
+    public GameObject results;
     private bool _isActive = false;
     private int _pressed = 0;
     void Start()
     {
         menus.SetActive(false);
+        results.SetActive(false);
     }
     void Update()
     {
         
         if (Input.GetKey("q") && !_isActive && _pressed == 0)
         {
+            results.GetComponent<Transform>().localScale = Vector3.zero;
             menus.SetActive(true);
             _isActive = true;
             _pressed++;
         } else if (Input.GetKey("q") && _isActive && _pressed == 0)
         {
+            results.GetComponent<Transform>().localScale = new Vector3(1,1,1);
             menus.SetActive(false);
             _isActive = false;
             _pressed++;
@@ -35,6 +39,8 @@ public class CanvasMgmt : MonoBehaviour
             #endif
         }
         
+        
+        
     }
 
     public void PanelToogle()
@@ -42,12 +48,26 @@ public class CanvasMgmt : MonoBehaviour
         GameObject.Find("game").GetComponent<AudioSource>().Play();
         if (!_isActive)
         {
+            results.GetComponent<Transform>().localScale = Vector3.zero;
             menus.SetActive(true);
             _isActive = true;
         } else if (_isActive)
         {
+            results.GetComponent<Transform>().localScale = new Vector3(1,1,1);
             menus.SetActive(false);
             _isActive = false;
         }
     }
+    
+    public void ResultsToogle(bool isOver)
+    {
+        if (isOver)
+        {
+            results.SetActive(true);
+        } else
+        {
+            results.SetActive(false);
+        }
+    }
+    
 }

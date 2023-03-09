@@ -14,8 +14,8 @@ public class Report : MonoBehaviour
     public GameObject[] g = {null, null, null, null, null, null, null, null, null, null, null, null,null, null, null, null,null, null, null, null,null, null, null, null,null, null, null, null,null, null, null, null,null, null, null, null};
     private string _pathReport = "Assets/Reports/report.csv";
     private string _pathTracking = "Assets/Trackings/track.csv";
-    private string _nameFile, _pathGrid;
-    private int _stepTracker;
+    public string _nameFile, _pathGrid;
+    public int stepTracker;
     private List<string> _track = new List<string>();
     
 
@@ -27,7 +27,7 @@ public class Report : MonoBehaviour
 
     void Start()
     {
-        _stepTracker = 0;
+        stepTracker = 0;
     }
 
     public void TrackTile(int numTile, string message, bool isError)
@@ -37,7 +37,7 @@ public class Report : MonoBehaviour
 
         if (newGame)
         {
-            _stepTracker = 0;
+            stepTracker = 0;
             startGame = now;
             Directory.CreateDirectory(Application.persistentDataPath + "/Reports/");
             String time = GameObject.Find("timer_system").GetComponent<timer>().timeRemaining.ToString();
@@ -60,7 +60,7 @@ public class Report : MonoBehaviour
             }
             using (sw = File.CreateText(_pathTracking))
             {
-                sw.WriteLine("Step,Time,Cube_X,Cube_Y,Cube_Z");
+                sw.WriteLine("Step,Time,Cube_X,Cube_Y,Cube_Z,Cube_Rot_X,Cube_Rot_Y,Cube_Rot_Z,LHand_X,LHand_Y,LHand_Z,LHand_Rot_X,LHand_Rot_Y,LHand_Rot_Z,RHand_X,RHand_Y,RHand_Z,RHand_Rot_X,RHand_Rot_Y,RHand_Rot_Z,Camera_X,Camera_Y,Camera_Z,Gaze_X,Gaze_Y,Gaze_Z");
             }
             using (sw = File.CreateText(_pathGrid))
             {
@@ -78,7 +78,7 @@ public class Report : MonoBehaviour
             }
         }
         
-        _stepTracker++;
+        stepTracker++;
         
         using (sw = File.AppendText(_pathReport))
         {
@@ -99,7 +99,7 @@ public class Report : MonoBehaviour
             // CALCOLI FINITI
             
             sw.WriteLine("{0},{1},{2},{3},{4},{5:D2}.{6:D2}:{7:D3},{8:D2}.{9:D2}:{10:D3},{11:D2}.{12:D2}:{13:D3},{14:D2}.{15:D2}:{16:D3}", 
-                _stepTracker,
+                stepTracker,
                 message, 
                 error,
                 numTile, 
@@ -127,21 +127,83 @@ public class Report : MonoBehaviour
             {
                 sw.WriteLine(t);
             }
-            _track.Clear();
+            _track.Clear(); // !
         }
 
     }
 
     void Track()
     {
-        _track.Add(_stepTracker + "," + Current_Time() + "," + Cube_Position());
+        _track.Add(stepTracker + "," + Current_Time() + "," + Cube_Position() + "," + Hands_Position() + "," + Gaze_Tracking());
         Invoke(nameof(Track), 0.1f);
     }
 
+    String Gaze_Tracking()
+    {
+        string a1;
+        string a2;
+
+        GameObject gc = GameObject.Find("DefaultGazeCursor(Clone)");
+        GameObject hd = GameObject.Find("Main Camera");
+        
+        if (gc && gc.activeSelf)
+        {
+            a1 = Math.Round((decimal)gc.GetComponent<Transform>().position.x, 3) 
+                 + "," + Math.Round((decimal)gc.GetComponent<Transform>().position.y, 3) 
+                 + "," + Math.Round((decimal)gc.GetComponent<Transform>().position.z, 3);
+        } else { a1 = "NaN,NaN,NaN"; }
+        
+        if (hd && hd.activeSelf)
+        {
+            a2 = Math.Round((decimal)hd.GetComponent<Transform>().position.x, 3) 
+                 + "," + Math.Round((decimal)hd.GetComponent<Transform>().position.y, 3) 
+                 + "," + Math.Round((decimal)hd.GetComponent<Transform>().position.z, 3);
+        } else { a2 = "NaN,NaN,NaN"; }
+
+        return a2 + "," + a1;
+    }
+    
+    String Hands_Position()
+    {
+        string lh;
+        string rh;
+
+        GameObject lhF = GameObject.Find("Left_ShellHandRayPointer(Clone)");
+        GameObject rhF = GameObject.Find("Right_ShellHandRayPointer(Clone)");
+        
+        if (lhF && lhF.activeSelf)
+        {
+            lh = Math.Round((decimal)lhF.GetComponent<Transform>().position.x, 3) 
+                + "," + Math.Round((decimal)lhF.GetComponent<Transform>().position.y, 3) 
+                + "," + Math.Round((decimal)lhF.GetComponent<Transform>().position.z, 3)
+                + "," + Math.Round((decimal)lhF.GetComponent<Transform>().rotation.x, 3)
+                + "," + Math.Round((decimal)lhF.GetComponent<Transform>().rotation.y, 3)
+                + "," + Math.Round((decimal)lhF.GetComponent<Transform>().rotation.z, 3);
+        } else { lh = "NaN,NaN,NaN,NaN,NaN,NaN"; }
+        
+        if (rhF && rhF.activeSelf)
+        {
+            rh = Math.Round((decimal)rhF.GetComponent<Transform>().position.x, 3) 
+                + "," + Math.Round((decimal)rhF.GetComponent<Transform>().position.y, 3) 
+                + "," + Math.Round((decimal)rhF.GetComponent<Transform>().position.z, 3)
+                + "," + Math.Round((decimal)rhF.GetComponent<Transform>().rotation.x, 3)
+                + "," + Math.Round((decimal)rhF.GetComponent<Transform>().rotation.y, 3)
+                + "," + Math.Round((decimal)rhF.GetComponent<Transform>().rotation.z, 3);
+        } else { rh = "NaN,NaN,NaN,NaN,NaN,NaN"; }
+
+        return lh + "," + rh;
+    }
+    
     String Cube_Position()
     {
-        return Math.Round((decimal)cube.GetComponent<Transform>().position.x, 3) + "," + Math.Round((decimal)cube.GetComponent<Transform>().position.y, 3) + "," + Math.Round((decimal)cube.GetComponent<Transform>().position.z, 3);
+        return Math.Round((decimal) cube.GetComponent<Transform>().position.x, 3) + "," +
+               Math.Round((decimal) cube.GetComponent<Transform>().position.y, 3) + "," +
+               Math.Round((decimal) cube.GetComponent<Transform>().position.z, 3) + "," +
+               Math.Round((decimal) cube.GetComponent<Transform>().rotation.x, 3) + "," +
+               Math.Round((decimal) cube.GetComponent<Transform>().rotation.y, 3) + "," +
+               Math.Round((decimal) cube.GetComponent<Transform>().rotation.z, 3);
     }
+    
 
     String Current_Time()
     {
