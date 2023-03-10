@@ -5998,6 +5998,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pawn: {fileID: 1789709429}
+  report: {fileID: 1534391060}
   isActive: 0
   isShaky: 0
   isHover: 0
@@ -7746,6 +7747,7 @@ MonoBehaviour:
   - {fileID: 1177317796}
   exitFlag: 0
   cube: {fileID: 1789709429}
+  report: {fileID: 1534391060}
   centralTile: {fileID: 547982575}
   cubeBtn: {fileID: 2085196781}
   cubeBtnImage: {fileID: 1756734990}
@@ -10024,6 +10026,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pawn: {fileID: 1789709429}
+  report: {fileID: 1534391060}
   isActive: 0
   isShaky: 0
   isHover: 0
@@ -12597,6 +12600,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pawn: {fileID: 1789709429}
+  report: {fileID: 1534391060}
   isActive: 0
   isShaky: 0
   isHover: 0
@@ -12827,6 +12831,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pawn: {fileID: 1789709429}
+  report: {fileID: 1534391060}
   isActive: 0
   isShaky: 0
   isHover: 0
@@ -13109,6 +13114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pawn: {fileID: 1789709429}
+  report: {fileID: 1534391060}
   isActive: 0
   isShaky: 0
   isHover: 0
@@ -13963,7 +13969,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cafa84d097576a2469cc3ac2a92d490b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ea413c60dae48054ca29793b4be90011, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -17366,6 +17372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pawn: {fileID: 1789709429}
+  report: {fileID: 1534391060}
   isActive: 0
   isShaky: 0
   isHover: 0
@@ -27345,6 +27352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pawn: {fileID: 1789709429}
+  report: {fileID: 1534391060}
   isActive: 0
   isShaky: 0
   isHover: 0
@@ -27713,6 +27721,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menus: {fileID: 356657255}
   results: {fileID: 1986243521}
+  timer: {fileID: 828794842}
 --- !u!114 &1134106426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30710,6 +30719,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grid: {fileID: 1075908512}
   menus: {fileID: 356657255}
+  report: {fileID: 1534391060}
   f:
   - {fileID: 1792295865}
   - {fileID: 1473687525}
@@ -35532,6 +35542,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pawn: {fileID: 1789709429}
+  report: {fileID: 1534391060}
   isActive: 0
   isShaky: 0
   isHover: 0
@@ -38352,8 +38363,8 @@ MonoBehaviour:
   - {fileID: 628461010}
   - {fileID: 2076757739}
   - {fileID: 2103188803}
-  _nameFile: 
-  _pathGrid: 
+  nameFile: 
+  pathGrid: 
   stepTracker: 0
   newGame: 1
   newSession: 1
@@ -41721,6 +41732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pawn: {fileID: 1789709429}
+  report: {fileID: 1534391060}
   isActive: 0
   isShaky: 0
   isHover: 0
@@ -45076,7 +45088,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ea413c60dae48054ca29793b4be90011, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cafa84d097576a2469cc3ac2a92d490b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

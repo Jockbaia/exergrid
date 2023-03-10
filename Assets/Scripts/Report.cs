@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -14,7 +13,7 @@ public class Report : MonoBehaviour
     public GameObject[] g = {null, null, null, null, null, null, null, null, null, null, null, null,null, null, null, null,null, null, null, null,null, null, null, null,null, null, null, null,null, null, null, null,null, null, null, null};
     private string _pathReport = "Assets/Reports/report.csv";
     private string _pathTracking = "Assets/Trackings/track.csv";
-    public string _nameFile, _pathGrid;
+    public string nameFile, pathGrid;
     public int stepTracker;
     private List<string> _track = new List<string>();
     
@@ -34,23 +33,23 @@ public class Report : MonoBehaviour
     {
         now = DateTime.Now;
         
-
         if (newGame)
         {
             stepTracker = 0;
+            _track.Clear(); 
             startGame = now;
             Directory.CreateDirectory(Application.persistentDataPath + "/Reports/");
             String time = GameObject.Find("timer_system").GetComponent<timer>().timeRemaining.ToString();
             String breakSeconds = GameObject.FindGameObjectWithTag("PTS").GetComponent<Points>().breakTime.ToString();
-            _nameFile = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss_") + time + "t" + breakSeconds + "b";
-            Directory.CreateDirectory(Application.persistentDataPath + "/Reports/" + _nameFile);
-            _pathReport = Application.persistentDataPath + "/Reports/" + _nameFile + "/times.csv";
-            _pathTracking = Application.persistentDataPath + "/Reports/" + _nameFile + "/positions.csv";
-            _pathGrid = Application.persistentDataPath + "/Reports/" + _nameFile + "/grid.csv";
-            File.Copy(Application.persistentDataPath + "/P" + GameObject.Find("point_system").GetComponent<Points>().preset + ".txt", Application.persistentDataPath + "/Reports/" + _nameFile + "/save.txt", true);
+            nameFile = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss_") + time + "t" + breakSeconds + "b";
+            Directory.CreateDirectory(Application.persistentDataPath + "/Reports/" + nameFile);
+            _pathReport = Application.persistentDataPath + "/Reports/" + nameFile + "/times.csv";
+            _pathTracking = Application.persistentDataPath + "/Reports/" + nameFile + "/positions.csv";
+            pathGrid = Application.persistentDataPath + "/Reports/" + nameFile + "/grid.csv";
+            File.Copy(Application.persistentDataPath + "/P" + GameObject.Find("point_system").GetComponent<Points>().preset + ".txt", Application.persistentDataPath + "/Reports/" + nameFile + "/save.txt", true);
             if (File.Exists(_pathReport)) File.Delete(_pathReport);
             if (File.Exists(_pathTracking)) File.Delete(_pathTracking);
-            if (File.Exists(_pathGrid)) File.Delete(_pathGrid);
+            if (File.Exists(pathGrid)) File.Delete(pathGrid);
             
             Invoke(nameof(Track), 0);
         
@@ -62,18 +61,18 @@ public class Report : MonoBehaviour
             {
                 sw.WriteLine("Step,Time,Cube_X,Cube_Y,Cube_Z,Cube_Rot_X,Cube_Rot_Y,Cube_Rot_Z,LHand_X,LHand_Y,LHand_Z,LHand_Rot_X,LHand_Rot_Y,LHand_Rot_Z,RHand_X,RHand_Y,RHand_Z,RHand_Rot_X,RHand_Rot_Y,RHand_Rot_Z,Camera_X,Camera_Y,Camera_Z,Gaze_X,Gaze_Y,Gaze_Z");
             }
-            using (sw = File.CreateText(_pathGrid))
+            using (sw = File.CreateText(pathGrid))
             {
                 sw.WriteLine("PosX,PosY,PosZ,Type,Marker");
                 
                 for (int i = 1; i <= 9; i++)
                 {
-                    sw.WriteLine(GameObject.Find(i.ToString()).GetComponent<Transform>().position.x.ToString() + "," +
-                        GameObject.Find(i.ToString()).GetComponent<Transform>().position.y.ToString() + "," +
-                        GameObject.Find(i.ToString()).GetComponent<Transform>().position.z.ToString()+ ",0");
+                    sw.WriteLine(GameObject.Find(i.ToString()).GetComponent<Transform>().position.x + "," +
+                        GameObject.Find(i.ToString()).GetComponent<Transform>().position.y + "," +
+                        GameObject.Find(i.ToString()).GetComponent<Transform>().position.z + ",0");
                 }
 
-                drawMarkers();
+                DrawMarkers();
 
             }
         }
@@ -121,15 +120,25 @@ public class Report : MonoBehaviour
 
         }
         
+        UpdateTrack();
+
+    }
+
+    public void ClearTrack()
+    {
+        _track.Clear();
+    }
+
+    public void UpdateTrack()
+    {
         using (sw = File.AppendText(_pathTracking))
         {
             foreach(var t in _track)
             {
                 sw.WriteLine(t);
             }
-            _track.Clear(); // !
+            _track.Clear(); 
         }
-
     }
 
     void Track()
@@ -162,7 +171,7 @@ public class Report : MonoBehaviour
 
         return a2 + "," + a1;
     }
-    
+
     String Hands_Position()
     {
         string lh;
@@ -213,38 +222,38 @@ public class Report : MonoBehaviour
         return millisecs.ToString();
     }
 
-    void drawMarkers()
+    void DrawMarkers()
     {
-        sw.WriteLine(m1.GetComponent<Transform>().position.x.ToString() + "," +
-                     m1.GetComponent<Transform>().position.y.ToString() + "," +
-                     m1.GetComponent<Transform>().position.z.ToString()+ ",1");
-        sw.WriteLine(m2.GetComponent<Transform>().position.x.ToString() + "," +
-                     m2.GetComponent<Transform>().position.y.ToString() + "," +
-                     m2.GetComponent<Transform>().position.z.ToString()+ ",1");
-        sw.WriteLine(m3.GetComponent<Transform>().position.x.ToString() + "," +
-                     m3.GetComponent<Transform>().position.y.ToString() + "," +
-                     m3.GetComponent<Transform>().position.z.ToString()+ ",1");
-        sw.WriteLine(m1.GetComponent<Transform>().position.x.ToString() + "," +
-                     m1.GetComponent<Transform>().position.y.ToString() + "," +
-                     m1.GetComponent<Transform>().position.z.ToString()+ ",1");
+        sw.WriteLine(m1.GetComponent<Transform>().position.x + "," +
+                     m1.GetComponent<Transform>().position.y + "," +
+                     m1.GetComponent<Transform>().position.z + ",1");
+        sw.WriteLine(m2.GetComponent<Transform>().position.x + "," +
+                     m2.GetComponent<Transform>().position.y + "," +
+                     m2.GetComponent<Transform>().position.z + ",1");
+        sw.WriteLine(m3.GetComponent<Transform>().position.x + "," +
+                     m3.GetComponent<Transform>().position.y + "," +
+                     m3.GetComponent<Transform>().position.z + ",1");
+        sw.WriteLine(m1.GetComponent<Transform>().position.x + "," +
+                     m1.GetComponent<Transform>().position.y + "," +
+                     m1.GetComponent<Transform>().position.z + ",1");
 
         for (int i = 0; i < 36; i=i+4)
         {
-            sw.WriteLine(g[i].GetComponent<Transform>().position.x.ToString() + "," +
-                         g[i].GetComponent<Transform>().position.y.ToString() + "," +
-                         g[i].GetComponent<Transform>().position.z.ToString()+ ",2");
-            sw.WriteLine(g[i+1].GetComponent<Transform>().position.x.ToString() + "," +
-                         g[i+1].GetComponent<Transform>().position.y.ToString() + "," +
-                         g[i+1].GetComponent<Transform>().position.z.ToString()+ ",2");
-            sw.WriteLine(g[i+2].GetComponent<Transform>().position.x.ToString() + "," +
-                         g[i+2].GetComponent<Transform>().position.y.ToString() + "," +
-                         g[i+2].GetComponent<Transform>().position.z.ToString()+ ",2");
-            sw.WriteLine(g[i+3].GetComponent<Transform>().position.x.ToString() + "," +
-                         g[i+3].GetComponent<Transform>().position.y.ToString() + "," +
-                         g[i+3].GetComponent<Transform>().position.z.ToString()+ ",2");
-            sw.WriteLine(g[i].GetComponent<Transform>().position.x.ToString() + "," +
-                         g[i].GetComponent<Transform>().position.y.ToString() + "," +
-                         g[i].GetComponent<Transform>().position.z.ToString()+ ",2");
+            sw.WriteLine(g[i].GetComponent<Transform>().position.x + "," +
+                         g[i].GetComponent<Transform>().position.y + "," +
+                         g[i].GetComponent<Transform>().position.z + ",2");
+            sw.WriteLine(g[i+1].GetComponent<Transform>().position.x + "," +
+                         g[i+1].GetComponent<Transform>().position.y + "," +
+                         g[i+1].GetComponent<Transform>().position.z + ",2");
+            sw.WriteLine(g[i+2].GetComponent<Transform>().position.x + "," +
+                         g[i+2].GetComponent<Transform>().position.y + "," +
+                         g[i+2].GetComponent<Transform>().position.z + ",2");
+            sw.WriteLine(g[i+3].GetComponent<Transform>().position.x + "," +
+                         g[i+3].GetComponent<Transform>().position.y + "," +
+                         g[i+3].GetComponent<Transform>().position.z + ",2");
+            sw.WriteLine(g[i].GetComponent<Transform>().position.x + "," +
+                         g[i].GetComponent<Transform>().position.y + "," +
+                         g[i].GetComponent<Transform>().position.z + ",2");
         }
         
     }

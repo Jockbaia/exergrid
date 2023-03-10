@@ -15,7 +15,7 @@ public class timer : MonoBehaviour
 
     void Start()
     {
-        sendTime();
+        SendTime();
     }
     void Update()
     {
@@ -32,31 +32,31 @@ public class timer : MonoBehaviour
                 timeRemaining = 0;
                 timerIsRunning = false;
             }
-            sendTime();
+            SendTime();
         }
     }
 
-    private void sendTime()
+    public void SendTime()
     {
         minutes = (int) (timeRemaining / 60);
         seconds = (int) (timeRemaining - minutes * 60);
         if(GameObject.Find("GUI_clock") != null) GameObject.Find("GUI_clock").GetComponent<Text>().text = minutes.ToString("D2") + ":" + seconds.ToString("D2"); 
     }
     
-    public void stopTimer()
+    public void StopTimer()
     {
         timerIsRunning = false;
     }
 
-    public void startTimer()
+    public void StartTimer()
     {
         timerIsRunning = true;
     }
 
-    public void resetTimer()
+    public void ResetTimer()
     {
         timeRemaining = timeValue;
-        sendTime();
+        SendTime();
     }
     
 }

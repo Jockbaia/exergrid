@@ -4,6 +4,7 @@ using UnityEngine;
 public class Tile : MonoBehaviour
 {
     public GameObject pawn;
+    public GameObject report;
     public bool isActive;
     public bool isShaky; 
     public bool isHover;
@@ -34,8 +35,8 @@ public class Tile : MonoBehaviour
         // TILE IS GREEN
         if ((isActive || (isShaky && !isDangerous)) && isHover && !isOver && grid.GetComponent<Grid>().hoverTiles == 1)
         {
-            if(isShaky) GameObject.Find("report").GetComponent<Report>().TrackTile(numTile, "Yellow (safe)", false);
-            else GameObject.Find("report").GetComponent<Report>().TrackTile(numTile, "Green", false);
+            if(isShaky) report.GetComponent<Report>().TrackTile(numTile, "Yellow (safe)", false);
+            else report.GetComponent<Report>().TrackTile(numTile, "Green", false);
             
             if(!GameObject.FindWithTag("PTS").GetComponent<Points>().SessionFinished())
             {
@@ -53,7 +54,7 @@ public class Tile : MonoBehaviour
         // TILE IS YELLOW
         else if (isShaky && isDangerous && isHover && !isOver && grid.GetComponent<Grid>().hoverTiles == 1)
         {
-            GameObject.Find("report").GetComponent<Report>().TrackTile(numTile, "Yellow (shaky)", true);
+            report.GetComponent<Report>().TrackTile(numTile, "Yellow (shaky)", true);
             grid.GetComponent<Grid>().PickNewGreen(false);
             grid.GetComponent<Grid>().ChangeSpikes();
             EmptyTile();
@@ -64,7 +65,7 @@ public class Tile : MonoBehaviour
         // TILE IS RED
         else if (isSpiky && isHover && !isOver && grid.GetComponent<Grid>().hoverTiles == 1)
         {
-            GameObject.Find("report").GetComponent<Report>().TrackTile(numTile, "Red", true);
+            report.GetComponent<Report>().TrackTile(numTile, "Red", true);
             grid.GetComponent<Grid>().PickNewSpike(true);
             EmptyTile();
         }

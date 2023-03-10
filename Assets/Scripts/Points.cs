@@ -6,7 +6,7 @@ using Random = System.Random;
 public class Points : MonoBehaviour
 {
     Mixer _mx;
-    public GameObject grid, menus;
+    public GameObject grid, menus, report;
     public GameObject[] f = {null, null, null, null};
 
     public int preset = 1;
@@ -14,7 +14,7 @@ public class Points : MonoBehaviour
     public int levels = 4;
     public int sessions = 5;
     public int breakTime = 15;
-    public int mistakes = 0;
+    public int mistakes;
     
     public int ptsCurrent;
     public int snsCurrent;
@@ -24,7 +24,7 @@ public class Points : MonoBehaviour
     public AudioSource p01, p02, p03, p04, p05, p06;
     public AudioSource newLevelSfx, endLevelSfx, errorSfx;
 
-    public int mySteps, myTimeleft, myPoints = 0;
+    public int mySteps, myTimeleft, myPoints;
     public string myDirectory; 
 
     void Start()
@@ -63,18 +63,18 @@ public class Points : MonoBehaviour
     
     public void level_handler()
     {
-        if(ptsCurrent == 1) GameObject.Find("timer_system").GetComponent<timer>().startTimer();
-        if (ptsCurrent == 0) level_manager(0,false, grid.GetComponent<Grid>().GetChannel(0), "stage 1");
-        else if (ptsCurrent == steps) level_manager(1,levels == 1, grid.GetComponent<Grid>().GetChannel(1), "stage 2");
-        else if (ptsCurrent == steps * 2) level_manager(2,levels == 2, grid.GetComponent<Grid>().GetChannel(2), "stage 3");
-        else if (ptsCurrent == steps * 3) level_manager(3,levels == 3, grid.GetComponent<Grid>().GetChannel(3), "stage 4");
-        else if (ptsCurrent == steps * 4) level_manager(4,levels == 4, grid.GetComponent<Grid>().GetChannel(4), "stage 5");
-        else if (ptsCurrent == steps * 5) level_manager(5,levels == 5, grid.GetComponent<Grid>().GetChannel(5), "stage 6");
-        else if (ptsCurrent == ptsMax)  { int[] a = {1, 1, 1, 1, 1, 0, 1, 0}; level_manager(6,levels == 6, a, "stage '7'"); }
+        if(ptsCurrent == 1) GameObject.Find("timer_system").GetComponent<timer>().StartTimer();
+        if (ptsCurrent == 0) level_manager(0,false, grid.GetComponent<Grid>().GetChannel(0));
+        else if (ptsCurrent == steps) level_manager(1,levels == 1, grid.GetComponent<Grid>().GetChannel(1));
+        else if (ptsCurrent == steps * 2) level_manager(2,levels == 2, grid.GetComponent<Grid>().GetChannel(2));
+        else if (ptsCurrent == steps * 3) level_manager(3,levels == 3, grid.GetComponent<Grid>().GetChannel(3));
+        else if (ptsCurrent == steps * 4) level_manager(4,levels == 4, grid.GetComponent<Grid>().GetChannel(4));
+        else if (ptsCurrent == steps * 5) level_manager(5,levels == 5, grid.GetComponent<Grid>().GetChannel(5));
+        else if (ptsCurrent == ptsMax)  { int[] a = {1, 1, 1, 1, 1, 0, 1, 0}; level_manager(6,levels == 6, a); }
     }
 
     
-    void level_manager(int lvl, bool isLast, int[] channels, String text)
+    void level_manager(int lvl, bool isLast, int[] channels)
     {
         GameObject.Find("report").GetComponent<Report>().newLevel = true;   
         menus.GetComponent<ButtonSet>().GlowRestart(false);
@@ -87,13 +87,13 @@ public class Points : MonoBehaviour
             else
             {
                 // stopping timer
-                GameObject.Find("timer_system").GetComponent<timer>().stopTimer();
-
+                GameObject.Find("timer_system").GetComponent<timer>().StopTimer();
                 snsCurrent++;
                 GameObject.Find("report").GetComponent<Report>().newSession = true;                
                 
                 if (sessions == snsCurrent)
                 {
+                    report.GetComponent<Report>().UpdateTrack();
                     UpdateResults();
                     menus.GetComponent<ButtonSet>().GlowRestart(true);
                     grid.GetComponent<Grid>().end_level();
@@ -109,7 +109,7 @@ public class Points : MonoBehaviour
                     f[0].GetComponent<CubeShrink>().glow_loading(true, breakTime); f[1].GetComponent<CubeShrink>().glow_loading(true, breakTime); 
                     f[2].GetComponent<CubeShrink>().glow_loading(false, breakTime); f[3].GetComponent<CubeShrink>().glow_loading(false, breakTime);
                     grid.GetComponent<Grid>().ResetBoard();
-                    _mx.SetMixer(grid.GetComponent<Grid>().GetChannel(6));// _mx.SetMixer(channels); // TODO
+                    _mx.SetMixer(grid.GetComponent<Grid>().GetChannel(6));
                 }
             }
             
@@ -123,6 +123,7 @@ public class Points : MonoBehaviour
     
     public void ZeroTime()
     {
+        report.GetComponent<Report>().UpdateTrack();
         UpdateResults();
         menus.GetComponent<ButtonSet>().GlowRestart(true);
         grid.GetComponent<Grid>().end_level();
@@ -177,7 +178,7 @@ public class Points : MonoBehaviour
         GameObject.Find("settings").GetComponent<CanvasMgmt>().ResultsToogle(true);
         mySteps = GameObject.Find("report").GetComponent<Report>().stepTracker;
         myTimeleft = Convert.ToInt32(GameObject.Find("timer_system").GetComponent<timer>().timeRemaining);
-        myDirectory = GameObject.Find("report").GetComponent<Report>()._nameFile;
+        myDirectory = GameObject.Find("report").GetComponent<Report>().nameFile;
         GameObject.Find("value_1_text").GetComponent<Text>().text = mySteps.ToString();
         GameObject.Find("value_2_text").GetComponent<Text>().text = mistakes.ToString();
         GameObject.Find("value_3_text").GetComponent<Text>().text = myTimeleft.ToString();

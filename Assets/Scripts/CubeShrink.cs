@@ -101,7 +101,7 @@ public class CubeShrink : MonoBehaviour
         GameObject.FindWithTag("PTS").GetComponent<Points>().level_handler();
         GameObject.Find("report").GetComponent<Report>().startSession = DateTime.Now;
         GameObject.Find("report").GetComponent<Report>().startLevel = DateTime.Now;
-        GameObject.Find("timer_system").GetComponent<timer>().startTimer();
+        GameObject.Find("timer_system").GetComponent<timer>().StartTimer();
         gameObject.SetActive(false);
     }
     

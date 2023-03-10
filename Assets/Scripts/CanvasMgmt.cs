@@ -4,8 +4,9 @@ public class CanvasMgmt : MonoBehaviour
 {
     public GameObject menus;
     public GameObject results;
-    private bool _isActive = false;
-    private int _pressed = 0;
+    public GameObject timer;
+    private bool _isActive;
+    private int _pressed;
     void Start()
     {
         menus.SetActive(false);
@@ -18,6 +19,7 @@ public class CanvasMgmt : MonoBehaviour
         {
             results.GetComponent<Transform>().localScale = Vector3.zero;
             menus.SetActive(true);
+            timer.GetComponent<timer>().SendTime();
             _isActive = true;
             _pressed++;
         } else if (Input.GetKey("q") && _isActive && _pressed == 0)
@@ -38,9 +40,6 @@ public class CanvasMgmt : MonoBehaviour
             UnityEditor.EditorApplication.isPlaying = false;
             #endif
         }
-        
-        
-        
     }
 
     public void PanelToogle()
@@ -50,6 +49,7 @@ public class CanvasMgmt : MonoBehaviour
         {
             results.GetComponent<Transform>().localScale = Vector3.zero;
             menus.SetActive(true);
+            timer.GetComponent<timer>().SendTime();
             _isActive = true;
         } else if (_isActive)
         {

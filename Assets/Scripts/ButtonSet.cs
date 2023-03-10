@@ -9,6 +9,7 @@ public class ButtonSet : MonoBehaviour
     public GameObject[] f = {null, null, null, null};
     public int exitFlag;
     public GameObject cube;
+    public GameObject report;
     public GameObject centralTile;
     public GameObject cubeBtn;
     public GameObject cubeBtnImage;
@@ -100,7 +101,6 @@ public class ButtonSet : MonoBehaviour
     
     public void SetCube()
     {
-        
         GameObject.Find("game").GetComponent<AudioSource>().Play();
         GameObject.Find("pawn").GetComponent<Transform>().SetPositionAndRotation(GameObject.Find("table").GetComponent<Transform>().position + new Vector3(0,0.05f,0), Quaternion.Euler(new Vector3(0.0f,180.0f,0.0f)));
     }
@@ -128,12 +128,11 @@ public class ButtonSet : MonoBehaviour
     
     public void RestartGame()
     {
-        GameObject.Find("timer_system").GetComponent<timer>().stopTimer();
-        GameObject.Find("timer_system").GetComponent<timer>().resetTimer();
+        GameObject.Find("timer_system").GetComponent<timer>().StopTimer();
+        GameObject.Find("timer_system").GetComponent<timer>().ResetTimer();
         _pts.GetComponent<Points>().ptsCurrent = _pts.GetComponent<Points>().snsCurrent = 0;
         grid.GetComponent<Grid>().ResetBoard();
         grid.GetComponent<Grid>().SetActive(4);
-        
         _pts.GetComponent<Points>().level_handler();
         _pts.GetComponent<Points>().mistakes = 0;
         _pts.GetComponent<Points>().myPoints = 0;
@@ -144,14 +143,14 @@ public class ButtonSet : MonoBehaviour
             f[i].GetComponent<CubeShrink>().RestartInvokes();
         }
         grid.GetComponent<Grid>().LevelSwitch(0, true);
-        GameObject.Find("report").GetComponent<Report>().newGame = true;
-        GameObject.Find("report").GetComponent<Report>().newSession = true;
-        GameObject.Find("report").GetComponent<Report>().newLevel = true;
+        report.GetComponent<Report>().newGame = true;
+        report.GetComponent<Report>().newSession = true;
+        report.GetComponent<Report>().newLevel = true;
+        report.GetComponent<Report>().ClearTrack();
     }
     
     void CheckCube()
     {
-        
         float dist = Vector3.Distance(cube.transform.position, centralTile.transform.position);
         if (dist > 0.8)
         {
@@ -163,7 +162,6 @@ public class ButtonSet : MonoBehaviour
             cubeBtnImage.GetComponent<Image>().color = new Color32(207,207,207,255);
             cubeBtn.GetComponent<Image>().color = new Color32(0,0,0,255);
         }
-
         Invoke(nameof(CheckCube), 0.2f);
     }
     
@@ -171,7 +169,6 @@ public class ButtonSet : MonoBehaviour
     {
         if (isOver)
         {
-            
             restartBtn.GetComponent<Image>().color = new Color32(255,220,0,255);
             GameObject.Find("settings").GetComponent<CanvasMgmt>().ResultsToogle(true);
         }
@@ -180,7 +177,6 @@ public class ButtonSet : MonoBehaviour
             restartBtn.GetComponent<Image>().color = new Color32(207,207,207,255);
             GameObject.Find("settings").GetComponent<CanvasMgmt>().ResultsToogle(false);
         }
-        
     }
     
 }

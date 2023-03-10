@@ -14,7 +14,6 @@ public class ButtonPress : MonoBehaviour
     public int defaultPress = -1;
     public Button b1, b2, b3, b4, b5, b6, b7, b8;
     private Button[] b = {null, null, null, null, null, null, null, null};
-    
 
     void Start()
     {
@@ -36,8 +35,7 @@ public class ButtonPress : MonoBehaviour
     }
     
     public void UnPress() { for (int i = 0; i < numOfButtons; i++) b[i].GetComponent<ButtonProperty>().buttonPressed = false; }
-
-
+    
     public void Clean()
     {
         for (int i = 0; i < numOfButtons; i++) Release(i);
@@ -48,8 +46,7 @@ public class ButtonPress : MonoBehaviour
         for (int i = 0; i <= id; i++) Press(i);
         for (int i = id + 1; i < numOfButtons; i++) Release(i);
     }
-
-
+    
     public void Release(int id)
     {
         ColorBlock colorBlock = b[id].colors;
@@ -75,5 +72,4 @@ public class ButtonPress : MonoBehaviour
         if(defaultPress!=-1 && (!isSequence)) Press(defaultPress);
         else if(defaultPress!=-1 && isSequence) Sequence(defaultPress);
     }
-    
 }
