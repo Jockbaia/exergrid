@@ -133,6 +133,7 @@ public class ButtonSet : MonoBehaviour
         _pts.GetComponent<Points>().ptsCurrent = _pts.GetComponent<Points>().snsCurrent = 0;
         grid.GetComponent<Grid>().ResetBoard();
         grid.GetComponent<Grid>().SetActive(4);
+        grid.GetComponent<Grid>().ResetMutex();
         _pts.GetComponent<Points>().level_handler();
         _pts.GetComponent<Points>().mistakes = 0;
         _pts.GetComponent<Points>().myPoints = 0;

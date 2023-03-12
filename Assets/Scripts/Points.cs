@@ -79,7 +79,7 @@ public class Points : MonoBehaviour
         GameObject.Find("report").GetComponent<Report>().newLevel = true;   
         menus.GetComponent<ButtonSet>().GlowRestart(false);
         _lvlCurrent = lvl;
-        if (!isLast)
+            if (!isLast)
             {
                 if (lvl != 0) newLevelSfx.Play();
                 if (lvl != 0) for (int i = 0; i < 4; i++) f[i].GetComponent<CubeShrink>().glow_newlevel();
@@ -115,7 +115,8 @@ public class Points : MonoBehaviour
             
             if (!isLast)
             {
-                grid.GetComponent<Grid>().LevelSwitch(lvl, false);
+                if(ptsCurrent==0) grid.GetComponent<Grid>().LevelSwitch(lvl, true);
+                else grid.GetComponent<Grid>().LevelSwitch(lvl, false);
                 _mx.SetMixer(channels);
             }
 
@@ -135,6 +136,13 @@ public class Points : MonoBehaviour
     public bool SessionFinished()
     {
         return ptsCurrent == ptsMax-1;
+    }
+    
+    public bool LevelFinished()
+    {
+        if ((ptsCurrent + 1) % steps == 0)
+                return true;
+        return false;
     }
 
     public string ReportData()

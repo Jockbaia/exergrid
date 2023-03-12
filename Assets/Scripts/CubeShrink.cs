@@ -97,7 +97,6 @@ public class CubeShrink : MonoBehaviour
     void PostBreak()
     {
         GameObject.Find("grid").GetComponent<Grid>().LevelSwitch(0, true);
-        GameObject.Find("grid").GetComponent<Grid>().LevelSwitch(0, true);
         GameObject.FindWithTag("PTS").GetComponent<Points>().level_handler();
         GameObject.Find("report").GetComponent<Report>().startSession = DateTime.Now;
         GameObject.Find("report").GetComponent<Report>().startLevel = DateTime.Now;

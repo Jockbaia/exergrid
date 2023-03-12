@@ -38,16 +38,26 @@ public class Tile : MonoBehaviour
             if(isShaky) report.GetComponent<Report>().TrackTile(numTile, "Yellow (safe)", false);
             else report.GetComponent<Report>().TrackTile(numTile, "Green", false);
             
-            if(!GameObject.FindWithTag("PTS").GetComponent<Points>().SessionFinished())
+            if(!GameObject.FindWithTag("PTS").GetComponent<Points>().SessionFinished() && 
+               !GameObject.FindWithTag("PTS").GetComponent<Points>().LevelFinished())
             {
+                // MUTEX Green
                 grid.GetComponent<Grid>().PickNewGreen(true);
+                while (!grid.GetComponent<Grid>().activeSet) {}
+                grid.GetComponent<Grid>().activeSet = false;
+                // MUTEX Reds
+                grid.GetComponent<Grid>().ChangeSpikes();
+                while (!grid.GetComponent<Grid>().refreshSet) {}
+                grid.GetComponent<Grid>().refreshSet = false;
+                // !MUTEX
+                
+                EmptyTile();
             }
             else
             {
                 GameObject.FindWithTag("PTS").GetComponent<Points>().add_points();
             }
-            grid.GetComponent<Grid>().ChangeSpikes();
-            EmptyTile();
+            
             CancelInvoke();
         }
 
@@ -55,7 +65,7 @@ public class Tile : MonoBehaviour
         else if (isShaky && isDangerous && isHover && !isOver && grid.GetComponent<Grid>().hoverTiles == 1)
         {
             report.GetComponent<Report>().TrackTile(numTile, "Yellow (shaky)", true);
-            grid.GetComponent<Grid>().PickNewGreen(false);
+            grid.GetComponent<Grid>().PickNewGreen(false); 
             grid.GetComponent<Grid>().ChangeSpikes();
             EmptyTile();
             shakySfx.Stop();
@@ -70,6 +80,7 @@ public class Tile : MonoBehaviour
             EmptyTile();
         }
     }
+    
 
     private void Update()
     {
