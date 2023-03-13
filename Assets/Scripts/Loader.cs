@@ -36,12 +36,12 @@ public class Loader : MonoBehaviour
             using(var sw = new StreamWriter(path, true))
             {
                 sw.WriteLine("SE2.ST3.TM2.BT1.NL6");                     
-                sw.WriteLine("LV1.R4.Y0.M00001100"); 
-                sw.WriteLine("LV2.R4.Y0.M00101100");
-                sw.WriteLine("LV3.R4.Y0.M00111100");                     
-                sw.WriteLine("LV4.R4.Y0.M00111111"); 
-                sw.WriteLine("LV5.R4.Y0.M10111111");
-                sw.WriteLine("LV6.R4.Y0.M11111111"); 
+                sw.WriteLine("LV1.R2.Y0.M00001100"); 
+                sw.WriteLine("LV2.R3.Y0.M00101100");
+                sw.WriteLine("LV3.R3.Y1.M00111100");                     
+                sw.WriteLine("LV4.R4.Y1.M00111111"); 
+                sw.WriteLine("LV5.R4.Y1.M10111111");
+                sw.WriteLine("LV6.R4.Y2.M11111111"); 
                 sw.WriteLine("###.##.M1.B00000101"); 
             }
         }
@@ -51,13 +51,13 @@ public class Loader : MonoBehaviour
         {
             using(var sw = new StreamWriter(path, true))
             {
-                sw.WriteLine("SE2.ST2.TM2.BT1.NL6");                     
-                sw.WriteLine("LV1.R0.Y2.M00001100"); 
-                sw.WriteLine("LV2.R0.Y3.M00101100");
-                sw.WriteLine("LV3.R0.Y4.M00111100");                     
-                sw.WriteLine("LV4.R0.Y4.M00111111"); 
-                sw.WriteLine("LV5.R0.Y4.M10111111");
-                sw.WriteLine("LV6.R0.Y4.M11111111"); 
+                sw.WriteLine("SE2.ST3.TM2.BT1.NL6");                     
+                sw.WriteLine("LV1.R1.Y2.M00001100"); 
+                sw.WriteLine("LV2.R1.Y2.M00101100");
+                sw.WriteLine("LV3.R1.Y3.M00111100");                     
+                sw.WriteLine("LV4.R2.Y3.M00111111"); 
+                sw.WriteLine("LV5.R2.Y4.M10111111");
+                sw.WriteLine("LV6.R2.Y4.M11111111"); 
                 sw.WriteLine("###.##.M1.B00000101"); 
             }
         }
@@ -67,13 +67,13 @@ public class Loader : MonoBehaviour
         {
             using(var sw = new StreamWriter(path, true))
             {
-                sw.WriteLine("SE2.ST2.TM2.BT1.NL6");                     
-                sw.WriteLine("LV1.R3.Y2.M00001100"); 
-                sw.WriteLine("LV2.R3.Y3.M00101100");
-                sw.WriteLine("LV3.R3.Y3.M00111100");                     
-                sw.WriteLine("LV4.R4.Y4.M00111111"); 
-                sw.WriteLine("LV5.R4.Y4.M10111111");
-                sw.WriteLine("LV6.R4.Y4.M11111111"); 
+                sw.WriteLine("SE4.ST6.TM4.BT1.NL6");                     
+                sw.WriteLine("LV1.R2.Y0.M00001100"); 
+                sw.WriteLine("LV2.R3.Y0.M00101100");
+                sw.WriteLine("LV3.R3.Y1.M00111100");                     
+                sw.WriteLine("LV4.R4.Y1.M00111111"); 
+                sw.WriteLine("LV5.R4.Y1.M10111111");
+                sw.WriteLine("LV6.R4.Y2.M11111111"); 
                 sw.WriteLine("###.##.M1.B00000101"); 
             }
         }
@@ -83,14 +83,14 @@ public class Loader : MonoBehaviour
         {
             using(var sw = new StreamWriter(path, true))
             {
-                sw.WriteLine("SE4.ST6.TM4.BT2.NL6");                     
-                sw.WriteLine("LV1.R0.Y0.M00001100"); 
-                sw.WriteLine("LV2.R1.Y0.M00101100");
-                sw.WriteLine("LV3.R2.Y1.M00111100");                     
-                sw.WriteLine("LV4.R3.Y1.M00111111"); 
-                sw.WriteLine("LV5.R4.Y1.M10111111");
-                sw.WriteLine("LV6.R4.Y1.M11111111"); 
-                sw.WriteLine("###.##.M1.B00000101"); 
+                sw.WriteLine("SE4.ST6.TM4.BT1.NL6");                     
+                sw.WriteLine("LV1.R1.Y2.M00001100"); 
+                sw.WriteLine("LV2.R1.Y2.M00101100");
+                sw.WriteLine("LV3.R1.Y3.M00111100");                     
+                sw.WriteLine("LV4.R2.Y3.M00111111"); 
+                sw.WriteLine("LV5.R2.Y4.M10111111");
+                sw.WriteLine("LV6.R2.Y4.M11111111"); 
+                sw.WriteLine("###.##.M1.B00000101");  
             }
         }
         
