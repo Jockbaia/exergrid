@@ -35,7 +35,7 @@ public class Grid : MonoBehaviour
         int isYellow = Random.Range(1, 5);
         if (isYellow <= yellowPercentage[currentLevel] && yellowPercentage[currentLevel]!= 0) SetShaky(newGreenNumber + 1);
         else SetActive(newGreenNumber + 1);
-        Debug.Log("GREEN_"+ (newGreenNumber + 1) +"_SET");
+        //Debug.Log("GREEN_"+ (newGreenNumber + 1) +"_SET");
         activeSet = true;
     }
 
@@ -62,7 +62,7 @@ public class Grid : MonoBehaviour
         do newRedNumber = Random.Range(0, 9);
         while (isFull(g[newRedNumber]));
         SetSpiky(newRedNumber + 1);
-        Debug.Log("R_" + (newRedNumber + 1));
+        //Debug.Log("R_" + (newRedNumber + 1));
         spikeSet = true;
     }
 
@@ -90,7 +90,7 @@ public class Grid : MonoBehaviour
     
     public void LevelSwitch(int level, bool isStart)
     {
-        Debug.Log("START SETTINGS LEVEL" + level);
+        //Debug.Log("START SETTINGS LEVEL" + level);
         currentLevel = level;
         ResetBoard();
 
@@ -100,7 +100,7 @@ public class Grid : MonoBehaviour
         } else {ActivePicker();}
 
         while (!activeSet) { }
-        Debug.Log("GREEN DONE!");
+        //Debug.Log("GREEN DONE!");
         
         for (int i = 0; i < numSpikes[level]; i++)
         {
