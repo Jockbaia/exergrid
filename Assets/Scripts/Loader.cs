@@ -133,7 +133,9 @@ public class Loader : MonoBehaviour
             int timerValue = Int32.Parse(settings.Substring(10, 1));
             GameObject.Find("gametime_" + timerValue).GetComponent<Button>().Select();
             GameObject.Find("gametime").GetComponent<ButtonPress>().ExternalPress(timerValue - 1);
-            GameObject.Find("timer_system").GetComponent<timer>().timeValue = timerValue*90;
+            if(timerValue<3) GameObject.Find("timer_system").GetComponent<timer>().timeValue = timerValue*90;
+            else if (timerValue == 3) GameObject.Find("timer_system").GetComponent<timer>().timeValue = 360;
+            else if (timerValue == 4) GameObject.Find("timer_system").GetComponent<timer>().timeValue = 900;
             GameObject.Find("timer_system").GetComponent<timer>().ResetTimer();
         
             // LEVELS 
